@@ -1,13 +1,15 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+const kleur = require("kleur");
+const { mongoConnectionString } = require("./exportEnv");
+
 const connectDB = async () => {
   try {
-    if (mongoose.connection.readyState === 0) {
-      await mongoose.connect(process.env.MONGO_URL);
-      console.log("MongoDB Connected");
-    }
+    await mongoose.connect(mongoConnectionString);
+    console.log(kleur.bgGreen().white("MongoDB Connected"));
   } catch (error) {
-    console.log("MongoDB Connection Failed");
-    console.log(chalk.red(error.message));
+    console.log(kleur.bgRed().white("MongoDB Connection Failed"));
+    console.log(kleur.bgRed().white(error.message));
   }
 };
-export default connectDB;
+
+module.exports = connectDB;
