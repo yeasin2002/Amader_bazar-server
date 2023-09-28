@@ -29,7 +29,6 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
       minlength: [6, "password can not be less than 6 characters"],
-      maxlength: [25, "name can not be more than 25 characters"],
       set: (value) => bcrypt.hashSync(value, bcrypt.genSaltSync(10)),
     },
     image: {
