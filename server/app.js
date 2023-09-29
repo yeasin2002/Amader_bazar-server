@@ -10,6 +10,7 @@ const notFound = require("./src/middleware/NotFound");
 const rootRoute = require("./src/controller/RootRoute");
 const limiter = require("./src/utils/expressRateLimit");
 const seedRouter = require("./src/router/seedRouter");
+const userRouter = require("./src/router/userRoute");
 
 //  app in use
 app.use(morgan("dev"));
@@ -19,6 +20,7 @@ app.use(limiter);
 
 // Router
 app.use("/seed", seedRouter);
+app.use("/user", userRouter);
 
 app.get("/", rootRoute);
 app.use(notFound);

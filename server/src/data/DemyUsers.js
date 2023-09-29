@@ -13,7 +13,7 @@ const dumyUser = [
     phone: "015808984768",
     password: "015808984768",
     address: "Barishal, Bangladesh",
-    isAdmin: true,
+    isAdmin: false,
   },
 ];
 
