@@ -3,7 +3,7 @@ const dumyUserData = require("../../data/DemyUsers");
 
 const seedUsers = async (req, res) => {
   try {
-    // await userModel.deleteMany({});
+    await userModel.deleteMany({});
 
     //   creating new users
     const user = await userModel.insertMany(dumyUserData);
