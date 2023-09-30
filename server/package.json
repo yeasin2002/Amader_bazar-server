@@ -16,9 +16,11 @@
     "express": "^4.18.2",
     "express-rate-limit": "^7.0.2",
     "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
     "kleur": "^4.1.5",
     "mongoose": "^7.5.1",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.9.5",
     "nodemon": "^3.0.1"
   },
   "devDependencies": {

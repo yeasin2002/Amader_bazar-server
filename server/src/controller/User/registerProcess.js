@@ -4,19 +4,43 @@ const {
   successResponse,
   errorResponse,
 } = require("../../utils/ResponseHandler");
+const generateJWT = require("../../utils/GenerateJWT");
+const { jwtSecretKey, ClientUrl } = require("../../utils/exportEnv");
+const sendEmailToRegisterUser = require("../../helper/email");
 
 const registerProcess = async (req, res) => {
   try {
-    //! Next Video:  https://youtu.be/uNl3_hubaeE?si=e-nj5yCwMa4ObijZ
-
     // eslint-disable-next-line no-unused-vars
     const { name, email, password, phone, address } = req.body;
     const isExist = await UserModel.exists({ email });
-    if (isExist) createHttpError(400, "Email already exist");
+    if (isExist) throw createHttpError(409, "Email already exist");
 
-    successResponse(res, { message: "User Registered" });
+    const token = await generateJWT({ email, name }, jwtSecretKey, {
+      expiresIn: "30d",
+    });
+    try {
+      // email data
+      const emailData = {
+        email: "",
+        subject: "Account Activation Link",
+        html: `
+          <h1>Please use the following to  activate your account</h1>
+          <a href=${ClientUrl}/user/activate/${token}>
+          Click To log in
+          </a>
+        `,
+      };
+      sendEmailToRegisterUser(emailData);
+    } catch (error) {
+      console.log(error);
+    }
+
+    await successResponse(res, {
+      message: "User Registered",
+      data: token,
+    });
   } catch (error) {
-    errorResponse(res, { message: "Failed to register user" });
+    errorResponse(res, { message: error.message, statusCode: error.status });
   }
 };
 module.exports = registerProcess;

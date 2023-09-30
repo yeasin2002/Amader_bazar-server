@@ -7,6 +7,7 @@ const getSingleUser = require("../controller/User/getSingleUser");
 const deleteSingleUser = require("../controller/User/deleteSingleUser");
 const registerProcess = require("../controller/User/registerProcess");
 
+//* routes
 userRouter.get("/", getAllUserInfo);
 userRouter.post("/register-process", registerProcess);
 
