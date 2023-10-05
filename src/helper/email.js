@@ -14,13 +14,12 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmailToRegisterUser = async (options) => {
-  const nodeMailerOption = {
+  const data = await transporter.sendMail({
     from: smtpUsername,
     to: options.email,
     subject: options.subject,
     html: options.html,
-  };
-  const data = await transporter.sendMail(nodeMailerOption);
+  });
   console.log(
     kleur.blue().bgWhite(`Email sent: ${data.messageId} ${data.response}}`)
   );

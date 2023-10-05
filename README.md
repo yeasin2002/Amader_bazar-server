@@ -1,9 +1,7 @@
-## আমাদের বাজার
+### Amader Bazar - Server
 
-### E-commerce MERN Stack App
+Google Security Console: https://security.google.com/settings/security/apppasswords
 
-##### Instructor : Anisula Islam.
+#### Future Feature
 
-#### Resource
-
-https://youtube.com/playlist?list=PLgH5QX0i9K3q_7q9vZ5-EWpoL2bMuFJFV&si=uUxqtFkg9a8j1WFE
+- remove photo of deleted user in DeleteSingleUser Controller => https://youtu.be/aWzx8VXe0Hg?si=FB5gi5dKpIUhG04L
