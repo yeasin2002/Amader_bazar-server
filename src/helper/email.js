@@ -1,7 +1,7 @@
 "use strict";
+const { smtpUsername, smtpPassword } = require("../utils/exportEnv");
 const nodemailer = require("nodemailer");
 const kleur = require("kleur");
-const { smtpUsername, smtpPassword } = require("../utils/exportEnv");
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
