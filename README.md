@@ -1,7 +1,17 @@
-### Amader Bazar - Server
+<div style="display: flex">
+<img
+      src="./public/amder-bajar-logo.png"
+      style="width: 50px; height: 50px"
+    />
+ <h2> আমাদের বাজার <h2/>
 
-Google Security Console: https://security.google.com/settings/security/apppasswords
+ </div>
 
-#### Future Feature
+###### Server side code for Amader Bazar, an e-commerce website.
 
-- remove photo of deleted user in DeleteSingleUser Controller => https://youtu.be/aWzx8VXe0Hg?si=FB5gi5dKpIUhG04L
+#### Technology
+
+- [x] Node.js
+- [x] Express.js
+- [x] mongoDB
+- [x] mongoose
