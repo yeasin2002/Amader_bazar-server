@@ -28,7 +28,7 @@ const SendMail = async ({
     html: html, // ⁡⁢⁢⁢html body⁡ - ⁡⁢⁣⁢Must⁡
     attachments: attachments,
   });
-  console.log(kleur.bgGreen().black(`Message sent:${info.messageId}`));
+  console.log(kleur.bgGreen().black(`Message sent:${info.response}`));
 };
 
 module.exports = SendMail;
