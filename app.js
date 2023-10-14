@@ -13,6 +13,8 @@ const seedRouter = require("./src/router/seedRouter");
 const userRouter = require("./src/router/userRoute");
 
 //  app in use
+
+app.use(express.static("public"));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

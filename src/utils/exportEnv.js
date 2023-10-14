@@ -8,5 +8,4 @@ module.exports = {
   smtpUsername: process.env.SMTP_USERNAME || "",
   smtpPassword: process.env.SMTP_PASSWORD || "",
   ClientUrl: process.env.CLIENT_URL || "",
-  defaultImagePath: process.env.DEFAULT_USER_IMAGES || "",
 };

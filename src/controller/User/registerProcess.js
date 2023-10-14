@@ -36,7 +36,10 @@ const registerProcess = async (req, res) => {
         `,
     };
 
-    // await sendEmailToRegisterUser(emailData);
+    /**
+     * !deprecated
+     *? await sendEmailToRegisterUser(emailData);
+     */
     await SendMail(emailData);
 
     await successResponse(res, {
