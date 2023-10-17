@@ -20,11 +20,3 @@ userRouter.get("/:id", getSingleUser);
 userRouter.delete("/:id", deleteSingleUser);
 
 module.exports = userRouter;
-// {
-//     "name": "Dev Yeasin ",
-//     "email": "md.yeasin.islam20022@gmail.com",
-//     "phone": "01632227965",
-//     "password": "01632227965",
-//     "address": "Dhaka, Bangladesh",
-//     "isAdmin": true
-// }
