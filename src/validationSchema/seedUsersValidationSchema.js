@@ -1,6 +1,6 @@
 const { body } = require("express-validator");
 
-const seedUsersValidation = [
+const seedUsersValidationSchema = [
   body("name")
     .trim()
     .isLength({ min: 3, max: 20 })
@@ -9,4 +9,4 @@ const seedUsersValidation = [
   body("email").isEmail().withMessage("Email is not valid"),
 ];
 
-module.exports = seedUsersValidation;
+module.exports = seedUsersValidationSchema;

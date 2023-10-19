@@ -1,12 +1,12 @@
-const userModel = require("../../model/UserModel");
-const dumyUserData = require("../../data/DemyUsers");
+const { UserModel } = require("../../model");
+const { DemyUsers } = require("../../data");
 
 const seedUsers = async (req, res) => {
   try {
-    await userModel.deleteMany({});
+    await UserModel.deleteMany({});
 
     //   creating new users
-    const user = await userModel.insertMany(dumyUserData);
+    const user = await UserModel.insertMany(DemyUsers);
     await res.status(201).json({
       status: "success",
       message: "Users created successfully",

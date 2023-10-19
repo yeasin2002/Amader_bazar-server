@@ -1,13 +1,14 @@
 const express = require("express");
-const seedUsers = require("../controller/User/seedUsers");
 const seedRouter = express.Router();
-const seedUsersValidation = require("../requestValidator/Seed");
-const validationRunner = require("../requestValidator/index");
+
+const { seedUsers } = require("../controller/UserControllers");
+const { seedUsersValidationSchema } = require("../validationSchema");
+const { validationRunner } = require("../middleware");
 
 seedRouter.post("/", seedUsers);
 seedRouter.post(
   "/validate",
-  seedUsersValidation,
+  seedUsersValidationSchema,
   validationRunner,
   (req, res) => {
     res.json({ status: "success", message: "seeded" });

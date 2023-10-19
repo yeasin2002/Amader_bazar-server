@@ -1,14 +1,13 @@
-const userModel = require("../../model/UserModel");
-const findSingleItemViaId = require("../../service/findSingleItemViaId");
+const { UserModel } = require("../../model");
+const { findSingleItemViaId } = require("../../service");
 const {
-  successResponse,
-  errorResponse,
-} = require("../../utils/ResponseHandler");
+  ResponseHandler: { successResponse, errorResponse },
+} = require("../../utils");
 
 const getSingleUser = async (req, res) => {
   try {
     const foundedUserData = await findSingleItemViaId(
-      userModel,
+      UserModel,
       req.params.id,
       { password: 0 }
     );

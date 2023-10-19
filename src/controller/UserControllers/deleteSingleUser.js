@@ -1,5 +1,5 @@
-const createHttpError = require("http-errors");
-const userModel = require("../../model/UserModel");
+const { createHttpError } = require("../../npmModules");
+const { UserModel } = require("../../model");
 const {
   successResponse,
   errorResponse,
@@ -7,7 +7,7 @@ const {
 
 const deleteSingleUser = async (req, res) => {
   try {
-    const deletedUser = await userModel.findByIdAndDelete({
+    const deletedUser = await UserModel.findByIdAndDelete({
       _id: req.params.id,
       isAdmin: false,
     });

@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 const createHttpError = require("http-errors");
-const userModel = require("../../model/UserModel");
+const { UserModel } = require("../../model");
+
 const {
-  errorResponse,
-  successResponse,
-} = require("../../utils/ResponseHandler");
+  ResponseHandler: { errorResponse, successResponse },
+} = require("../../utils");
 
 const getAllUserInfo = async (req, res) => {
   try {
@@ -22,11 +21,10 @@ const getAllUserInfo = async (req, res) => {
     };
     const option = { password: 0 };
 
-    const allUser = await userModel
-      .find(filter, option)
+    const allUser = await UserModel.find(filter, option)
       .limit(limit)
       .skip((page - 1) * limit);
-    const count = await userModel.find(filter).countDocuments();
+    const count = await UserModel.find(filter).countDocuments();
 
     if (allUser.length === 0) throw createHttpError(404, "No user found");
     successResponse(res, {
