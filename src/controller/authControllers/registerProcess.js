@@ -5,7 +5,7 @@ const {
     errorResponse,
 } = require("../../utils/ResponseHandler")
 const generateJWT = require("../../utils/GenerateJWT")
-const { jwtSecretKey, ClientUrl } = require("../../utils/exportEnv")
+const { ClientUrl } = require("../../utils/exportEnv")
 // const sendEmailToRegisterUser = require("../../helper/email");
 const kleur = require("kleur")
 const SendMail = require("../../helper/SendMailer")
@@ -20,8 +20,8 @@ const registerProcess = async (req, res) => {
         const isExist = await UserModel.exists({ email })
         if (isExist) throw createHttpError(409, "Email already exist")
 
-        const token = await generateJWT(req.body, jwtSecretKey, {
-            expiresIn: "30d",
+        const token = await generateJWT({
+            data: req.body,
         })
 
         // email data

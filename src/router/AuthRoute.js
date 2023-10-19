@@ -1,7 +1,13 @@
 const express = require("express")
 const authRoute = express.Router()
+const { logInSchema } = require("../validationSchema")
+const { validationRunner } = require("../middleware")
 
-const { userVerify, registerProcess } = require("../controller/UserControllers")
+const {
+    userVerify,
+    login,
+    registerProcess,
+} = require("../controller/authControllers")
 
 // middleware
 const { UploadImages } = require("../middleware")
@@ -12,5 +18,6 @@ authRoute.post(
     registerProcess
 )
 authRoute.post("/user-verify", userVerify)
+authRoute.post("/login", logInSchema, validationRunner, login)
 
 module.exports = authRoute
