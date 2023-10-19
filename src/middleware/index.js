@@ -1,6 +1,6 @@
 module.exports = {
-  LastErrorHandler: require("./LastErrorHandler"),
-  NotFound: require("./NotFound"),
-  UploadImages: require("./UploadImages"),
-  validationRunner: require("./validationRunner"),
-};
+    LastErrorHandler: require("./LastErrorHandler"),
+    NotFound: require("./NotFound"),
+    UploadImages: require("./UploadImages"),
+    validationRunner: require("./validationRunner"),
+}

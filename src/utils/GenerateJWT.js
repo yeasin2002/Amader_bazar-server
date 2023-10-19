@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken")
 
 const generateJWT = (data = {}, key, option = { expiresIn: "30d" }) => {
-  return jwt.sign(data, key, option);
-};
+    return jwt.sign(data, key, option)
+}
 
-module.exports = generateJWT;
+module.exports = generateJWT

@@ -1,3 +1,3 @@
 module.exports = {
-  findSingleItemViaId: require("./findSingleItemViaId"),
-};
+    findSingleItemViaId: require("./findSingleItemViaId"),
+}

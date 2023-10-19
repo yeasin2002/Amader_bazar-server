@@ -1,3 +1,3 @@
 module.exports = {
-  seedUsersValidationSchema: require("./seedUsersValidationSchema"),
-};
+    seedUsersValidationSchema: require("./seedUsersValidationSchema"),
+}
