@@ -1,16 +1,16 @@
-const successResponse = (res, { data, statusCode, message, isSuccess }) => {
+const successResponse = (res, { data, statusCode, message }) => {
     return res.status(statusCode || 200).json({
-        success: isSuccess || true,
+        success: true,
         message: message || "Success",
         data: data || null,
-    })
-}
+    });
+};
 
-const errorResponse = (res, { isSuccess, message, statusCode = 500 }) => {
+const errorResponse = (res, { message, statusCode = 500 }) => {
     return res.status(statusCode).json({
-        success: isSuccess || false,
+        success: false,
         message: message || "Something went wrong",
-    })
-}
+    });
+};
 
-module.exports = { errorResponse, successResponse }
+module.exports = { errorResponse, successResponse };

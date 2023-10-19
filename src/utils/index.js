@@ -4,4 +4,5 @@ module.exports = {
     exportEnv: require("./exportEnv"),
     connectDB: require("./connectDB"),
     expressRateLimit: require("./expressRateLimit"),
-}
+    createPrettyError: require("../utils/createPrettyError"),
+};

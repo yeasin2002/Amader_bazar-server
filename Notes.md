@@ -1,1 +1,5 @@
-Google Security Console: https://security.google.com/settings/security/apppasswords
+##### Google Security Console: https://security.google.com/settings/security/apppasswords
+
+#### Study
+
+-   createPrettyError

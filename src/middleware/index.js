@@ -3,4 +3,5 @@ module.exports = {
     NotFound: require("./NotFound"),
     UploadImages: require("./UploadImages"),
     validationRunner: require("./validationRunner"),
-}
+    decryptToken: require("../middleware/decryptToken"),
+};
