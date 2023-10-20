@@ -1,10 +1,10 @@
-// const http = require("http");
+// const http = require(`http`);
 
 class HttpError extends Error {
     constructor(statusCode, message) {
         super(message);
         this.statusCode = statusCode;
-        this.name = "HttpError";
+        this.name = `HttpError`;
     }
 }
 

@@ -1,4 +1,4 @@
 module.exports = {
-    seedUsersValidationSchema: require("./seedUsersValidationSchema"),
-    logInSchema: require("./LogInSchema"),
-}
+    seedUsersValidationSchema: require(`./seedUsersValidationSchema`),
+    logInSchema: require(`./LogInSchema`),
+};

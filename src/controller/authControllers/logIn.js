@@ -1,11 +1,10 @@
-const { UserModel } = require("../../model");
-const { bcrypt } = require("../../npmModules");
-const { GenerateJWT, createPrettyError } = require("../../utils");
+const { UserModel } = require(`../../model`);
+const { bcrypt } = require(`../../npmModules`);
+const { GenerateJWT, createPrettyError } = require(`../../utils`);
 
-const {
-    successResponse,
-    errorResponse,
-} = require("../../utils/ResponseHandler");
+const { successResponse, errorResponse } = require(
+    `../../utils/ResponseHandler`,
+);
 
 const logIn = async (req, res) => {
     try {
@@ -13,7 +12,7 @@ const logIn = async (req, res) => {
             $or: [{ email: req.body.email }, { number: req.body.number }],
         });
         if (!checkUser[0])
-            createPrettyError(404, "Email not found, Please Register First");
+            createPrettyError(404, `Email not found, Please Register First`);
 
         const validatePassword = await bcrypt.compare(
             req.body.password,
@@ -21,7 +20,7 @@ const logIn = async (req, res) => {
         );
         if (!validatePassword) {
             errorResponse(res, {
-                message: "password does't not matched",
+                message: `password does't not matched`,
             });
         } else {
             const token = GenerateJWT({
@@ -33,7 +32,7 @@ const logIn = async (req, res) => {
                 },
             });
             await successResponse(res, {
-                message: "Login Success",
+                message: `Login Success`,
                 data: token,
             });
         }

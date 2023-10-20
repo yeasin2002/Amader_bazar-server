@@ -1,10 +1,9 @@
-const { UserModel } = require("../../model");
+const { UserModel } = require(`../../model`);
 
-const { createPrettyError } = require("../../utils/index");
-const {
-    successResponse,
-    errorResponse,
-} = require("../../utils/ResponseHandler");
+const { createPrettyError } = require(`../../utils`);
+const { successResponse, errorResponse } = require(
+    `../../utils/ResponseHandler`,
+);
 
 const banUserControl = async (req, res) => {
     try {
@@ -20,19 +19,16 @@ const banUserControl = async (req, res) => {
                 new: true,
                 runValidators: true,
             },
-        ).select("-password");
+        ).select(`-password`);
+        if (!banUser) createPrettyError(404, `User not found`);
 
-        if (banUser) {
-            await successResponse(res, {
-                message: "User Banned",
-                data: banUser,
-            });
-        } else {
-            createPrettyError(404, "User not found");
-        }
+        await successResponse(res, {
+            message: `User Banned`,
+            data: banUser,
+        });
     } catch (error) {
         errorResponse(res, {
-            message: "Internal Server Error -  Failed to update",
+            message: `Internal Server Error -  Failed to update`,
         });
     }
 };

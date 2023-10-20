@@ -1,8 +1,8 @@
 module.exports = {
-    LastErrorHandler: require("./LastErrorHandler"),
-    NotFound: require("./NotFound"),
-    UploadImages: require("./UploadImages"),
-    validationRunner: require("./validationRunner"),
-    decryptToken: require("../middleware/decryptToken"),
-    isAdmin: require("./isAdmin"),
+    LastErrorHandler: require(`./LastErrorHandler`),
+    NotFound: require(`./NotFound`),
+    UploadImages: require(`./UploadImages`),
+    validationRunner: require(`./validationRunner`),
+    decryptToken: require(`../middleware/decryptToken`),
+    isAdmin: require(`./isAdmin`),
 };

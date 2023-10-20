@@ -1,3 +1,3 @@
 module.exports = {
-    SendMailer: require("./SendMailer"),
+    SendMailer: require(`./SendMailer`),
 };
