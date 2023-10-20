@@ -6,12 +6,8 @@ const { errorResponse } = require("../utils/ResponseHandler");
 const decryptToken = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1] || "";
-        if (!token) {
-            createPrettyError({
-                statusCode: 403,
-                message: "Token Required`",
-            });
-        }
+        if (!token) createPrettyError(403, "Token Required");
+
         const tokenInfo = jwt.verify(token, jwtSecretKey);
         req.tokenInfo = tokenInfo;
         next();

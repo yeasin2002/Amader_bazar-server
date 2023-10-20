@@ -8,7 +8,7 @@ class HttpError extends Error {
     }
 }
 
-const createPrettyError = ({ statusCode, message }) => {
+const createPrettyError = (statusCode, message) => {
     throw new HttpError(statusCode, message);
 };
 

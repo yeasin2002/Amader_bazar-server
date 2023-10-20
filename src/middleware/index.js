@@ -4,4 +4,5 @@ module.exports = {
     UploadImages: require("./UploadImages"),
     validationRunner: require("./validationRunner"),
     decryptToken: require("../middleware/decryptToken"),
+    isAdmin: require("./isAdmin"),
 };

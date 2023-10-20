@@ -1,17 +1,18 @@
-const { createPrettyError } = require("../utils/index");
+const { UserModel } = require("../model/index");
+const { createPrettyError } = require("../utils");
+const { errorResponse } = require("../utils/ResponseHandler");
 
 const isAdmin = async (req, res, next) => {
     try {
-        if (req.tokenInfo.role !== "admin") {
-            createPrettyError({
-                statusCode: 403,
-                message: "You are not authorized to access this route",
-            });
-        }
+        const Person = await UserModel.findById(req.tokenInfo.id);
+        if (!Person.isAdmin)
+            createPrettyError(
+                403,
+                "You are not authorized to access this route",
+            );
         next();
     } catch (error) {
-        console.log(error.message);
-        res.status(500).json({ status: "failed", message: "" });
+        errorResponse(res);
     }
 };
 module.exports = isAdmin;

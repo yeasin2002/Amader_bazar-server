@@ -3,7 +3,7 @@ const seedRouter = express.Router();
 
 const { seedUsers } = require("../controller/UserControllers");
 const { seedUsersValidationSchema } = require("../validationSchema");
-const { validationRunner, decryptToken } = require("../middleware");
+const { validationRunner, decryptToken, isAdmin } = require("../middleware");
 
 seedRouter.post("/", seedUsers);
 seedRouter.post(
@@ -15,7 +15,7 @@ seedRouter.post(
     },
 );
 
-seedRouter.get("/token-verify", decryptToken, (req, res) => {
+seedRouter.get("/token-verify", decryptToken, isAdmin, (req, res) => {
     res.json({ status: "success", message: "seeded" });
 });
 

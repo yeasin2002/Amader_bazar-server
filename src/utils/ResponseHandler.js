@@ -6,10 +6,10 @@ const successResponse = (res, { data, statusCode, message }) => {
     });
 };
 
-const errorResponse = (res, { message, statusCode = 500 }) => {
-    return res.status(statusCode).json({
+const errorResponse = (res, { message, statusCode } = {}) => {
+    return res.status(statusCode || 500).json({
         success: false,
-        message: message || "Something went wrong",
+        message: message || "Internal Server Error",
     });
 };
 
