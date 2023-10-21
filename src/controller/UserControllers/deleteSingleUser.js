@@ -1,4 +1,4 @@
-const { createHttpError } = require(`../../npmModules`);
+const { createPrettyError } = require("../../utils/");
 const { UserModel } = require(`../../model`);
 const { successResponse, errorResponse } = require(
     `../../utils/ResponseHandler`,
@@ -12,7 +12,7 @@ const deleteSingleUser = async (req, res) => {
         });
 
         if (!deletedUser) {
-            createHttpError(404, `User does not exist`);
+            createPrettyError(404, `User does not exist`);
         }
         /*
     ! Future Task:
@@ -23,7 +23,6 @@ const deleteSingleUser = async (req, res) => {
             data: deletedUser,
         });
     } catch (error) {
-        console.log(error.message);
         errorResponse(res, { message: `Failed to delete user` });
     }
 };

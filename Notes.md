@@ -9,3 +9,9 @@
 -   Control Ban user
 -   validate request body
 -   Handle Image upload and delete while use is deleted
+
+### Skipped Features
+
+-   reset password
+-   ForgotPassword
+-   refresh token

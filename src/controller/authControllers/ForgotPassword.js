@@ -1,9 +1,9 @@
 const {
-    errorResponse,
     successResponse,
+    errorResponse,
 } = require("../../utils/ResponseHandler");
 
-const resetPassword = async (req, res) => {
+const ForgotPassword = async (req, res) => {
     try {
         successResponse(
             res,
@@ -14,4 +14,4 @@ const resetPassword = async (req, res) => {
         errorResponse(res, error.message);
     }
 };
-module.exports = resetPassword;
+module.exports = ForgotPassword;
