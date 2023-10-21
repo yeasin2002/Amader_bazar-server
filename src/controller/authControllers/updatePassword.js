@@ -14,7 +14,8 @@ const updatePassword = async (req, res) => {
         */
         const user = await UserModel.findById(req.tokenInfo.id);
 
-        const checkPassword = await bcrypt.compare(
+        console.log(user);
+        const checkPassword = await bcrypt?.compare(
             req.body.password,
             user.password,
         );

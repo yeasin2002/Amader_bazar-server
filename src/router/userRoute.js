@@ -17,3 +17,4 @@ userRouter.delete(`/:id`, deleteSingleUser);
 userRouter.patch(`/ban/:id`, decryptToken, isAdmin, banUserControl);
 
 module.exports = userRouter;
+//
