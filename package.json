@@ -40,7 +40,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "pnpm  format:check "
+            "pre-commit": "pnpm  format:check && pnpm lint:check  "
         }
     }
 }
