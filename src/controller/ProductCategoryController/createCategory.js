@@ -1,4 +1,5 @@
 const { ProductCategory } = require("../../model");
+
 const {
     successResponse,
     errorResponse,
@@ -6,8 +7,8 @@ const {
 
 const createCategory = async (req, res) => {
     try {
-        const { name, slug } = req.body;
-        const prettierSlug = slug.split(" ").join("-").toLowerCase();
+        const { name } = req.body;
+        const prettierSlug = name.split(" ").join("-").toLowerCase();
 
         const data = await ProductCategory.create({ name, slug: prettierSlug });
         await data.save();
