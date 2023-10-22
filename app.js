@@ -9,6 +9,7 @@ const { LastErrorHandler, NotFound } = require(`./src/middleware`);
 const { seedRouter, userRouter, authRoute, RootRoute } = require(
     `./src/router`,
 );
+const ProductRoute = require("./src/router/ProductRoute");
 
 //  app in use
 app.use(express.static(`public`));
@@ -21,6 +22,7 @@ app.use(expressRateLimit);
 app.use(`/seed`, seedRouter);
 app.use(`/user`, userRouter);
 app.use(`/auth`, authRoute);
+app.use(`/products`, ProductRoute);
 
 app.get(`/`, RootRoute);
 app.use(NotFound);
