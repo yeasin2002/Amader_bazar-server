@@ -5,4 +5,5 @@ module.exports = {
     connectDB: require(`./connectDB`),
     expressRateLimit: require(`./expressRateLimit`),
     createPrettyError: require(`../utils/createPrettyError`),
+    createPrettySlug: require(`../utils/createPrettySlug`),
 };

@@ -1,14 +1,16 @@
 const { ProductCategory } = require("$model");
 const { successResponse, errorResponse } = require("$utils/ResponseHandler");
+const { createPrettySlug } = require("$utils");
 
 const createCategory = async (req, res) => {
     try {
-        const { name } = req.body;
-        const prettierSlug = name.split(" ").join("-").toLowerCase();
+        const { name, subtitle } = req.body;
+        const prettierSlug = createPrettySlug(name);
         const data = await ProductCategory.create({
             name,
-            icon: req.file.filename,
+            subtitle,
             slug: prettierSlug,
+            icon: req.file.filename,
         });
 
         await successResponse(res, {

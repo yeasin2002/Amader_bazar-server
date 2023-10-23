@@ -1,19 +1,7 @@
 const express = require("express");
 const path = require("path");
-const uuid = require("uuid");
 const multer = require("multer");
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        return cb(null, path.join(process.cwd(), "uploads/category"));
-    },
-    filename: function (req, file, cb) {
-        const GeneratedFileName = `${uuid()}-${file.originalname}`;
-        return cb(null, GeneratedFileName);
-    },
-});
-const upload = multer({ storage });
-
+const { createPrettySlug } = require("$utils");
 const ProductCategoryRouter = express.Router();
 const {
     getAllCategory,
@@ -22,6 +10,19 @@ const {
     deleteCategory,
     getSingleCategory,
 } = require(`$controller/ProductCategoryController`);
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        return cb(null, path.join(process.cwd(), "uploads/category"));
+    },
+    filename: function (req, file, cb) {
+        const GeneratedFileName = `${Date.now()}-${createPrettySlug(
+            file.originalname
+        )}`;
+        return cb(null, GeneratedFileName);
+    },
+});
+const upload = multer({ storage });
 
 ProductCategoryRouter.route(`/`)
     .get(getAllCategory)

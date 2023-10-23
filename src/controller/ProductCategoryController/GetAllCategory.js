@@ -5,7 +5,7 @@ const getAllCategory = async (req, res) => {
     try {
         const data = await ProductCategory.find();
         successResponse(res, {
-            message: "Deleted",
+            message: "successfully got all the category list",
             data,
         });
     } catch (error) {
