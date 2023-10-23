@@ -1,5 +1,6 @@
 module.exports = {
     RootRoute: require(`./RootRoute`),
+    dashboardRouter: require(`./DashboardRouter`),
 
     authRoute: require(`./AuthRoute`),
     userRouter: require(`./userRoute`),
@@ -8,6 +9,4 @@ module.exports = {
     ProductRoute: require(`./ProductRoute`),
     ProductCategoryRouter: require(`./ProductCategoryRouter`),
     ProductReviewRouter: require(`./ProductReviewRouter`),
-
-    dashboardRouter: require(`./dashboardRouter`),
 };

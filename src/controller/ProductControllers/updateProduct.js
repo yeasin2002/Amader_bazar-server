@@ -5,7 +5,7 @@ const {
     successResponse,
 } = require("../../utils/ResponseHandler");
 
-const getAllProduct = async (req, res) => {
+const updateProduct = async (req, res) => {
     try {
         const AllProduct = await Product.find();
         //! need to add pagination
@@ -21,4 +21,4 @@ const getAllProduct = async (req, res) => {
         });
     }
 };
-module.exports = getAllProduct;
+module.exports = updateProduct;
