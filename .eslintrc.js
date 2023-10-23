@@ -12,6 +12,7 @@ module.exports = {
     },
     rules: {
         "no-unused-vars": 1,
+        "node/no-missing-require": "off",
     },
     plugins: ["prettier"],
 };

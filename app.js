@@ -1,4 +1,5 @@
 "use strict";
+require("./alias");
 
 const express = require(`express`);
 const app = express();
