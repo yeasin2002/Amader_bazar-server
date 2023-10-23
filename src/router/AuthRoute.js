@@ -1,7 +1,7 @@
 const express = require(`express`);
 const authRoute = express.Router();
 const { logInSchema } = require(`../validationSchema`);
-const { validationRunner, decryptToken } = require(`../middleware`);
+const { validationRunner, decryptToken } = require(`$middleware`);
 
 const {
     userVerify,

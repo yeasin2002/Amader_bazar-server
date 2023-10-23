@@ -6,9 +6,9 @@ const {
     getSingleUser,
     deleteSingleUser,
     banUserControl,
-} = require(`../controller/UserControllers`);
+} = require(`$controller/UserControllers`);
 
-const { decryptToken, isAdmin } = require(`../middleware`);
+const { decryptToken, isAdmin } = require(`$middleware`);
 
 //* routes
 userRouter.get(`/`, getAllUserInfo);

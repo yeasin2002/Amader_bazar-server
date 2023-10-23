@@ -4,9 +4,10 @@ require("./alias");
 const express = require(`express`);
 const app = express();
 
-const { bodyParser, morgan } = require(`./src/npmModules`);
-const { connectDB, expressRateLimit } = require(`./src/utils`);
-const { LastErrorHandler, NotFound } = require(`./src/middleware`);
+const { bodyParser, morgan } = require(`$npmModules`);
+const { customLogFormat } = require(`$lib`);
+const { connectDB, expressRateLimit } = require(`$src/utils`);
+const { LastErrorHandler, NotFound } = require(`$middleware`);
 
 const {
     seedRouter,
@@ -17,11 +18,11 @@ const {
     ProductRoute,
     ProductCategoryRouter,
     ProductReviewRouter,
-} = require(`./src/router`);
+} = require(`$router`);
 
 //! app in use
 app.use(express.static(`public`));
-app.use(morgan(`dev`));
+app.use(morgan(customLogFormat));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressRateLimit);

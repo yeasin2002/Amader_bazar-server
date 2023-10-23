@@ -8,6 +8,11 @@ const ProductCategorySchema = new Schema({
         minlength: [3, "name can not be less than 3 characters"],
         maxlength: [25, "name can not be more than 25 characters"],
     },
+    subtitle: {
+        type: String,
+        trim: true,
+        maxlength: [20, "name can not be more than 25 characters"],
+    },
     slug: {
         type: String,
         required: [true, "slug is required"],

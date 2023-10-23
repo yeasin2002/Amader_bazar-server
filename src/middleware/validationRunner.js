@@ -1,5 +1,6 @@
 const createHttpError = require(`http-errors`);
 const { validationResult } = require(`express-validator`);
+const { kleur } = require("$npmModules/index");
 
 const validationRunner = async (req, res, next) => {
     try {
@@ -16,6 +17,7 @@ const validationRunner = async (req, res, next) => {
         }
         next();
     } catch (error) {
+        console.log(kleur.bgRed().white().bold(error.message));
         createHttpError(500, `Internal Server Error -  Validation Failed`);
     }
 };

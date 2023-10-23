@@ -1,15 +1,15 @@
 const express = require("express");
+// const { decryptToken, isAdmin } = require("$middleware");
+
 const ProductCategoryRouter = express.Router();
 const {
     getAllCategory,
     createCategory,
     updateCategory,
     deleteCategory,
-} = require(`../controller/ProductCategoryController`);
+} = require(`$controller/ProductCategoryController`);
 
-ProductCategoryRouter.get(`/`, getAllCategory);
-ProductCategoryRouter.post(`/`, createCategory);
-ProductCategoryRouter.put(`/:id`, updateCategory);
-ProductCategoryRouter.delete(`/:id`, deleteCategory);
+ProductCategoryRouter.route(`/`).get(getAllCategory).post(createCategory);
+ProductCategoryRouter.route(`/:id`).get(updateCategory).delete(deleteCategory);
 
 module.exports = ProductCategoryRouter;

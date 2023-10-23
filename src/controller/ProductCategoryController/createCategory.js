@@ -1,16 +1,16 @@
-const { ProductCategory } = require("../../model");
-
-const {
-    successResponse,
-    errorResponse,
-} = require("../../utils/ResponseHandler");
+const { ProductCategory } = require("$model");
+const { successResponse, errorResponse } = require("$utils/ResponseHandler");
 
 const createCategory = async (req, res) => {
     try {
-        const { name } = req.body;
+        const { name, icon } = req.body;
         const prettierSlug = name.split(" ").join("-").toLowerCase();
 
-        const data = await ProductCategory.create({ name, slug: prettierSlug });
+        const data = await ProductCategory.create({
+            name,
+            icon,
+            slug: prettierSlug,
+        });
         await data.save();
         await successResponse(res, {
             data,

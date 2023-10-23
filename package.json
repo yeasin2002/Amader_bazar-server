@@ -5,11 +5,11 @@
     "main": "app.js",
     "scripts": {
         "dev": "nodemon -r ./alias app.js",
-        "format:check": "prettier --check ./src",
+        "format": "prettier --check ./src",
         "format:write": "prettier --write ./src",
-        "lint:check": "eslint ./src",
+        "lint": "eslint ./src",
         "lint:fix": "eslint --fix ./src",
-        "formateAndLint": "pnpm  format:check && pnpm lint:check"
+        "formateAndLint": "pnpm  format && pnpm lint"
     },
     "keywords": [],
     "author": "",
@@ -29,6 +29,7 @@
         "morgan": "^1.10.0",
         "multer": "1.4.5-lts.1",
         "nodemailer": "^6.9.5",
+        "uuid": "^9.0.1",
         "winston": "^3.11.0"
     },
     "devDependencies": {
