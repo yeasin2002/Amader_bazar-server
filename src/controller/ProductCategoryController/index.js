@@ -3,4 +3,5 @@ module.exports = {
     createCategory: require("./createCategory"),
     updateCategory: require("./updateCategory"),
     deleteCategory: require("./deleteCategory"),
+    getSingleCategory: require("./getSingleCategory"),
 };

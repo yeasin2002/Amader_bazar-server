@@ -1,0 +1,16 @@
+const demo = () => {
+    const formHandler = (e) => {
+        const data = new FormData(e.currentTarget);
+        data.append("age", "John");
+    };
+    return (
+        <form onSubmit={formHandler}>
+            <input type="text" name="name" />
+            <input type="file" name="avatar" />
+
+            <button>Submit</button>
+        </form>
+    );
+};
+
+export default demo;

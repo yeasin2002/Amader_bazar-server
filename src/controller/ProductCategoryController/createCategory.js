@@ -3,15 +3,14 @@ const { successResponse, errorResponse } = require("$utils/ResponseHandler");
 
 const createCategory = async (req, res) => {
     try {
-        const { name, icon } = req.body;
+        const { name } = req.body;
         const prettierSlug = name.split(" ").join("-").toLowerCase();
-
         const data = await ProductCategory.create({
             name,
-            icon,
+            icon: req.file.filename,
             slug: prettierSlug,
         });
-        await data.save();
+
         await successResponse(res, {
             data,
             message: "Successfully created category",

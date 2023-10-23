@@ -1,12 +1,19 @@
-const { ProductCategory } = require("../../model");
+const { ProductCategory } = require("$model");
+const { successResponse } = require("$utils/ResponseHandler");
 
 const getAllCategory = async (req, res) => {
     try {
         const data = await ProductCategory.find();
-        res.status(200).json({ status: "success", data });
+        successResponse(res, {
+            message: "Deleted",
+            data,
+        });
     } catch (error) {
         console.log(error.message);
-        res.status(500).json({ status: "failed", message: "" });
+        res.status(500).json({
+            status: "failed",
+            message: "Got all the category list",
+        });
     }
 };
 module.exports = getAllCategory;
