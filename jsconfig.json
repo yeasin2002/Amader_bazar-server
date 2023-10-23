@@ -3,7 +3,21 @@
         "baseUrl": ".",
         "paths": {
             "$src/*": ["./src/*"],
-            "$root/*": ["./*"]
+            "$controller/*": ["./src/controller/*"],
+            "$helper/*": ["./src/helper/*"],
+            "$assets/*": ["./src/assets/*"],
+            "$data/*": ["./src/data/*"],
+            "$logs/*": ["./src/log/*"],
+            "$middleware/*": ["./src/middleware/*"],
+            "$model/*": ["./src/model/*"],
+            "$npmModules/*": ["./src/npmModules/*"],
+            "$router/*": ["./src/router/*"],
+            "$services/*": ["./src/service/*"],
+            "$utils/*": ["./src/utils/*"],
+            "$reqSchema/*": ["./src/validationSchema/*"],
+
+            "$root/*": ["./*"],
+            "$static/*": ["./static/*"]
         }
     }
 }

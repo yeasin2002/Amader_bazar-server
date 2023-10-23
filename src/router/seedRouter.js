@@ -2,8 +2,6 @@ const express = require(`express`);
 const seedRouter = express.Router();
 
 const { seedUsers } = require("$src/controller/UserControllers");
-
-// const { seedUsers } = require(`../controller/UserControllers`);
 const { seedUsersValidationSchema } = require(`../validationSchema`);
 const { validationRunner, decryptToken, isAdmin } = require(`../middleware`);
 

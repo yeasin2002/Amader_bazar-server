@@ -15,6 +15,10 @@ const ProductCategorySchema = new Schema({
         minlength: [3, "slug can not be less than 3 characters"],
         maxlength: [25, "slug can not be more than 25 characters"],
     },
+    icon: {
+        type: String,
+        required: true,
+    },
 });
 
 const ProductCategoryModel = model("ProductCategory", ProductCategorySchema);

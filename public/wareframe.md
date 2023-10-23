@@ -42,3 +42,10 @@
 -   Company name
 -   Company address
 -   Social media links (Facebook, Twitter, Instagram, LinkedIn, github)
+
+Note:
+
+-   The design should be responsive and adapt to different screen sizes.
+-   The color scheme and typography should be consistent throughout the UI.
+-   The layout should be clean and easy to navigate.
+-   The "Products" design should be consistent with the "Home" design in terms of style and branding.
