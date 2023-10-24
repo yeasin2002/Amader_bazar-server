@@ -1,15 +1,17 @@
 const { errorResponse } = require("$utils/ResponseHandler");
-const { ProductCategory } = require("$model");
-const path = require("path");
+const SendSingleImg = require("$services/SendSingleImg");
 
 const getCategoryImage = async (req, res) => {
     try {
-        const img = ProductCategory.findById(req.params.id);
-        const local = path.join(process.cwd(), "uploads/category", img.icon);
-        return res.sendFile(local);
+        const local = SendSingleImg(req.params.url, "category");
+        res.sendFile(local);
+        console.log("local");
     } catch (error) {
-        console.log(error.message);
-        errorResponse(res, error.message);
+        console.log("log :", error.message);
+        errorResponse(res, {
+            statusCode: error.statusCode || 404,
+            message: error.message,
+        });
     }
 };
 module.exports = getCategoryImage;

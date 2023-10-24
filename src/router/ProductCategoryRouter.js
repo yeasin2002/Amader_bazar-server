@@ -34,6 +34,6 @@ ProductCategoryRouter.route(`/:id`)
     .put(updateCategory)
     .delete(deleteCategory);
 
-ProductCategoryRouter.get("/img/:id", getCategoryImage);
+ProductCategoryRouter.get("/category_icon/:url", getCategoryImage);
 
 module.exports = ProductCategoryRouter;
