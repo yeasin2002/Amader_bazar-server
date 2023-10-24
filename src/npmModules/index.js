@@ -1,4 +1,7 @@
 module.exports = {
+    fs: require("fs"),
+    path: require("path"),
+
     morgan: require(`morgan`),
     bodyParser: require(`body-parser`),
     kleur: require(`kleur`),
@@ -8,4 +11,5 @@ module.exports = {
     mongoose: require(`mongoose`),
     jsonwebtoken: require(`jsonwebtoken`),
     expressValidator: require(`express-validator`),
+    uuid: require(`uuid`),
 };

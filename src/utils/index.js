@@ -6,4 +6,5 @@ module.exports = {
     expressRateLimit: require(`./expressRateLimit`),
     createPrettyError: require(`../utils/createPrettyError`),
     createPrettySlug: require(`../utils/createPrettySlug`),
+    multerImageHandler: require(`../utils/multerImageHandler`),
 };

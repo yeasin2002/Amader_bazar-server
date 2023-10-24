@@ -1,11 +1,15 @@
 const { ProductCategory } = require("$model");
 const { successResponse, errorResponse } = require("$utils/ResponseHandler");
-const { createPrettySlug } = require("$utils");
+const { createPrettySlug, createPrettyError } = require("$utils");
 
 const createCategory = async (req, res) => {
     try {
         const { name, subtitle } = req.body;
-        const prettierSlug = createPrettySlug(name);
+        const checkCategoryExist = await ProductCategory.exists({ name });
+        if (checkCategoryExist)
+            return createPrettyError(res, "Category name already exist");
+
+        const prettierSlug = await createPrettySlug(name);
         const data = await ProductCategory.create({
             name,
             subtitle,
@@ -15,7 +19,7 @@ const createCategory = async (req, res) => {
 
         await successResponse(res, {
             data,
-            message: "Successfully created category",
+            message: "Successfully created a new category",
         });
     } catch (error) {
         console.log(error.message);

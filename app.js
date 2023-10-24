@@ -1,5 +1,6 @@
 "use strict";
 require("./alias");
+require("pretty-error").start();
 
 const express = require(`express`);
 const app = express();

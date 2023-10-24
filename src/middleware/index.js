@@ -5,5 +5,4 @@ module.exports = {
     validationRunner: require(`./validationRunner`),
     decryptToken: require(`../middleware/decryptToken`),
     isAdmin: require(`./isAdmin`),
-    uploadImageByMulter: require(`./uploadImageByMulter`),
 };

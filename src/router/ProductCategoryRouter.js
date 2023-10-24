@@ -1,7 +1,6 @@
 const express = require("express");
-const path = require("path");
+
 const multer = require("multer");
-const { createPrettySlug } = require("$utils");
 const ProductCategoryRouter = express.Router();
 const {
     getAllCategory,
@@ -11,20 +10,9 @@ const {
     getSingleCategory,
     getCategoryImage,
 } = require(`$controller/ProductCategoryController`);
+const { storeImageInServer } = require("$utils/multerImageHandler");
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        return cb(null, path.join(process.cwd(), "uploads/category"));
-    },
-    filename: function (req, file, cb) {
-        const GeneratedFileName = `${Date.now()}-${createPrettySlug(
-            file.originalname
-        )}`;
-        return cb(null, GeneratedFileName);
-    },
-});
-
-const upload = multer({ storage });
+const upload = multer({ storage: storeImageInServer("category") });
 
 ProductCategoryRouter.route(`/`)
     .get(getAllCategory)

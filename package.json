@@ -4,7 +4,8 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "dev": "nodemon -r ./alias app.js",
+        "start": "node node  -r ./alias app.js  --trace-warnings -w  ",
+        "dev": "nodemon -r ./alias app.js  ",
         "format": "prettier --check ./src",
         "format:write": "prettier --write ./src",
         "lint": "eslint ./src",
@@ -29,6 +30,7 @@
         "morgan": "^1.10.0",
         "multer": "1.4.5-lts.1",
         "nodemailer": "^6.9.5",
+        "pretty-error": "^4.0.0",
         "sharp": "^0.32.6",
         "uuid": "^9.0.1",
         "winston": "^3.11.0"

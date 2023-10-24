@@ -1,5 +1,5 @@
 const { errorResponse } = require("$utils/ResponseHandler");
-const SendSingleImg = require("$services/SendSingleImg");
+const { SendSingleImg } = require("$utils/multerImageHandler");
 
 const getCategoryImage = async (req, res) => {
     try {
