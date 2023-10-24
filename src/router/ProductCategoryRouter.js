@@ -9,6 +9,7 @@ const {
     updateCategory,
     deleteCategory,
     getSingleCategory,
+    getCategoryImage,
 } = require(`$controller/ProductCategoryController`);
 
 const storage = multer.diskStorage({
@@ -22,6 +23,7 @@ const storage = multer.diskStorage({
         return cb(null, GeneratedFileName);
     },
 });
+
 const upload = multer({ storage });
 
 ProductCategoryRouter.route(`/`)
@@ -31,5 +33,7 @@ ProductCategoryRouter.route(`/:id`)
     .get(getSingleCategory)
     .put(updateCategory)
     .delete(deleteCategory);
+
+ProductCategoryRouter.get("/img/:id", getCategoryImage);
 
 module.exports = ProductCategoryRouter;

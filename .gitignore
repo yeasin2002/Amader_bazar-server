@@ -3,5 +3,6 @@ node_modules/
 
 # lock files 
 pnpm-lock.yaml
-npm-lock.json
-json.json
+package-lock.json
+yarn.lock
+
