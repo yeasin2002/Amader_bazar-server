@@ -1,5 +1,5 @@
-const { Product } = require("../../model");
-
+/* eslint-disable node/no-unsupported-features/es-syntax */
+const { Product } = require("$model");
 const {
     errorResponse,
     successResponse,
@@ -7,15 +7,18 @@ const {
 
 const addProduct = async (req, res) => {
     try {
-        const AllProduct = await Product.find();
-        //! need to add pagination
-        await successResponse(res, {
-            message: "Successfully get all product",
+        console.log("Files :");
+        console.log(req.file.filename);
+        const AllProduct = await Product.create({
+            ...req.body,
+            img: req.file.filename,
+        });
+        return await successResponse(res, {
+            message: "Successfully Added  product item",
             data: AllProduct,
         });
     } catch (error) {
         console.log(error.message);
-
         errorResponse(res, {
             message: "Internal Server Error",
         });

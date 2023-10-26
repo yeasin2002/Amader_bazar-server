@@ -29,7 +29,4 @@ authRoute.put(`/reset-password`, decryptToken, ResetPassword);
 
 module.exports = authRoute;
 
-/*
 
-
-*/

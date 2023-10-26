@@ -1,6 +1,6 @@
 "use strict";
 require("./alias");
-require("pretty-error").start();
+
 
 const express = require(`express`);
 const app = express();
@@ -19,6 +19,7 @@ const {
     ProductRoute,
     ProductCategoryRouter,
     ProductReviewRouter,
+    extraRoute,
 } = require(`$router`);
 
 //! app in use
@@ -39,9 +40,11 @@ app.use(`/products`, ProductRoute);
 app.use(`/products-category`, ProductCategoryRouter);
 app.use(`/products-review`, ProductReviewRouter);
 
+app.use(`/extra`, extraRoute);
+
 app.get(`/`, RootRoute);
 app.use(NotFound);
-app.use(LastErrorHandler);
+app.use(LastErrorHandler); 
 
 app.listen(2709, async () => {
     console.log(`Server is listening on port http://localhost:2709/`);

@@ -1,12 +1,10 @@
 const { errorResponse } = require("$utils/ResponseHandler");
 const { SendSingleImg } = require("$utils/multerImageHandler");
 
-const getCategoryImage = async (req, res) => {
+const getProductImg = async (req, res) => {
     try {
-        console.log("Send File ");
-        const local = SendSingleImg(req.params.url, "category");
+        const local = SendSingleImg(req.params.url, "products");
         res.sendFile(local);
-        console.log("local");
     } catch (error) {
         console.log("log :", error.message);
         errorResponse(res, {
@@ -15,4 +13,4 @@ const getCategoryImage = async (req, res) => {
         });
     }
 };
-module.exports = getCategoryImage;
+module.exports = getProductImg;

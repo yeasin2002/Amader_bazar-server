@@ -17,6 +17,7 @@ const createCategory = async (req, res) => {
             icon: req.file.filename,
         });
 
+         await data.save();
         await successResponse(res, {
             data,
             message: "Successfully created a new category",

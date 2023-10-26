@@ -4,10 +4,12 @@ const { kleur } = require("$npmModules/index");
 
 const validationRunner = async (req, res, next) => {
     try {
+        console.log(req.body);
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             const ErrorPaths = errors.array().map((err) => err.path);
             const errorMsg = errors.array().map((err) => err.msg);
+            console.log(kleur.bgRed().white().bold(errorMsg));
 
             return res.status(400).json({
                 status: `failed`,
