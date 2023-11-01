@@ -1,23 +1,19 @@
-const createHttpError = require(`http-errors`);
-const UserModel = require(`../../model/UserModel`);
-const { successResponse, errorResponse } = require(
-    `../../utils/ResponseHandler`,
-);
-const generateJWT = require(`../../utils/GenerateJWT`);
-const { ClientUrl } = require(`../../utils/exportEnv`);
-// const sendEmailToRegisterUser = require(`../../helper/email`);
 const kleur = require(`kleur`);
+const { UserModel } = require(`$model`);
+const { successResponse, errorResponse } = require(`$utils/ResponseHandler`);
+const { generateJWT, createPrettyError } = require(`$utils`);
+const { ClientUrl } = require(`$utils/exportEnv`);
 const SendMail = require(`../../helper/SendMailer`);
 
 const registerProcess = async (req, res) => {
     try {
         // eslint-disable-next-line no-unused-vars
-        const { name, email, password, phone, address } = req.body;
+        const { name, email, password, phone, address, image } = req.body;
         if (!name || !email || !password || !phone || !address)
-            throw createHttpError(409, `Provide all the information`);
+            throw createPrettyError(409, `Provide all the information`);
 
         const isExist = await UserModel.exists({ email });
-        if (isExist) throw createHttpError(409, `Email already exist`);
+        if (isExist) throw createPrettyError(409, `Email already exist`);
 
         const token = await generateJWT({
             data: req.body,
@@ -35,13 +31,9 @@ const registerProcess = async (req, res) => {
         `,
         };
 
-        /**
-         * !deprecated
-         *? await sendEmailToRegisterUser(emailData);
-         */
         await SendMail(emailData);
 
-        await successResponse(res, {
+        return await successResponse(res, {
             message: `User Registered`,
             data: token,
         });

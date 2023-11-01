@@ -9,11 +9,14 @@ const ProductSchema = new Schema(
             minlength: [3, "name can not be less than 3 characters"],
             maxlength: [25, "name can not be more than 25 characters"],
         },
+        img: {
+            type: String,
+        },
         category: {
             type: String,
             required: [true, "category is required"],
             minlength: [3, "category can not be less than 3 characters"],
-            maxlength: [25, "category can not be more than 25 characters"],
+            maxlength: [25, "category can not be more than 20 characters"],
             // lowercase: [true, "category must be lowercase"],
         },
         description: {
@@ -21,7 +24,6 @@ const ProductSchema = new Schema(
         },
         brand: {
             type: String,
-            required: [true, "brand is required"],
             minlength: [2, "brand can not be less than 3 characters"],
             maxlength: [25, "brand can not be more than 25 characters"],
         },
@@ -33,7 +35,7 @@ const ProductSchema = new Schema(
         },
         deliveryType: {
             type: String,
-            enum: ["cash ", "card"],
+            enum: ["cash", "card"],
             default: "cash",
         },
         warranty: {

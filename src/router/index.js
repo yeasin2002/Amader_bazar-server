@@ -9,4 +9,6 @@ module.exports = {
     ProductRoute: require(`./ProductRoute`),
     ProductCategoryRouter: require(`./ProductCategoryRouter`),
     ProductReviewRouter: require(`./ProductReviewRouter`),
+
+    extraRoute: require(`./extraRoute`),
 };

@@ -26,4 +26,4 @@ const storeImageInServer = (relativePath) => {
     });
 };
 
-module.exports = { SendSingleImg, storeImageInServer };
+module.exports = { storeImageInServer, SendSingleImg };

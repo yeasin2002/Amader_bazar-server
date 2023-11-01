@@ -24,3 +24,4 @@ ProductCategoryRouter.route(`/:id`)
 ProductCategoryRouter.get("/category_icon/:url", getCategoryImage);
 
 module.exports = ProductCategoryRouter;
+ 

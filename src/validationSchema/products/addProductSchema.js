@@ -6,16 +6,31 @@ const addProductSchema = [
         .notEmpty()
         .withMessage("Authorization is required"),
 
-    body("name").notEmpty().withMessage("Name is required"),
-    body("category").notEmpty().withMessage("Price is required"),
-    body("description"),
-    body("brand").notEmpty().withMessage("brand name is required"),
+    body("name")
+        .notEmpty()
+        .withMessage("Name is required")
+        .isLength({ min: 3, max: 25 })
+        .withMessage("Name should be less then 25 and more then 3 characters"),
+
+    body("img").isEmpty().withMessage("image is required"),
+
+    body("category")
+        .notEmpty()
+        .withMessage("Price is required")
+        .isString()
+        .withMessage("category should be string")
+        .isLength({ min: 3, max: 25 })
+        .withMessage(
+            "category should be less then 25 and more then 3 characters"
+        ),
+
+    body("description").isString().withMessage("description should be string"),
+    body("brand").isString().withMessage("brand name is required"),
+
     body("discount")
         .isNumeric()
         .withMessage("discount must be a number")
-        .notEmpty()
-        .withMessage("discount is required")
-        .isLength({ min: 1, max: 100 })
+        .isLength({ min: 0, max: 100 })
         .withMessage("discount must be between 1 to 100"),
 
     body("deliveryType")
@@ -23,15 +38,25 @@ const addProductSchema = [
         .withMessage("deliveryType is required")
         .isIn(["cash", "card"])
         .withMessage("deliveryType must be cash or card"),
-    body("warranty").notEmpty().withMessage("warranty is required"),
-    body("ReturnDays").notEmpty().withMessage("ReturnDays is required"),
-    body("sizes")
+
+    body("warranty")
         .notEmpty()
-        .withMessage("sizes is required")
+        .withMessage("warranty is required")
+        .isBoolean()
+        .withMessage("warranty should be Boolean"),
+
+    body("ReturnDays").isNumeric().withMessage("ReturnDays should be number"),
+
+    body("sizes")
         .isIn(["S", "M", "L", "XL", "XXL"])
-        .withMessage("sizes must be S, M, L, XL or XXL"),
-    body("colors").notEmpty().withMessage("colors is required"),
-    body("ProductFor").notEmpty().withMessage("colors is required"),
+        .withMessage("Available sizes are  S, M, L, XL or XXL"),
+
+    body("colors").isString().withMessage("colors is required"),
+
+    body("ProductFor")
+        .notEmpty()
+        .withMessage("ProductFor is required")
+        .isIn(["man", "women", "child", "anyone"]),
 ];
 
 module.exports = addProductSchema;
