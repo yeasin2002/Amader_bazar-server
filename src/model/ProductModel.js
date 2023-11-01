@@ -62,6 +62,14 @@ const ProductSchema = new Schema(
             type: Boolean,
             default: false,
         },
+        totalSell: {
+            type: Number,
+            default: 0,
+        },
+        availableQuantity: {
+            type: Number,
+            default: 0,
+        },
     },
     {
         timestamps: true,

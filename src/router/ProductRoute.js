@@ -14,20 +14,20 @@ const {
     deleteProduct,
     getSingleProduct,
     getProductImg,
+    featureProduct,
 } = require("$controller/ProductControllers");
-
-
 
 ProductRoute.route("/")
     .get(getAllProduct)
-    //  under development - Have a Bug 
-    .post(upload.single("img"), addProduct)
-    
+    //  under development - Have a Bug
+    .post(upload.single("img"), addProduct);
 
 ProductRoute.route("/:id")
     .get(getSingleProduct)
     .delete(deleteProduct)
-    .patch(updateProduct);;
+    .patch(updateProduct);
+
+ProductRoute.get("/feature", featureProduct);
 ProductRoute.get("/img/:id", getProductImg);
 
 module.exports = ProductRoute;

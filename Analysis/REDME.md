@@ -16,20 +16,17 @@
 - POST: create product
 - PUT: update product
 - DELETE: delete product
+- GET: all Feature  product
+- GET: Popular product 
 
 
 
 #### Product Category
-- GET: all product category
-- GET: all Feature  product
-- GET: Popular product 
-
-- GET: single product category
-- POST: create product category
-- PUT: update product category
-- DELETE: delete product category
-
-
+- GET: all  category
+- GET: single  category
+- POST: create  category
+- PUT: update  category
+- DELETE: delete  category
 
 
 #### User

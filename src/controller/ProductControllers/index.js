@@ -5,4 +5,6 @@ module.exports = {
     updateProduct: require("./updateProduct"),
     getSingleProduct: require("./getAllProduct"),
     getProductImg: require("./getProductImg"),
+    featureProduct: require("./FeatureProduct"),
+    PopularProduct: require("./PopularProduct"),
 };
