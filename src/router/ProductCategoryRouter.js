@@ -11,7 +11,6 @@ const {
     getCategoryImage,
 } = require(`$controller/ProductCategoryController`);
 const { storeImageInServer } = require("$utils/multerImageHandler");
-
 const upload = multer({ storage: storeImageInServer("category") });
 
 ProductCategoryRouter.route(`/`)

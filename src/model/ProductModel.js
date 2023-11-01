@@ -53,12 +53,17 @@ const ProductSchema = new Schema(
         },
         ProductFor: {
             type: String,
-            enum: ["man", "women"],
+            enum: ["man", "women", "kids", "oldPeople"],
+            required: [true, "Describe for whom this product is! "],
+        },
+        isFeatured: {
+            type: Boolean,
+            default: false,
         },
     },
     {
         timestamps: true,
-    },
+    }
 );
 
 const ProductModel = model("Product", ProductSchema);
