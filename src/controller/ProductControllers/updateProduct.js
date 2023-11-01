@@ -7,18 +7,19 @@ const {
 
 const updateProduct = async (req, res) => {
     try {
-        const AllProduct = await Product.find();
-        //! need to add pagination
+        const updatedProduct = await Product.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+
         await successResponse(res, {
-            message: "Successfully get all product",
-            data: AllProduct,
+            message: "Successfully updated  a  product",
+            data: updatedProduct,
         });
     } catch (error) {
         console.log(error.message);
-
-        errorResponse(res, {
-            message: "Internal Server Error",
-        });
+        errorResponse(res);
     }
 };
 module.exports = updateProduct;

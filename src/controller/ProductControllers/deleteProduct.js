@@ -7,15 +7,13 @@ const {
 
 const deleteProduct = async (req, res) => {
     try {
-        const AllProduct = await Product.find();
-        //! need to add pagination
+        const AllProduct = await Product.findByIdAndDelete(req.params.id);
         await successResponse(res, {
-            message: "Successfully get all product",
+            message: "Successfully Deleted a  product",
             data: AllProduct,
         });
     } catch (error) {
         console.log(error.message);
-
         errorResponse(res, {
             message: "Internal Server Error",
         });

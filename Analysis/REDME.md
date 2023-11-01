@@ -4,7 +4,7 @@
 #### Auth 
 - POST: login
 - POST: register
-- POST: JWT token
+- POST: refresh JWT token
 - POST: forgot password
 - POST: reset password
 

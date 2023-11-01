@@ -6,6 +6,7 @@ const { storeImageInServer } = require("$utils/multerImageHandler");
 const upload = multer({ storage: storeImageInServer("products") });
 // const { addProductSchema } = require("$reqSchema/products");
 // const { validationRunner } = require("$middleware");
+
 const {
     getAllProduct,
     addProduct,
@@ -15,18 +16,18 @@ const {
     getProductImg,
 } = require("$controller/ProductControllers");
 
+
+
 ProductRoute.route("/")
     .get(getAllProduct)
-    .post(
-        // addProductSchema,
-        //  validationRunner,
-        upload.single("img"),
-        addProduct
-    )
-    .patch(updateProduct)
-    .delete(deleteProduct);
+    //  under development - Have a Bug 
+    .post(upload.single("img"), addProduct)
+    
 
-ProductRoute.get("/:id", getSingleProduct);
+ProductRoute.route("/:id")
+    .get(getSingleProduct)
+    .delete(deleteProduct)
+    .patch(updateProduct);;
 ProductRoute.get("/img/:id", getProductImg);
 
 module.exports = ProductRoute;
