@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
     env: {
         browser: true,
@@ -10,9 +11,6 @@ module.exports = {
     parserOptions: {
         ecmaVersion: "latest",
     },
-    rules: {
-        "no-unused-vars": 1,
-        "node/no-missing-require": "off",
-    },
+    rules: {},
     plugins: ["prettier"],
 };

@@ -1,0 +1,52 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "Node LTS",
+    "_version": "18.1.0",
+    "compilerOptions": {
+        "rootDir": ".",
+        "outDir": "./dist",
+        "lib": ["es2023"],
+        "module": "Node16",
+        "target": "ES6",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "NodeNext",
+        "paths": {
+            "$controller/*": ["./src/controller/*"],
+            "$controller": ["./src/controller"],
+            "$helper/*": ["./src/helper/*"],
+            "$helper": ["./src/helper"],
+            "$assets/*": ["./src/assets/*"],
+            "$assets": ["./src/assets"],
+            "$data/*": ["./src/data/*"],
+            "$data": ["./src/data"],
+            "$logs/*": ["./src/log/*"],
+            "$logs": ["./src/log"],
+            "$middleware/*": ["./src/middleware/*"],
+            "$middleware": ["./src/middleware"],
+
+            "$model/*": ["./src/model/*"],
+            "$model": ["./src/model"],
+            "$npmModules/*": ["./src/npmModules/*"],
+            "$npmModules": ["./src/npmModules"],
+            "$router/*": ["./src/router/*"],
+            "$router": ["./src/router"],
+            "$services/*": ["./src/service/*"],
+            "$services": ["./src/service"],
+            "$utils/*": ["./src/utils/*"],
+            "$utils": ["./src/utils"],
+            "$reqSchema/*": ["./src/validationSchema/*"],
+            "$reqSchema": ["./src/validationSchema"],
+            "$lib/*": ["./src/lib/*"],
+            "$lib": ["./src/lib"],
+
+            "$src/*": ["./src/*"],
+            "$static/*": ["./static/*"],
+            "$root/*": ["./*"]
+        }
+    },
+    "include": ["app.ts", "src/**/*.ts"],
+    "exclude": ["node_modules", "dist"]
+}

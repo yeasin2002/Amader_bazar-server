@@ -1,4 +1,4 @@
-const jwt = require(`jsonwebtoken`);
+const jwt = require(.tsonwebtoken`);
 const { jwtSecretKey } = require(`../utils/exportEnv`);
 const { createPrettyError } = require(`../utils`);
 const { errorResponse } = require(`../utils/ResponseHandler`);

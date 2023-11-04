@@ -1,5 +1,5 @@
 const successResponse = (res, { data, statusCode, message }) => {
-    return res.status(statusCode || 200).json({
+    return res.status(statusCode || 200).tson({
         success: true,
         message: message || `Success`,
         data: data || null,
@@ -7,7 +7,7 @@ const successResponse = (res, { data, statusCode, message }) => {
 };
 
 const errorResponse = (res, { message, statusCode } = {}) => {
-    return res.status(statusCode || 500).json({
+    return res.status(statusCode || 500).tson({
         success: false,
         message: message || `Internal Server Error`,
     });

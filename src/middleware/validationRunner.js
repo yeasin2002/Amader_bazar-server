@@ -11,7 +11,7 @@ const validationRunner = async (req, res, next) => {
             const errorMsg = errors.array().map((err) => err.msg);
             console.log(kleur.bgRed().white().bold(errorMsg));
 
-            return res.status(400).json({
+            return res.status(400).tson({
                 status: `failed`,
                 message: `${ErrorPaths} are not validated `,
                 error: errorMsg,

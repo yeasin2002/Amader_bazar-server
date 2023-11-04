@@ -2,10 +2,10 @@ const { format, createLogger, transports } = require("winston");
 
 const createPrettyLogger = createLogger({
     level: "info",
-    // format: format.combine(format.json().format.colorize(), format.simple()),
+    // format: format.combine(format.tson().format.colorize(), format.simple()),
     format: format.combine(
         format.timestamp({ format: "YYYY-MM-DD HH:mm" }),
-        format.json(),
+        format.tson()
     ),
     transports: [
         new transports.Console({
