@@ -1,6 +1,6 @@
 {
-    "watch": ["app.ts", "src"],
-    "ext": ".ts,.js",
-    "ignore": [],
-    "exec": "npx ts-node app"
+    "watch": ["src", ".env", "app"],
+    "ext": "js,ts,json",
+    "ignore": ["src/logs/*", "src/**/*.ts"],
+    "exec": "ts-node -r tsconfig-paths/register --transpile-only app.ts"
 }

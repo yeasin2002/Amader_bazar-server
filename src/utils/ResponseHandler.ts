@@ -1,6 +1,6 @@
 import { Response } from "express";
 
-const successResponse = (
+export const successResponse = (
     res: Response,
     {
         data,
@@ -19,7 +19,7 @@ const successResponse = (
     });
 };
 
-const errorResponse = (
+export const errorResponse = (
     res: Response,
     {
         message,
@@ -35,4 +35,4 @@ const errorResponse = (
     });
 };
 
-module.exports = { errorResponse, successResponse };
+

@@ -1,13 +1,12 @@
 "use strict";
-// require("./alias");
 
 import express from "express";
 const app = express();
 
-import { LastErrorHandler, NotFound } from "$middleware/index.js";
-import { RootRoute } from "$router/root/RootRoute.js";
-import { connectDB, expressRateLimit } from "$src/utils/index.js";
+import { lastErrorHandler, notFound } from "./src/middleware";
 import { bodyParser, morgan } from "./src/npmModules/index.js";
+import { RootRoute } from "./src/router/root/index.js";
+import { expressRateLimit } from "./src/utils";
 
 //! app in use
 app.use(express.static(`public`));
@@ -30,10 +29,9 @@ app.use(expressRateLimit);
 // app.use(`/extra`, extraRoute);
 
 app.get(`/`, RootRoute);
-app.use(NotFound);
-app.use(LastErrorHandler);
+app.use(notFound);
+app.use(lastErrorHandler);
 
 app.listen(2709, async () => {
     console.log(`Server is listening on port http://localhost:2709/`);
-    await connectDB();
 });

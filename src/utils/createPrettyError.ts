@@ -9,11 +9,11 @@ class HttpError extends Error {
     }
 }
 
-const createPrettyError = (
+export const createPrettyError = (
     statusCode: number = 500,
     message: string
 ): never => {
     throw new HttpError(statusCode, message);
 };
 
-export default createPrettyError;
+

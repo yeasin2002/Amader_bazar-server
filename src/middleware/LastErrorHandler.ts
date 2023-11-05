@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { NextFunction, Request, Response } from "express";
 
-const lastErrorHandler = (
+export const lastErrorHandler = (
     err: Error,
     req: Request,
     res: Response,
@@ -15,4 +15,4 @@ const lastErrorHandler = (
     });
 };
 
-export default lastErrorHandler;
+

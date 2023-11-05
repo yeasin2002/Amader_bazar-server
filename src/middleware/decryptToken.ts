@@ -1,11 +1,10 @@
-import { jsonwebtoken as jwt } from "$npmModules/index.js";
 import { NextFunction, Request, Response } from "express";
+import jwt from "jsonwebtoken";
 
-const { jwtSecretKey } = require(`../utils/exportEnv`);
-const { createPrettyError } = require(`../utils`);
-const { errorResponse } = require(`../utils/ResponseHandler`);
+import { createPrettyError, jwtSecretKey } from "../utils";
+import { errorResponse } from "../utils/ResponseHandler";
 
-const decryptToken = async (
+export const decryptToken = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -29,5 +28,3 @@ const decryptToken = async (
         });
     }
 };
-
-module.exports = decryptToken;

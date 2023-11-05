@@ -1,1 +1,1 @@
-export * from "./RootRoute.ts";
+export * from "./RootRoute";

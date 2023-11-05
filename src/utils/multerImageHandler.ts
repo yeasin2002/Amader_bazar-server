@@ -1,5 +1,5 @@
-import { fs, multer, path, uuid } from "$npmModules/index.js";
-import { createPrettyError } from "$utils/index.js";
+import { fs, multer, path, uuid } from "../npmModules";
+import { createPrettyError } from "../utils";
 
 const SendSingleImg = (imgUrlFromReq: string, imgPath: string) => {
     const local = path.join(process.cwd(), `uploads/${imgPath}`, imgUrlFromReq);

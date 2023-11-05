@@ -1,5 +1,5 @@
-import express, { Request, Response } from "express";
-export const RootRoute = express.Router();
+import express, { Request, Response, Router } from "express";
+export const RootRoute: Router = express.Router();
 
 RootRoute.get("/json", (req: Request, res: Response) => {
     const data = {

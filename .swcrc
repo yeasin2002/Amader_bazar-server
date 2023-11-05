@@ -1,24 +1,23 @@
 {
-    "compileOnSave": true,
-    "compilerOptions": {
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "tsx": false,
+            "dynamicImport": true,
+            "decorators": true
+        },
+        "transform": {
+            "legacyDecorator": true,
+            "decoratorMetadata": true
+        },
         "target": "es2017",
-        "lib": ["es2017", "esnext.asynciterable"],
-        "typeRoots": ["node_modules/@types"],
-        "allowSyntheticDefaultImports": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node",
-        "module": "ESNext",
-        "pretty": true,
-        "sourceMap": true,
-        "declaration": true,
-        "outDir": "dist",
-        "allowJs": true,
-        "noEmit": false,
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "importHelpers": true,
+        "externalHelpers": false,
+        "keepClassNames": true,
+        "loose": false,
+        "minify": {
+            "compress": false,
+            "mangle": false
+        },
         "baseUrl": ".",
         "paths": {
             "$controller": ["./src/controller"],
@@ -40,6 +39,7 @@
             "$root/*": ["./*"]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.json", ".env"],
-    "exclude": ["node_modules", "src/http", "src/logs"]
+    "module": {
+        "type": "commonjs"
+    }
 }
