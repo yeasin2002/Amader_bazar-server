@@ -1,4 +1,4 @@
-const jwt = require(.tsonwebtoken`);
+import jwt from "jsonwebtoken";
 const { jwtSecretKey } = require(`./exportEnv`);
 
 const generateJWT = ({

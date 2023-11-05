@@ -1,15 +1,20 @@
-import chalk from "chalk";
-import mongoose from "mongoose";
-import { mongoConnectionString } from "./exportEnv.ts";
+import { Sequelize } from "sequelize";
 
-const connectDB = async () => {
+async function connectDB() {
+    const sequelize = new Sequelize("database", "username", "password", {
+        host: "localhost",
+        dialect: "mysql",
+    });
+
     try {
-        await mongoose.connect(mongoConnectionString);
-        console.log(chalk.bgGreen.white.bold(`MongoDB Connection Successful`));
-    } catch (error: any) {
-        console.log(chalk.bgRed.white.bold(`MongoDB Connection Failed`));
-        console.log(chalk.red(error.message));
+        await sequelize.authenticate();
+        console.log("Connection has been established successfully.");
+    } catch (error) {
+        console.error("Unable to connect to the database:", error);
+        process.exit(1);
     }
-};
 
-export default connectDB;
+    return sequelize;
+}
+
+export { connectDB };

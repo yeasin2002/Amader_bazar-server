@@ -1,13 +1,13 @@
-const { multer, fs, path, uuid } = require("$npmModules");
-const { createPrettyError } = require("$utils");
+import { fs, multer, path, uuid } from "$npmModules/index.js";
+import { createPrettyError } from "$utils/index.js";
 
-const SendSingleImg = (imgUrlFromReq, imgPath) => {
+const SendSingleImg = (imgUrlFromReq: string, imgPath: string) => {
     const local = path.join(process.cwd(), `uploads/${imgPath}`, imgUrlFromReq);
     if (!fs.existsSync(local)) return createPrettyError(404, "Image not found");
     return local;
 };
 
-const storeImageInServer = (relativePath) => {
+const storeImageInServer = (relativePath: string) => {
     return multer.diskStorage({
         destination: function (req, file, cb) {
             return cb(

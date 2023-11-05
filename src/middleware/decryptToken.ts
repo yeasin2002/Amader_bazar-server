@@ -1,9 +1,15 @@
-const jwt = require(.tsonwebtoken`);
+import { jsonwebtoken as jwt } from "$npmModules/index.js";
+import { NextFunction, Request, Response } from "express";
+
 const { jwtSecretKey } = require(`../utils/exportEnv`);
 const { createPrettyError } = require(`../utils`);
 const { errorResponse } = require(`../utils/ResponseHandler`);
 
-const decryptToken = async (req, res, next) => {
+const decryptToken = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
         if (!req.headers.authorization) {
             return createPrettyError(403, `Authorization Required`);
@@ -13,9 +19,10 @@ const decryptToken = async (req, res, next) => {
         if (!token) createPrettyError(403, `Token Required`);
 
         const tokenInfo = jwt.verify(token, jwtSecretKey);
-        req.tokenInfo = tokenInfo;
+        req.body.tokenInfo = tokenInfo;
+        // req.tokenInfo = tokenInfo;
         next();
-    } catch (error) {
+    } catch (error: any) {
         errorResponse(res, {
             statusCode: error.statusCode,
             message: error.message,

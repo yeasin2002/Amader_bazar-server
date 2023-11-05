@@ -1,3 +1,1 @@
-module.exports = {
-    DemyUsers: require(`./DemyUsers`),
-};
+export * from "./DemoUsers.js";

@@ -1,4 +1,4 @@
-const dumyUser = [
+export const dumyUser = [
     {
         name: `Dev Yeasin `,
         email: `dev.yeasin@gmail.com`,
@@ -52,5 +52,3 @@ const dumyUser = [
         isBanned: true,
     },
 ];
-
-module.exports = dumyUser;
