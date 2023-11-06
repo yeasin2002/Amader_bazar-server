@@ -4,8 +4,8 @@ import express from "express";
 const app = express();
 
 import { lastErrorHandler, notFound } from "./src/middleware";
-import { bodyParser, morgan } from "./src/npmModules/index.js";
-import { RootRoute } from "./src/router/root/index.js";
+import { bodyParser, morgan } from "./src/npmModules";
+import { RootRoute } from "./src/router/root";
 import { expressRateLimit } from "./src/utils";
 
 //! app in use

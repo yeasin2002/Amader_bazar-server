@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-async function connectDB() {
+export async function connectDB() {
     const sequelize = new Sequelize("database", "username", "password", {
         host: "localhost",
         dialect: "mysql",
@@ -16,5 +16,3 @@ async function connectDB() {
 
     return sequelize;
 }
-
-export { connectDB };

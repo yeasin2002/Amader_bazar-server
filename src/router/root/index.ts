@@ -1,1 +1,1 @@
-export * from "./RootRoute";
+export * from "./RootRoute.controller";

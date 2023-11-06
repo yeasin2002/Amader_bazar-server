@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-const { jwtSecretKey } = require(`./exportEnv`);
+import { jwtSecretKey } from "./exportEnv";
 
-const generateJWT = ({
+export const generateJWT = ({
     data = {},
     key = jwtSecretKey,
     option = { expiresIn: `30d` },
@@ -9,4 +9,4 @@ const generateJWT = ({
     return jwt.sign(data, key, option);
 };
 
-module.exports = generateJWT;
+

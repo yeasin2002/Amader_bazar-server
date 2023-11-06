@@ -12,7 +12,8 @@
         "format:write": "prettier --write ./src",
         "lint": "eslint ./src",
         "lint:fix": "eslint --fix ./src",
-        "formateAndLint": "pnpm  format && pnpm lint"
+        "formateAndLint": "pnpm  format && pnpm lint",
+        "rm": "rm -rf dist"
     },
     "keywords": [],
     "author": "",

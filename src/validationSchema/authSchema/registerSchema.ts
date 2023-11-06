@@ -1,6 +1,6 @@
 const { body } = require("express-validator");
 
-const registerSchema = [
+export const registerSchema = [
     body("name")
         .isEmpty()
         .withMessage("Name is required")
@@ -32,5 +32,3 @@ const registerSchema = [
         .isString()
         .withMessage("address should be String"),
 ];
-
-module.exports = registerSchema;

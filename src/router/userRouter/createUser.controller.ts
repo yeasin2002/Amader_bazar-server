@@ -1,4 +1,4 @@
-export const getAllUserProduct = async (req, res) => {
+const createUser = async (req, res) => {
     try {
         res.status(200).json({ status: "success", data: "" });
     } catch (error) {
@@ -6,3 +6,4 @@ export const getAllUserProduct = async (req, res) => {
         res.status(500).json({ status: "failed", message: "" });
     }
 };
+module.exports = createUser;

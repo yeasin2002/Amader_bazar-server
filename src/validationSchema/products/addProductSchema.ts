@@ -1,6 +1,6 @@
 const { body, header } = require("express-validator");
 
-const addProductSchema = [
+export const addProductSchema = [
     header("Authorization")
         .trim()
         .notEmpty()
@@ -58,5 +58,3 @@ const addProductSchema = [
         .withMessage("ProductFor is required")
         .isIn(["man", "women", "child", "anyone"]),
 ];
-
-module.exports = addProductSchema;

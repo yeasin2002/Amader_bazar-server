@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { NextFunction, Request, Response } from "express";
+import { Errback, NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import createHttpError from "http-errors";
 
@@ -23,8 +23,11 @@ export const validationRunner = async (
             });
         }
         next();
-    } catch (error) {
+    } catch (error: any) {
         console.log(chalk.bgRed.white.bold(error.message));
-        createHttpError(500, `Internal Server Error -  Validation Failed`);
+        return createHttpError(
+            500,
+            `Internal Server Error -  Validation Failed`
+        );
     }
 };

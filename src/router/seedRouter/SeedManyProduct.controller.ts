@@ -1,4 +1,4 @@
-export const getAllUserProduct = async (req, res) => {
+export const seedManyProduct = async (req, res) => {
     try {
         res.status(200).json({ status: "success", data: "" });
     } catch (error) {
