@@ -3,10 +3,10 @@
 import express from "express";
 const app = express();
 
-import { lastErrorHandler, notFound } from "./src/middleware";
-import { bodyParser, morgan } from "./src/npmModules";
-import { RootRoute } from "./src/router/root";
-import { expressRateLimit } from "./src/utils";
+import { lastErrorHandler, notFound } from "./middleware";
+import { bodyParser, morgan } from "./npmModules";
+import { RootRoute } from "./router/root";
+import { expressRateLimit } from "./utils";
 
 //! app in use
 app.use(express.static(`public`));
