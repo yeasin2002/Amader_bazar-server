@@ -22,6 +22,7 @@ export const validationRunner = async (
             });
         }
         next();
+        // eslint-disable-next-line
     } catch (error: any) {
         console.log(chalk.bgRed.bold.white(error.message));
         throw new Error(error.message);

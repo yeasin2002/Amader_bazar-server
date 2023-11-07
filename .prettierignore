@@ -11,4 +11,6 @@ yarn.lock
 tsconfig.json
 nodemon.json
 
+.eslintrc.cjs
+
 

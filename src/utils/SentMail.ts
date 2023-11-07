@@ -1,6 +1,6 @@
-const nodemailer = require(`nodemailer`);
-const { smtpUsername, smtpPassword } = require(`../utils/exportEnv`);
-const kleur = require(`kleur`);
+import chalk from "chalk";
+import nodemailer from "nodemailer";
+import { smtpPassword, smtpUsername } from "./exportEnv.js";
 
 export const transporter = nodemailer.createTransport({
     service: `gmail`,
@@ -11,7 +11,7 @@ export const transporter = nodemailer.createTransport({
     },
 });
 
-const SendMail = async ({
+export const SendMail = async ({
     revivers: [...revivers] = [],
     bcc = [],
     Subject = ``,
@@ -28,5 +28,5 @@ const SendMail = async ({
         html: html, // ⁡⁢⁢⁢html body⁡ - ⁡⁢⁣⁢Must⁡
         attachments: attachments,
     });
-    console.log(kleur.bgGreen().black(`Message sent:${info.response}`));
+    console.log(chalk.bgRed.bold(`Message sent:${info.response}`));
 };

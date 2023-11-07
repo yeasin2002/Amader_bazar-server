@@ -25,4 +25,3 @@ const errorResponse = (
 };
 
 export { errorResponse, successResponse };
-

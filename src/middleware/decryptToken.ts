@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import jsonwebtoken from "jsonwebtoken";
-
-const { jwtSecretKey } = require(`../utils/exportEnv`);
-const { createPrettyError } = require(`../utils`);
-const { errorResponse } = require(`../utils/ResponseHandler`);
+import { createPrettyError } from "../utils/createPrettyError.js";
+import { jwtSecretKey } from "../utils/exportEnv.js";
+import { errorResponse } from "../utils/responseHandler.js";
 
 export const decryptToken = async (
     req: Request,
@@ -12,19 +11,16 @@ export const decryptToken = async (
 ) => {
     try {
         if (!req.headers.authorization) {
-            return createPrettyError(403, `Authorization Required`);
+            return createPrettyError(`Authorization Required`, 403);
         }
 
         const token = req.headers.authorization.split(` `)[1] || ``;
-        if (!token) createPrettyError(403, `Token Required`);
+        if (!token) createPrettyError(`Token Required`, 403);
 
         const tokenInfo = jsonwebtoken.verify(token, jwtSecretKey);
         req.body.tokenInfo = tokenInfo;
         next();
     } catch (error: any) {
-        errorResponse(res, {
-            statusCode: error.statusCode,
-            message: error.message,
-        });
+        errorResponse(res, error.statusCode, error.message);
     }
 };
