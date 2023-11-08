@@ -1,5 +1,5 @@
-import { jwtSecretKey } from "exportEnv.js";
 import jwt from "jsonwebtoken";
+import { jwtSecretKey } from "./exportEnv.js";
 
 export const generateJWT = ({
     data = {},

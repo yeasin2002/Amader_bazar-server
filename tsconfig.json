@@ -9,9 +9,27 @@
         "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
         "skipLibCheck": true /* Skip type checking all .d.ts files. */,
         "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+        "inlineSourceMap": true ,  /* Include sourcemap files inside the emitted JavaScript. */
         "baseUrl": ".",
+        "paths": {
+          "$controller": ["./src/controller/index.js"],
+          "$helper": ["./src/helper"],
+          "$assets/*": ["./src/assets/*"],
+          "$assets": ["./src/assets"],
+          "$data": ["./src/data"],
+          "$logs": ["./src/log"],
+          "$middleware": ["./src/middleware"],
+          "$model": ["./src/model"],
+          "$npmModules": ["./src/npmModules"],
+          "$router": ["./src/router"],
+          "$services": ["./src/service"],
+          "$utils": ["./src/utils"],
+          "$reqSchema": ["./src/validationSchema"],
+          "$lib": ["./src/lib"],
+          "$src/*": ["./src/*"],
+          "$root/*": ["./*"]
+        }, 
 
-        "inlineSourceMap": true /* Include sourcemap files inside the emitted JavaScript. */
 
         // "inlineSources": true,                   /* Include source code in the sourcemaps inside the emitted JavaScript. */
         /* Projects */
@@ -117,13 +135,5 @@
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     }, 
        // This is an alias to @tsconfig/node16: https://github.com/tsconfig/bases
-       "extends": "@tsconfig/node16/tsconfig.json",
-  "ts-node": {
-    "swc": true,
-    "transpileOnly": true,
-    "files": true,
-    "compilerOptions": {
-    
-    }
-  },
+       
 }

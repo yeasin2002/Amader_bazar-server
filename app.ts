@@ -1,13 +1,15 @@
+import express, { Express, Request, Response } from "express";
+const app: Express = express();
+
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import express, { Express, Request, Response } from "express";
 import helmet from "helmet";
+import { fn } from "./src/controller/index.js";
 
+app.use("/api", fn);
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-const app: Express = express();
-
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,12 +21,3 @@ app.get("/", (req: Request, res: Response) => {
 app.listen(PORT, () => {
     console.log(`⚡ Server has started on http://localhost:${PORT} `);
 });
-
-/*
-
-
-
-
-
-
-*/
