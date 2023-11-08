@@ -116,7 +116,14 @@
         /* Completeness */
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     }, 
-    "ts-node": {
-        "swc": true
-      } 
+       // This is an alias to @tsconfig/node16: https://github.com/tsconfig/bases
+       "extends": "@tsconfig/node16/tsconfig.json",
+  "ts-node": {
+    "swc": true,
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+    
+    }
+  },
 }
