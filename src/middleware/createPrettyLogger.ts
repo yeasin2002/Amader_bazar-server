@@ -6,9 +6,8 @@ export const createPrettyLogger = (
     res: Response,
     next: NextFunction
 ) => {
-    console.log(`
-    ${chalk.bgGreen(req.method)}-${chalk.yellow(req.url)}-${chalk.yellow(
-        req.statusCode
-    )}`);
+    console.log(
+        `${chalk.bgGreen(req.method)}-${chalk.yellow(req.originalUrl)}`
+    );    
     next();
 };

@@ -21,6 +21,6 @@ export const decryptToken = async (
         req.body.tokenInfo = tokenInfo;
         next();
     } catch (error: any) {
-        errorResponse(res, error.statusCode, error.message);
+        errorResponse({ res });
     }
 };
