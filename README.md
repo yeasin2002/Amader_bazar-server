@@ -1,87 +1,56 @@
-<div style="display: flex">
-<img
-      src="./public/amder-bajar-logo.png"
-      style="width: 50px; height: 50px"
-    />
- <h2> আমাদের বাজার <h2/>
+# The Complete Guide To Building A REST API With Node, Express, TypeScript & MongoDB
 
- </div>
+![Untitled design (1)](https://user-images.githubusercontent.com/23248726/219093382-a1874751-a2f0-4be6-8bed-3c266276b57c.png)
 
 
-####  The project is an online store that sells a variety of products and allows customers to browse, purchase, and track their orders. This repository contains only the code for the dashboard, which provides an interface for store administrators to manage products, view sales data, and track orders.
+This is a repository for a REST API tutorial using Node, Express, Typescript & MongoDB.
 
+[Video Link](https://youtu.be/b8ZUb_Okxro)
 
+Features:
 
-#### [Figma UI](https://www.figma.com/file/Douo9VLnXKBXb6B2cweSQs/Amader-Bazar?type=design&node-id=605%3A344&mode=design&t=Mne6rFKVXNd21MHM-1)
+- Environment, Typescript, Nodemon setup
+- MongoDB & Mongoose connect, Database creation
+- Controllers creation
+- Middlewares creation
+- Cookie based authentication
+- Postman testing
+- Create, Read, Update
 
-<img src="./public/showcase/design.svg">
+### Prerequisites
 
+**Node version 14.x**
 
-## Features
+### Cloning the repository
 
+```shell
+git clone https://github.com/AntonioErdeljac/ts-node-mongo-rest-api-tutorial.git
+```
 
-#### Auth 
-- POST: login
-- POST: register
-- POST: JWT token
-- POST: forgot password
-- POST: reset password
+### Install packages
 
+```shell
+npm i
+```
 
+### Setup MongoDB URL
 
-#### Product
-- GET: all product
-- GET: single product
-- POST: create product
-- PUT: update product
-- DELETE: delete product
+In `src/index.ts`:
 
+```js
+const MONGO_URL = ''; // DB URI
+```
 
+### Start the app
 
-#### Product Category
-- GET: all product category
-- GET: all Feature  product
-- GET: Popular product 
+```shell
+npm start
+```
 
-- GET: single product category
-- POST: create product category
-- PUT: update product category
-- DELETE: delete product category
+## Available commands
 
+Running commands with npm `npm run [command]`
 
-
-
-#### User
-- GET: all user
-- GET: single user
-- PUT: update user
-- DELETE: delete user
-
-
-#### Order 
-- GET: all order
-- GET: single order
-- POST: create order
-- PUT: update order
-- DELETE: delete order
-
-
-
-#### Dashboard
-- GET: all Product
-- GET: single Product
-- PUT: update Product
-- DELETE: delete Product
-
-- DELETE: delete Product Category
-- PUT: update Product Category or Single Product Category
-
-- DELETE: delete User
-- PUT: BAN or UNBANNED User
-- PUT: update role - admin to user or user to admin
-
-
-
-
-
-
+| command         | description                              |
+| :-------------- | :--------------------------------------- |
+| `start`         | Starts a development instance of the app |
