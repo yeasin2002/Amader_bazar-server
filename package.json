@@ -1,51 +1,56 @@
 {
-    "name": "amader-bazar-server",
+    "name": "amader_bazar",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
+    "main": "index.js",
     "scripts": {
-        "start": "nodemon  ",
-        "dev": "nodemon -r ./alias app.js  ",
-        "format": "prettier --check ./src",
-        "format:write": "prettier --write ./src",
-        "lint": "eslint ./src",
-        "lint:fix": "eslint --fix ./src",
-        "formateAndLint": "pnpm  format && pnpm lint"
+        "dev": "nodemon",
+        "lint": "eslint ./src --ext .ts",
+        "format": "prettier --write \"src/**/*.ts\""
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "bcrypt": "^5.1.1",
+        "bcryptjs": "^2.4.3",
         "body-parser": "^1.20.2",
+        "compression": "^1.7.4",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "cross-env": "^7.0.3",
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
-        "express-rate-limit": "^7.0.2",
+        "express-rate-limit": "^7.1.4",
         "express-validator": "^7.0.1",
-        "http-errors": "^2.0.0",
+        "helmet": "^7.1.0",
         "jsonwebtoken": "^9.0.2",
         "kleur": "^4.1.5",
-        "module-alias": "2.2.3",
-        "mongoose": "^7.5.1",
-        "morgan": "^1.10.0",
+        "lodash": "^4.17.21",
+        "mongoose": "^6.9.1",
         "multer": "1.4.5-lts.1",
-        "nodemailer": "^6.9.5",
-        "sharp": "^0.32.6",
-        "uuid": "^9.0.1",
-        "winston": "^3.11.0"
+        "rimraf": "^5.0.5",
+        "sequelize": "^6.34.0"
     },
     "devDependencies": {
-        "eslint": "^8.50.0",
-        "eslint-config-prettier": "^9.0.0",
-        "eslint-plugin-node": "^11.1.0",
-        "eslint-plugin-prettier": "^5.0.1",
-        "husky": "^8.0.3",
-        "nodemon": "^3.0.1",
-        "prettier": "^3.0.3"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "pnpm  formateAndLint  "
-        }
+        "@types/bcrypt": "^5.0.2",
+        "@types/body-parser": "^1.19.5",
+        "@types/compression": "^1.7.2",
+        "@types/cookie-parser": "^1.4.3",
+        "@types/cors": "^2.8.13",
+        "@types/express": "^4.17.21",
+        "@types/jsonwebtoken": "^9.0.5",
+        "@types/lodash": "^4.14.191",
+        "@types/multer": "^1.4.10",
+        "@types/node": "^18.18.9",
+        "@types/nodemailer": "^6.4.14",
+        "@typescript-eslint/eslint-plugin": "^6.10.0",
+        "@typescript-eslint/parser": "^6.10.0",
+        "eslint": "^8.53.0",
+        "nodemon": "^2.0.20",
+        "pg": "^8.11.3",
+        "pg-hstore": "^2.3.4",
+        "prettier": "^3.0.3",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.9.5"
     }
 }

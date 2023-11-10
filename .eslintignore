@@ -1,2 +1,4 @@
 node_modules
 dist
+.eslintrc.cjs
+pnpm-lock.yaml
