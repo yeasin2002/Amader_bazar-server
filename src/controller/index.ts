@@ -1,10 +1,8 @@
-import { Request, Response } from "express";
-
-export const fn = async (req: Request, res: Response) => {
-    try {
-        res.status(200).json({ status: "success", data: "" });
-    } catch (error: any) {
-        console.log(error.message);
-        res.status(500).json({ status: "failed", message: "" });
-    }
-};
+export * from "./auth.controller";
+export * from "./category.controller";
+export * from "./dashboard.controller";
+export * from "./extra.controller";
+export * from "./product.controller";
+export * from "./review.controller";
+export * from "./seed.controller";
+export * from "./user.controller";

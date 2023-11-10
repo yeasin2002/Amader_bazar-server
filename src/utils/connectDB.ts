@@ -1,5 +1,4 @@
 import { Sequelize } from "sequelize";
-
 import { pgConnection } from "./exportEnv";
 
 export const sequelizePG = new Sequelize(pgConnection, {
@@ -14,6 +13,7 @@ export const sequelizePG = new Sequelize(pgConnection, {
 export const connectDB = async () => {
     try {
         await sequelizePG.authenticate();
+
         console.log("🚀 Database connected successfully");
     } catch (error: any) {
         console.log("Unable to connect to the database");

@@ -15,7 +15,7 @@ import { seedRoute } from "./router/seed.route";
 import { connectDB } from "./utils/connectDB";
 
 const app = express();
-app.use(compression());
+app.use(compression()); 
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(helmet());
