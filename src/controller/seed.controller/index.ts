@@ -1,1 +1,1 @@
-export * from "./Insert";
+export * from "./seedNewUser";
