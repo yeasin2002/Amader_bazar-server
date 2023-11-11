@@ -6,7 +6,7 @@
     "outDir": "dist",
     "sourceMap": true,
     "noImplicitAny": true, 
-    "baseUrl": "./src",
+    "baseUrl": "/",
     "paths": {
       "$utils/*": ["./src/utils/*"],
       "$utils": ["./src/utils"],  

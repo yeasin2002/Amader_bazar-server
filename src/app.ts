@@ -9,13 +9,11 @@ import kleur from "kleur";
 import { PORT } from "../app.config";
 import { reqLogger } from "./utils";
 
-
-import { Product, Review, User, category } from "./model";
 import { seedRoute } from "./router/seed.route";
-import { connectDB } from "./utils/connectDB";
+import { connectDB } from "./utils";
 
 const app = express();
-app.use(compression()); 
+app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(helmet());
@@ -26,18 +24,12 @@ app.use(
     })
 );
 
+
 app.use("/seed", seedRoute);
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
-
-//  Database Sync
-User.sync({ alter: true });
-Product.sync({ alter: true });
-Review.sync({ alter: true });
-category.sync({ alter: true });
-
 
 app.listen(PORT, async () => {
     await connectDB();

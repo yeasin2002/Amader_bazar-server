@@ -3,7 +3,7 @@ dist/
 .env
 .env.local
 
-pnpm-lock.yaml
+pnpm-lock.yaml/*
 package-lock.json
 yarn.lock
 

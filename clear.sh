@@ -7,7 +7,7 @@
 
 # Run eslint and pnpm commands
 eslint --cache --cache-location .eslintcache --fix &
-pnpm store prune &
+
 
 # Wait for all operations to complete
 wait

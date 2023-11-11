@@ -1,22 +1,13 @@
-import { Sequelize } from "sequelize";
-import { pgConnection } from "./exportEnv";
+import mongoose, { ConnectOptions } from "mongoose";
+import { mongoUrl } from "./exportEnv";
 
-export const sequelizePG = new Sequelize(pgConnection, {
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false,
-        },
-    },
-});
-
-export const connectDB = async () => {
+export const connectDB = async (options: ConnectOptions = {}) => {
     try {
-        await sequelizePG.authenticate();
-
-        console.log("🚀 Database connected successfully");
-    } catch (error: any) {
-        console.log("Unable to connect to the database");
-        console.log("Error Message", error.message);
+        if (mongoose.connection.readyState === 0) {
+            mongoose.connect(mongoUrl, options);
+            console.log("MongoDB Connected");
+        }
+    } catch (error) {
+        console.log("MongoDB Connection Failed");
     }
 };
