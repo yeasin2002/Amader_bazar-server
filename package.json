@@ -1,18 +1,26 @@
 {
     "name": "amader_bazar",
-    "version": "1.0.0",
+    "version": "0.2.0",
     "description": "",
     "main": "app.js",
+    "keywords": [
+        "MERN",
+        "Ecommerce",
+        "React",
+        "Node",
+        "Express",
+        "MongoDB",
+        "amader bazar"
+    ],
+    "author": "Md Kawsar Islam Yeasin",
+    "license": "ISC",
     "scripts": {
         "dev": "nodemon",
         "build": "rimraf dist && tsc ",
+        "start": "cross-env NODE_ENV=production node dist/app.js",
         "style": "prettier --write \"src/**/*.ts\" &&  eslint ./src --ext .ts && tsc --noEmit",
-        "production": "cross-env NODE_ENV=production node dist/app.js",
         "clear": "concurrently  \" pnpx rimraf dist\"    \" pnpx rimraf build\"    \" pnpx rimraf node_modules \"  && pnpm i "
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
     "dependencies": {
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.20.2",
