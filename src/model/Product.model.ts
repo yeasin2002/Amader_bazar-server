@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-const reviewSchema = new Schema(
+const ProductSchema = new Schema(
     {
         ratedProduct: {
             type: Schema.Types.ObjectId,
@@ -27,5 +27,4 @@ const reviewSchema = new Schema(
     }
 );
 
-export const ProductReview = model("ProductReview", reviewSchema);
-
+export const Product = model("Product", ProductSchema);

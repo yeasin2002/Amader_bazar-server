@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "nodemon",
         "build": "rimraf dist && tsc ",
-        "style": "prettier --write \"src/**/*.ts\" &&  eslint ./src --ext .ts && tsc --noEmit",
+        "lint": "prettier --write \"src/**/*.ts\" &&  eslint ./src --ext .ts && tsc --noEmit",
         "production": "cross-env NODE_ENV=production node dist/app.js",
         "clear": "concurrently  \" pnpx rimraf dist\"    \" pnpx rimraf build\"    \" pnpx rimraf node_modules \"  && pnpm i "
     },

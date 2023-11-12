@@ -7,10 +7,7 @@
     "sourceMap": true,
     "noImplicitAny": true, 
     "baseUrl": "/",
-    "paths": {
-      "$utils/*": ["./src/utils/*"],
-      "$utils": ["./src/utils"],  
-    }
+    "paths": {}
     
   },
   "include": ["src/**/*"],

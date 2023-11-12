@@ -1,11 +1,10 @@
 import express from "express";
-import { Insert } from "../controller/seed.controller";
-
+import {
+    removeAllUser,
+    seedNewProduct,
+    seedNewUser,
+} from "../controller/seed.controller";
 export const seedRoute = express.Router();
 
-seedRoute
-    .route("/")
-    .post(Insert)
-    .get((req, res) => {
-        res.send("seed");
-    });
+seedRoute.route("/user").post(seedNewUser).delete(removeAllUser);
+seedRoute.route("/product").post(seedNewProduct);
