@@ -3,10 +3,10 @@ import { mongoUrl } from "./exportEnv";
 
 export const connectDB = async (options: ConnectOptions = {}) => {
     try {
-        mongoose.set('strictQuery', true); 
+        mongoose.set("strictQuery", true);
         if (mongoose.connection.readyState === 0) {
             mongoose.connect(mongoUrl, options);
-            console.log("MongoDB Connected");
+            console.log("🚀 MongoDB Connected");
         }
     } catch (error) {
         console.log("MongoDB Connection Failed");

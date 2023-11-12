@@ -21,7 +21,8 @@ import kleur from "kleur";
 //?  Local Imports
 import { PORT } from "../app.config";
 import { rootRoute } from "./controller";
-import { setIp } from "./middlewares";
+import { defaultErrorHandler, notFound, setIp } from "./middlewares";
+
 import {
     authRoute,
     categoryRouter,
@@ -30,7 +31,7 @@ import {
     seedRoute,
     userRouter,
 } from "./router";
-import { connectDB, reqLogger } from "./utils";
+import { connectDB, limiter, reqLogger } from "./utils";
 
 //?  npm packages in use
 const app = express();
@@ -43,16 +44,20 @@ app.use(cors({ credentials: true }));
 // ? custom global middlewares
 app.use(reqLogger);
 app.use(setIp);
-
+app.use(limiter);
 
 //? Routers
-app.get("api/v1/", rootRoute);
+app.get("/", rootRoute);
 app.use("api/v1/seed", seedRoute);
 app.use("api/v1/category", categoryRouter);
 app.use("api/v1/auth", authRoute);
 app.use("api/v1/user", userRouter);
 app.use("api/v1/dashboard", dashboardRouter);
 app.use("api/v1/extra", extraRoute);
+
+//? 404 not found And default error Handling
+app.use(notFound);
+app.use(defaultErrorHandler);
 
 app.listen(PORT, async () => {
     await connectDB();

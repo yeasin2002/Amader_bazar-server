@@ -1,8 +1,8 @@
-// import chalk from "chalk";
+// import kleur from "kleur";
 
 // const success = (txt: string, ...rest: any) => {
-//     const err = chalk.bgGreen.bold("🔥");
-//     const msg = chalk.green.bold(txt, ...rest);
+//     const err = kleur.bgGreen().bold("🔥");
+//     const msg = kleur.green().bold(`${txt} ${rest}`);
 //     console.log(err, msg);
 // };
 
