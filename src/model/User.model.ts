@@ -16,9 +16,8 @@ const userSchema = new Schema(
             required: [true, `email is required`],
             trim: true,
             unique: true,
-            lowercase: true,
             validate: {
-                validator: (v: any) => {
+                validator: (v: string) => {
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     return emailRegex.test(v);
                 },
@@ -50,11 +49,24 @@ const userSchema = new Schema(
             type: Boolean,
             default: false,
         },
+        ip: {
+            type: [
+                {
+                    count: { type: Number, default: 0 },
+                    title: { type: String, default: "" },
+                },
+            ],
+            require: true,
+        },
+        Products: {
+            type: Schema.Types.ObjectId,
+            ref: `Product`,
+        },
     },
     {
         timestamps: true,
+        autoIndex: true,
     }
 );
 
 export const User = model(`User`, userSchema);
-

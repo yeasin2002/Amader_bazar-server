@@ -2,30 +2,32 @@ import { model, Schema } from "mongoose";
 
 const reviewSchema = new Schema(
     {
-        ratedProduct: {
+        Product: {
             type: Schema.Types.ObjectId,
             ref: "Product",
+            required: true,
         },
-        ratedUser: {
+        User: {
             type: Schema.Types.ObjectId,
             ref: "User",
+            required: true,
         },
         rating: {
             type: Number,
             required: [true, "rating is required"],
         },
-        ReviewsNotes: {
+        desc: {
             type: String,
             required: [true, "Notes is required"],
             trim: true,
-            minlength: [3, "ReviewsNotes can not be less than 3 characters"],
-            maxlength: [25, "ReviewsNotes can not be more than 25 characters"],
+            minlength: [10, "ReviewsNotes can not be less than 10 characters"],
+            maxlength: [50, "ReviewsNotes can not be more than 50 characters"],
         },
     },
     {
         timestamps: true,
+        autoIndex: true,
     }
 );
 
 export const ProductReview = model("ProductReview", reviewSchema);
-
