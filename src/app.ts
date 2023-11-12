@@ -6,11 +6,12 @@ import express from "express";
 import helmet from "helmet";
 import kleur from "kleur";
 
+//!  Local Imports 
 import { PORT } from "../app.config";
-import { reqLogger } from "./utils";
-
-import { categoryRouter, seedRoute } from "./router";
-import { connectDB } from "./utils";
+import { rootRoute } from "./controller";
+import { setIp } from "./middlewares";
+import { authRoute, categoryRouter, dashboardRouter, extraRoute, seedRoute, userRouter } from "./router";
+import { connectDB, reqLogger } from "./utils";
 
 const app = express();
 app.use(compression());
@@ -18,19 +19,22 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(helmet());
 app.use(reqLogger);
+app.use(setIp);
 app.use(
     cors({
         credentials: true,
     })
 );
 
-
+app.get("/", rootRoute);
 app.use("/seed", seedRoute);
 app.use("/category", categoryRouter);
+app.use("/auth", authRoute);
+app.use("/user", userRouter);
+app.use("/dashboard", dashboardRouter);
+app.use("/extra", extraRoute);
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+
 
 app.listen(PORT, async () => {
     await connectDB();

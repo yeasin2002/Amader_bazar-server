@@ -16,9 +16,8 @@ const userSchema = new Schema(
             required: [true, `email is required`],
             trim: true,
             unique: true,
-            lowercase: true,
             validate: {
-                validator: (v: any) => {
+                validator: (v: string) => {
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     return emailRegex.test(v);
                 },
@@ -70,4 +69,4 @@ const userSchema = new Schema(
     }
 );
 
-export const userModel = model(`User`, userSchema);
+export const User = model(`User`, userSchema);

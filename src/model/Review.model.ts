@@ -1,14 +1,16 @@
 import { model, Schema } from "mongoose";
 
-const ProductSchema = new Schema(
+const ProductReviewSchema = new Schema(
     {
         Product: {
             type: Schema.Types.ObjectId,
             ref: "Product",
+            required: true,
         },
         User: {
             type: Schema.Types.ObjectId,
             ref: "User",
+            required: true,
         },
         rating: {
             type: Number,
@@ -28,5 +30,5 @@ const ProductSchema = new Schema(
     }
 );
 
-export const ProductReviewModel = model("ProductReview", ProductSchema);
+export const ProductReview = model("ProductReview", ProductReviewSchema);
 
