@@ -50,11 +50,24 @@ const userSchema = new Schema(
             type: Boolean,
             default: false,
         },
+        ip: {
+            type: [
+                {
+                    count: { type: Number, default: 0 },
+                    title: { type: String, default: "" },
+                },
+            ],
+            require: true,
+        },
+        Products: {
+            type: Schema.Types.ObjectId,
+            ref: `Product`,
+        },
     },
     {
         timestamps: true,
+        autoIndex: true,
     }
 );
 
 export const userModel = model(`User`, userSchema);
-

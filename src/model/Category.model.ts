@@ -8,7 +8,6 @@ const ProductCategorySchema = new Schema({
         minlength: [3, "name can not be less than 3 characters"],
         maxlength: [25, "name can not be more than 25 characters"],
     },
-
     icon: {
         type: String,
         required: true,
@@ -17,6 +16,10 @@ const ProductCategorySchema = new Schema({
         type: String,
         trim: true,
         maxlength: [20, "name can not be more than 25 characters"],
+    },
+    products: {
+        type: Schema.Types.ObjectId,
+        ref: "Product",
     },
 });
 
