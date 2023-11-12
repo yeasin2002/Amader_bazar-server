@@ -9,7 +9,7 @@ import kleur from "kleur";
 import { PORT } from "../app.config";
 import { reqLogger } from "./utils";
 
-import { seedRoute } from "./router/seed.route";
+import { categoryRouter, seedRoute } from "./router";
 import { connectDB } from "./utils";
 
 const app = express();
@@ -26,6 +26,7 @@ app.use(
 
 
 app.use("/seed", seedRoute);
+app.use("/category", categoryRouter);
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
