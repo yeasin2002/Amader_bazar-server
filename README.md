@@ -31,7 +31,7 @@
 -   PUT: update product
 -   DELETE: delete product
 
--   GET: all Feature product
+-   GET: All Feature product
 -   GET: Popular product
 
 #### Product Category

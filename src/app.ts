@@ -28,6 +28,7 @@ import {
     categoryRouter,
     dashboardRouter,
     extraRoute,
+    productRoute,
     seedRoute,
     userRouter,
 } from "./router";
@@ -48,12 +49,13 @@ app.use(limiter);
 
 //? Routers
 app.get("/", rootRoute);
-app.use("api/v1/seed", seedRoute);
-app.use("api/v1/category", categoryRouter);
-app.use("api/v1/auth", authRoute);
-app.use("api/v1/user", userRouter);
-app.use("api/v1/dashboard", dashboardRouter);
-app.use("api/v1/extra", extraRoute);
+app.use("/api/v1/seed", seedRoute);
+app.use("/api/v1/category", categoryRouter);
+app.use("/api/v1/product", productRoute);
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/dashboard", dashboardRouter);
+app.use("/api/v1/extra", extraRoute);
 
 //? 404 not found And default error Handling
 app.use(notFound);
