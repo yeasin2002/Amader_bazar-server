@@ -7,10 +7,14 @@ const reviewSchema = new Schema(
             ref: "Product",
             required: true,
         },
-        User: {
-            type: Schema.Types.ObjectId,
-            ref: "User",
-            required: true,
+        reviewers: {
+            type: [
+                {
+                    type: Schema.Types.ObjectId,
+                    ref: "User",
+                    required: true,
+                },
+            ],
         },
         rating: {
             type: Number,

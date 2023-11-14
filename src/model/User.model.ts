@@ -59,8 +59,12 @@ const userSchema = new Schema(
             require: true,
         },
         Products: {
-            type: Schema.Types.ObjectId,
-            ref: `Product`,
+            type: [
+                {
+                    type: Schema.Types.ObjectId,
+                    ref: `Product`,
+                },
+            ],
         },
     },
     {
