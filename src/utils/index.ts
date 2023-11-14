@@ -6,3 +6,5 @@ export * from "./generateJWT";
 export * from "./rateLimit";
 export * from "./resLogger";
 export * from "./responseHandler";
+export * from "./swaggerOptions";
+

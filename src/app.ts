@@ -17,12 +17,14 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import kleur from "kleur";
+import swaggerUi from "swagger-ui-express";
 
 //?  Local Imports
 import { PORT } from "../app.config";
 import { rootRoute } from "./controller";
 import { defaultErrorHandler, notFound, setIp } from "./middlewares";
 
+import swaggerJsDoc from "swagger-jsdoc";
 import {
     authRoute,
     categoryRouter,
@@ -33,6 +35,9 @@ import {
     userRouter,
 } from "./router";
 import { connectDB, limiter, reqLogger } from "./utils";
+
+import { swaggerOptions } from "./utils";
+ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 //?  npm packages in use
 const app = express();
@@ -48,7 +53,9 @@ app.use(setIp);
 app.use(limiter);
 
 //? Routers
+
 app.get("/", rootRoute);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use("/api/v1/seed", seedRoute);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/product", productRoute);
