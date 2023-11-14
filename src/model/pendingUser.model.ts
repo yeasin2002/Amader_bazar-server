@@ -25,6 +25,10 @@ const userSchema = new Schema({
         minlength: [6, `password can not be less than 6 characters`],
         set: (value: any) => bcrypt.hashSync(value, bcrypt.genSaltSync(10)),
     },
+    token: {
+        type: String,
+        required: [true, `token is required`],
+    },
     createdAt: { type: Date, expires: 3600, default: Date.now },
 });
 
