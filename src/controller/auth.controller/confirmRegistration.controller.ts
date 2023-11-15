@@ -20,7 +20,7 @@ export const confirmRegistration = async (req: Request, res: Response) => {
             address,
         });
 
-        return successResponse({
+        return await successResponse({
             res,
             message: "New Use Created successfully",
             data: newUser,
