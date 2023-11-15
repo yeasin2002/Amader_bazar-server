@@ -7,4 +7,4 @@ export * from "./rateLimit";
 export * from "./resLogger";
 export * from "./responseHandler";
 export * from "./swaggerOptions";
-
+export * from "./sendMailWithNodemailer";

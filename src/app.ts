@@ -37,7 +37,7 @@ import {
 import { connectDB, limiter, reqLogger } from "./utils";
 
 import { swaggerOptions } from "./utils";
- const swaggerDocs = swaggerJsDoc(swaggerOptions);
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 //?  npm packages in use
 const app = express();
@@ -67,8 +67,6 @@ app.use("/api/v1/extra", extraRoute);
 //? 404 not found And default error Handling
 app.use(notFound);
 app.use(defaultErrorHandler);
-
-
 
 app.listen(PORT, async () => {
     await connectDB();

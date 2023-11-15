@@ -2,14 +2,35 @@ import { Request, Response } from "express";
 import { PendingUser } from "../../model";
 
 import { random } from "../../helpers";
-import { errorResponse, successResponse } from "../../utils";
+import {
+    SendMailWithNodemailer,
+    errorResponse,
+    successResponse,
+} from "../../utils";
 
 export const registration = async (req: Request, res: Response) => {
     try {
         const { email, phone, password } = req.body;
-        //! Sent email to user
+
         const id = random().slice;
-        const user = await PendingUser.create({ email, phone, password });
+        await SendMailWithNodemailer({
+            revivers: [email],
+            Subject: `Registration Confirmation`,
+            html: `
+        <h1>Registration Confirmation</h1>
+        <p>Thank you for registering!</p>
+        <p>Here Is your OTP</p>
+        <p>
+        <b>${id}</b>
+        </p>`,
+        });
+
+        const user = await PendingUser.create({
+            email,
+            phone,
+            password,
+            token: id,
+        });
         successResponse({
             res,
             message: `Registration successful, please check your email for verification link`,
