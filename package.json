@@ -18,7 +18,7 @@
         "dev": "rimraf dist && nodemon",
         "build": "rimraf dist && tsc ",
         "lint": "prettier --write \"src/**/*.ts\" &&  eslint ./src --ext .ts && tsc --noEmit",
-        "production": "cross-env NODE_ENV=production node dist/app.js",
+        "start": "cross-env NODE_ENV=production node dist/app.js",
         "clear": "concurrently  \" pnpx rimraf dist\"    \" pnpx rimraf build\"    \" pnpx rimraf node_modules \"  && pnpm i "
     },
     "dependencies": {

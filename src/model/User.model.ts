@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { model, Schema } from "mongoose";
 import { defaultImagePath } from "../utils";
 
-const userSchema = new Schema(
+const UserSchema = new Schema(
     {
         name: {
             type: String,
@@ -73,4 +73,4 @@ const userSchema = new Schema(
     }
 );
 
-export const User = model(`User`, userSchema);
+export const User = model(`User`, UserSchema);

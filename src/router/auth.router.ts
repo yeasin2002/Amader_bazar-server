@@ -7,6 +7,7 @@ import {
     registration,
     resetPassword,
 } from "../controller/auth.controller";
+// import { regSchema, validationRunner } from "../reqSchema";
 export const authRoute = express.Router();
 
 // log in
