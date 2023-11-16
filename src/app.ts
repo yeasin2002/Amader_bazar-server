@@ -30,6 +30,7 @@ import {
     categoryRouter,
     dashboardRouter,
     extraRoute,
+    orderProductRouter,
     productRoute,
     seedRoute,
     userRouter,
@@ -57,10 +58,11 @@ app.use(limiter);
 app.get("/", rootRoute);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use("/api/v1/seed", seedRoute);
+app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/product", productRoute);
-app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/order", orderProductRouter);
 app.use("/api/v1/dashboard", dashboardRouter);
 app.use("/api/v1/extra", extraRoute);
 
@@ -70,6 +72,7 @@ app.use(defaultErrorHandler);
 
 app.listen(PORT, async () => {
     await connectDB();
+
     console.log(
         "⚡",
         kleur

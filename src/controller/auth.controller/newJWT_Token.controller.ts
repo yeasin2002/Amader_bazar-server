@@ -1,13 +1,10 @@
 import { Request, Response } from "express";
-import { errorResponse, generateJWT, successResponse } from "../../utils";
+import { userJWT } from "../../lib";
+import { errorResponse, successResponse } from "../../utils";
 
 export const newJWT_Token = async (req: Request, res: Response) => {
     try {
-        const token = generateJWT({
-            data: {
-                name: "",
-            },
-        });
+        const token = userJWT();
         successResponse({ res, data: token, message: "New Token Generated" });
     } catch (error: any) {
         console.log(error.message);

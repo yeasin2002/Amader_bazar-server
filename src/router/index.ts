@@ -5,3 +5,4 @@ export * from "./extra.route";
 export * from "./product.route";
 export * from "./seed.route";
 export * from "./user.route";
+export * from "./orderProduct.route";

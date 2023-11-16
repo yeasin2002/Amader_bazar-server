@@ -1,5 +1,6 @@
 import express from "express";
 import {
+    confirmForgotPassword,
     confirmRegistration,
     forgotPassword,
     logIn,
@@ -14,6 +15,9 @@ export const authRoute = express.Router();
 authRoute.post("/register", registration);
 authRoute.post("/confirm-registration", confirmRegistration);
 authRoute.post("/login", logIn);
-authRoute.post("/reset-password", resetPassword);
-authRoute.post("/new-jwt-token", newJWT_Token);
+authRoute.patch("/reset-password", resetPassword);
+
+//! Uncompleted
+authRoute.get("/new-jwt-token", newJWT_Token);
 authRoute.post("/forgot-password", forgotPassword);
+authRoute.post("/confirm-forgot-password", confirmForgotPassword);
