@@ -10,4 +10,4 @@ export const categoryRouter = express.Router();
 
 categoryRouter.get("/:title", getCategoryByTitle);
 categoryRouter.route("/").get(getAllCategory).post(createCategory);
-categoryRouter.route("/:id").get(deleteCategory);
+categoryRouter.route("/:id").delete(deleteCategory);

@@ -36,6 +36,7 @@
         "helmet": "^7.1.0",
         "jsonwebtoken": "^9.0.2",
         "kleur": "^4.1.5",
+        "log-update": "^6.0.0",
         "mongoose": "^6.9.1",
         "multer": "1.4.5-lts.1",
         "nodemailer": "^6.9.7",

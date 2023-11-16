@@ -1,19 +1,26 @@
 import { Request, Response } from "express";
 import { Category } from ".././../model";
 
-import { errorResponse, successResponse } from "../../utils";
+import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
 export const getAllCategory = async (req: Request, res: Response) => {
     try {
-        const newCategory = await Category.find({});
+        const { limit } = req.body;
+        const newCategory = await Category.find({})
+            .limit(limit)
+            .sort({ createdAt: -1 });
+        if (!newCategory) createPrettyError("Category Not Found", 404);
 
         successResponse({
             res,
             message: "successfully Got All Category",
             data: newCategory,
         });
-    } catch (error: any) {
-        console.log(error.message);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            errorResponse({ res });
+        }
         errorResponse({ res });
     }
 };
