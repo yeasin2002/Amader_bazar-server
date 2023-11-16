@@ -6,12 +6,17 @@ export const confirmRegistration = async (req: Request, res: Response) => {
     try {
         const { token } = req.body;
         const pendingUserNeedToVerify = await PendingUser.findOne({ token });
-        if (!pendingUserNeedToVerify) {
-            return createPrettyError(`Invalid OTP`, 400);
-        }
-        const { name, email, phone, password, image, address } =
-            pendingUserNeedToVerify;
-        const newUser = await User.create({
+        if (!pendingUserNeedToVerify) createPrettyError(`Invalid OTP`, 400);
+
+        const {
+            name,
+            email,
+            phone,
+            password,
+            image = "",
+            address,
+        } = pendingUserNeedToVerify;
+        const data = await User.create({
             name,
             email,
             phone,
@@ -20,13 +25,15 @@ export const confirmRegistration = async (req: Request, res: Response) => {
             address,
         });
 
-        return await successResponse({
+        return successResponse({
             res,
             message: "New Use Created successfully",
-            data: newUser,
+            data,
         });
-    } catch (error: any) {
-        console.log(error.message);
-        errorResponse({ res });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            errorResponse({ res });
+        }
     }
 };

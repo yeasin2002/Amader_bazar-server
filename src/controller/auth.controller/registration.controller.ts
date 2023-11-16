@@ -22,6 +22,7 @@ export const registration = async (req: Request, res: Response) => {
             <h1 style="background-color: rgb(225, 224, 224); padding: 10px; color: rgb(29, 29, 29);" >${id}</h1>`,
         });
 
+        //! save image to uploads folder
         const user = await PendingUser.create({
             name,
             email,
