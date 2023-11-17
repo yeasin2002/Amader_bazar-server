@@ -1,11 +1,20 @@
 import { Request, Response } from "express";
-import { errorResponse, successResponse } from "../../utils";
+import { Product } from "../../model";
+import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
 export const deleteProduct = async (req: Request, res: Response) => {
     try {
-        successResponse({ res });
-    } catch (error: any) {
-        console.log(error.message);
+        const data = await Product.findByIdAndDelete(req.params.id);
+        if (!data) {
+            return createPrettyError("Unable to delete product");
+        }
+
+        successResponse({ res, data, message: "successfully deleted product" });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            errorResponse({ res, message: error.message });
+        }
         errorResponse({ res });
     }
 };

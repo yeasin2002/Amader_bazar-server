@@ -4,4 +4,5 @@ export * from "./deleteProduct.controller";
 export * from "./getAllFeatureProduct.controller";
 export * from "./getAllProduct.controller";
 export * from "./getSingleProduct.controller";
+export * from "./makeFeatureProduct.controller";
 export * from "./updateProduct.controller";
