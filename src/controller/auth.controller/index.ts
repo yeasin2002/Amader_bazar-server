@@ -6,4 +6,3 @@ export * from "./logIn.controller";
 export * from "./newJWT_Token.controller";
 export * from "./registration.controller";
 export * from "./resetPassword.controller";
-

@@ -5,7 +5,7 @@ export const connectDB = async (options: ConnectOptions = {}) => {
     try {
         if (mongoose.connection.readyState === 0) {
             mongoose.set("strictQuery", true);
-            mongoose.connect(mongoUrl, options);
+           await mongoose.connect(mongoUrl, options);
             console.log("🚀 MongoDB Connected");
         }
     } catch (error) {

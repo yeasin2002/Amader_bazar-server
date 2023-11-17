@@ -1,5 +1,6 @@
 import { Response } from "express";
 
+
 const successResponse = ({
     res,
     message,

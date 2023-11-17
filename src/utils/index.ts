@@ -9,4 +9,3 @@ export * from "./resLogger";
 export * from "./responseHandler";
 export * from "./sendMailWithNodemailer";
 export * from "./swaggerOptions";
-
