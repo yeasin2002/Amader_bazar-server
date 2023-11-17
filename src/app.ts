@@ -41,10 +41,12 @@ import { swaggerOptions } from "./utils";
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 //?  npm packages in use
+
 const app = express();
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(cors({ credentials: true }));
 
@@ -54,7 +56,6 @@ app.use(setIp);
 app.use(limiter);
 
 //? Routers
-
 app.get("/", rootRoute);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use("/api/v1/seed", seedRoute);

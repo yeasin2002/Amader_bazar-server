@@ -1,7 +1,13 @@
 import bcryptjs from "bcryptjs";
 import { Request, Response } from "express";
 import { User } from "../../model";
-import { createPrettyError, errorResponse, successResponse } from "../../utils";
+import {
+    createPrettyError,
+    errorResponse,
+    generateOTP,
+    sendMailWithNodemailer,
+    successResponse,
+} from "../../utils";
 
 export const resetPassword = async (req: Request, res: Response) => {
     try {
@@ -11,6 +17,17 @@ export const resetPassword = async (req: Request, res: Response) => {
 
         const verifyPassword = await bcryptjs.compare(user.password, password);
         if (!verifyPassword) createPrettyError(401, "Unothenticated");
+
+        const OTP = generateOTP();
+        sendMailWithNodemailer({
+            receivers: email,
+            subject: "Reset Password",
+            html: `
+            <h1>Reset Password</h1>
+            <p> Here is your OTP Code   </p> 
+            <p> ${OTP}   </p> 
+            `,
+        });
 
         const updatedUserPassword = User.findOneAndUpdate(
             { email },

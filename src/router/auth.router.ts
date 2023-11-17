@@ -2,6 +2,7 @@ import express from "express";
 import {
     confirmForgotPassword,
     confirmRegistration,
+    confirmResetPassword,
     forgotPassword,
     logIn,
     newJWT_Token,
@@ -16,6 +17,7 @@ authRoute.post("/register", registration);
 authRoute.post("/confirm-registration", confirmRegistration);
 authRoute.post("/login", logIn);
 authRoute.patch("/reset-password", resetPassword);
+authRoute.patch("/confirm-reset-password", confirmResetPassword);
 authRoute.get("/new-jwt-token", newJWT_Token);
 
 //! Uncompleted
