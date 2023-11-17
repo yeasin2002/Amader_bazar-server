@@ -1,6 +1,12 @@
 import express from "express";
-import { getImg } from "../controller";
+import { sendImg } from "../middlewares";
 
 export const extraRoute = express.Router();
 
-extraRoute.get("/img/:src", getImg);
+const userImg = sendImg("users");
+extraRoute.get("/user-img/:src", userImg);
+extraRoute.get("/product-img/:src", userImg);
+extraRoute.get("/category-img/:src", userImg);
+
+// http://localhost:1012/api/v1/extra/user-img/Yeasin2002   
+

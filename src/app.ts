@@ -5,8 +5,8 @@
  * Contact: yeasin2002.netlify.app
  * Date: 09/10/2023
  * Updated : 10/11/2023 
-                - Added TypeScript 
-                - Migration into MongoDB From PostgreSQL ( Sequelize to Mongoose )
+                ?- Added TypeScript 
+                ?- Migration into MongoDB From PostgreSQL ( Sequelize to Mongoose )
  */
 
 //? npm packages imports
@@ -41,7 +41,6 @@ import { swaggerOptions } from "./utils";
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 //?  npm packages in use
-
 const app = express();
 app.use(compression());
 app.use(cookieParser());
@@ -72,8 +71,6 @@ app.use(notFound);
 app.use(defaultErrorHandler);
 
 app.listen(PORT, async () => {
-    await connectDB();
-
     console.log(
         "⚡",
         kleur
@@ -81,4 +78,5 @@ app.listen(PORT, async () => {
             .white()
             .bold(`Server running on http://localhost:${PORT}`)
     );
+    await connectDB();
 });

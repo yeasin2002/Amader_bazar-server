@@ -10,6 +10,6 @@ export const connectDB = async (options: ConnectOptions = {}) => {
         }
     } catch (error) {
         console.log("MongoDB Connection Failed");
-        console.log("⚡ ", error.message);
+        console.log("💥", error.message);
     }
 };
