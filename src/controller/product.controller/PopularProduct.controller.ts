@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import kleur from "kleur";
 import { Product } from "../../model";
 import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
@@ -15,11 +16,11 @@ export const PopularProduct = async (req: Request, res: Response) => {
         });
     } catch (error: unknown) {
         if (error instanceof Error) {
-            console.table({
-                Name: error.name,
-                Cause: error.cause,
-                Message: error.message,
-            });
+            console.log(
+                `${kleur.bgRed().bold(error.name)}, Message: ${kleur.red(
+                    error.message
+                )}}`
+            );
             errorResponse({ res, message: error.message });
         }
         errorResponse({ res });
