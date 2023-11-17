@@ -26,4 +26,3 @@ productRoute.route("/feature/:id").put(makeFeatureProduct);
 
 //  Most popular
 productRoute.route("/popular").get(PopularProduct);
-
