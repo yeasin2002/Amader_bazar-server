@@ -30,7 +30,7 @@ const UserSchema = new Schema(
             minlength: [6, `password can not be less than 6 characters`],
             set: (value: any) => bcrypt.hashSync(value, bcrypt.genSaltSync(10)),
         },
-        image: {
+        avatar: {
             type: String,
             default: defaultImagePath,
         },

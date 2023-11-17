@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import fs from "fs";
 import path from "path";
+import { imgSubFolder } from "../types";
 import { errorResponse } from "../utils";
 
-export const sendImg = (folderPath: string) => {
+export const sendImg = (folderPath: imgSubFolder) => {
     console.log("SendImg Request accepted");
     return (req: Request, res: Response) => {
         try {

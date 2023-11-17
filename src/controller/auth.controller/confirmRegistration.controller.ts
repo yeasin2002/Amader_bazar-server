@@ -13,15 +13,15 @@ export const confirmRegistration = async (req: Request, res: Response) => {
         const pendingUserNeedToVerify = await PendingUser.findOne({ token });
         if (!pendingUserNeedToVerify) createPrettyError(`Invalid OTP`, 400);
 
-        const { name, email, phone, password, image, address } =
+        const { name, email, phone, password, address, avatar } =
             pendingUserNeedToVerify;
         const data = await User.create({
             name,
             email,
             phone,
             password,
-            image,
             address,
+            avatar,
         });
         if (!data) createPrettyError(`Something went wrong`, 500);
         const userToken = generateJWT({

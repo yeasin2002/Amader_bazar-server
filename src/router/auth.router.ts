@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import {
     confirmForgotPassword,
     confirmRegistration,
@@ -9,12 +10,13 @@ import {
     registration,
     resetPassword,
 } from "../controller/auth.controller";
-// import { regSchema, validationRunner } from "../reqSchema";
+import { CreateDiskStorage } from "../middlewares";
 export const authRoute = express.Router();
+export const upload = multer({ storage: CreateDiskStorage("pendingUser") });
 
 // log in
-authRoute.post("/register", registration);
-authRoute.post("/confirm-registration", confirmRegistration);
+authRoute.post("/register", upload.single("avatar"), registration);
+authRoute.post("/confirm-registration", confirmRegistration);       
 authRoute.post("/login", logIn);
 authRoute.patch("/reset-password", resetPassword);
 authRoute.patch("/confirm-reset-password", confirmResetPassword);

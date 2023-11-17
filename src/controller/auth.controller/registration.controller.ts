@@ -1,16 +1,17 @@
 import { Request, Response } from "express";
-import { random } from "../../helpers";
 import { PendingUser } from "../../model";
 import {
     errorResponse,
+    generateOTP,
     sendMailWithNodemailer,
     successResponse,
 } from "../../utils";
 
 export const registration = async (req: Request, res: Response) => {
     try {
-        const { email, phone, password, image, name, address } = req.body;
-        const id = random().slice(0, 6);
+        const { email, phone, password, name, address } = req.body;
+        const id = generateOTP(6);
+        console.log(req.file.filename);
 
         await sendMailWithNodemailer({
             receivers: email,
@@ -28,7 +29,7 @@ export const registration = async (req: Request, res: Response) => {
             email,
             phone,
             password,
-            image,
+            avatar: req.file.filename,
             address,
             token: id,
         });
@@ -46,3 +47,15 @@ export const registration = async (req: Request, res: Response) => {
         errorResponse({ res, message: error.message });
     }
 };
+
+
+/*
+{
+    "name": "Dev Yeasin ",
+    "email": "mdkawsarislam2002@gmail.com",
+    "phone": "01632227965",
+    "password": "12345678",
+    "address": "Dhaka, Bangladesh",
+    "isAdmin": true
+}   
+*/

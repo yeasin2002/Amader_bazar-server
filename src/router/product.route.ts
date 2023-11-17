@@ -1,5 +1,6 @@
 import express from "express";
-export const productRoute = express.Router();
+import multer from "multer";
+import { CreateDiskStorage } from "../middlewares";
 
 import {
     PopularProduct,
@@ -12,8 +13,14 @@ import {
     updateProduct,
 } from "../controller/product.controller";
 
+export const productRoute = express.Router();
+const upload = multer({ storage: CreateDiskStorage("products") });
+
 // Products
-productRoute.route("/").get(getAllProduct).post(createProduct);
+productRoute
+    .route("/")
+    .get(getAllProduct)
+    .post(upload.single("img"), createProduct);
 productRoute
     .route("/:id")
     .get(getSingleProduct)

@@ -7,6 +7,7 @@ import {
 } from "../controller/user.controller";
 export const userRouter = express.Router();
 
+
 userRouter.get("/", getAllUser);
 userRouter
     .route("/:id")
