@@ -19,6 +19,7 @@ export const logIn = async (req: Request, res: Response) => {
         successResponse({ res, data: token, message: "User logged in" });
     } catch (error: unknown) {
         if (error instanceof Error) {
+            console.log(error.name + "::" + error.message);
             errorResponse({ res, message: error.message });
         } else {
             errorResponse({ res, message: "Something went wrong" });

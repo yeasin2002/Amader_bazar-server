@@ -13,7 +13,7 @@ export const authRoute = express.Router();
 
 // log in
 authRoute.post("/register", registration);
-authRoute.post("/confirm-registration", confirmRegistration); //! Problem - Response is not working
+authRoute.post("/confirm-registration", confirmRegistration);
 authRoute.post("/login", logIn);
 authRoute.patch("/reset-password", resetPassword);
 authRoute.get("/new-jwt-token", newJWT_Token);
