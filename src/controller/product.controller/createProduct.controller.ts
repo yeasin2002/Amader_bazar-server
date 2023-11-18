@@ -21,6 +21,7 @@ export const createProduct = async (req: Request, res: Response) => {
             desc,
             size,
             color,
+            img: req.file.path,
         });
 
         successResponse({

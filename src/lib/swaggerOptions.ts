@@ -1,4 +1,4 @@
-import { PORT } from "../../app.config";
+import { PORT } from "../app.config";
 
 export const swaggerOptions = {
     swaggerDefinition: {

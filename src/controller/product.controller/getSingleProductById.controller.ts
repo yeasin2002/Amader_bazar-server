@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Product } from "../../model";
 import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
-export const getSingleProduct = async (req: Request, res: Response) => {
+export const getSingleProductById = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const data = await Product.findById(id);

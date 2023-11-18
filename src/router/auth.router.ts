@@ -16,7 +16,7 @@ export const upload = multer({ storage: CreateDiskStorage("pendingUser") });
 
 // log in
 authRoute.post("/register", upload.single("avatar"), registration);
-authRoute.post("/confirm-registration", confirmRegistration);       
+authRoute.post("/confirm-registration", confirmRegistration);
 authRoute.post("/login", logIn);
 authRoute.patch("/reset-password", resetPassword);
 authRoute.patch("/confirm-reset-password", confirmResetPassword);

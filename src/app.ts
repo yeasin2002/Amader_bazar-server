@@ -20,11 +20,12 @@ import kleur from "kleur";
 import swaggerUi from "swagger-ui-express";
 
 //?  Local Imports
-import { PORT } from "../app.config";
+import { PORT } from "./app.config";
 import { rootRoute } from "./controller";
+import { connectDB, limiter, swaggerOptions } from "./lib";
 import { defaultErrorHandler, notFound, setIp } from "./middlewares";
+import { reqLogger } from "./utils";
 
-import swaggerJsDoc from "swagger-jsdoc";
 import {
     authRoute,
     categoryRouter,
@@ -35,9 +36,8 @@ import {
     seedRoute,
     userRouter,
 } from "./router";
-import { connectDB, limiter, reqLogger } from "./utils";
 
-import { swaggerOptions } from "./utils";
+import swaggerJsDoc from "swagger-jsdoc";
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 //?  npm packages in use

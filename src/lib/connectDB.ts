@@ -1,5 +1,5 @@
 import mongoose, { ConnectOptions } from "mongoose";
-import { mongoUrl } from "./exportEnv";
+import { mongoUrl } from "../utils/exportEnv";
 
 export const connectDB = async (options: ConnectOptions = {}) => {
     try {

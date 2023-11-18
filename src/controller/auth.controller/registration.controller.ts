@@ -48,7 +48,6 @@ export const registration = async (req: Request, res: Response) => {
     }
 };
 
-
 /*
 {
     "name": "Dev Yeasin ",

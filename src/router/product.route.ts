@@ -8,7 +8,8 @@ import {
     deleteProduct,
     getAllFeatureProduct,
     getAllProduct,
-    getSingleProduct,
+    getProductByIdOrCategory,
+    getSingleProductById,
     makeFeatureProduct,
     updateProduct,
 } from "../controller/product.controller";
@@ -16,20 +17,22 @@ import {
 export const productRoute = express.Router();
 const upload = multer({ storage: CreateDiskStorage("products") });
 
-// Products
+//? Products
+productRoute.get("/find", getProductByIdOrCategory);
 productRoute
     .route("/")
     .get(getAllProduct)
     .post(upload.single("img"), createProduct);
+
 productRoute
     .route("/:id")
-    .get(getSingleProduct)
+    .get(getSingleProductById)
     .patch(updateProduct)
     .delete(deleteProduct);
 
-// Featured
+//? Featured
 productRoute.route("/feature").get(getAllFeatureProduct);
 productRoute.route("/feature/:id").put(makeFeatureProduct);
 
-//  Most popular
+//?  Most popular
 productRoute.route("/popular").get(PopularProduct);

@@ -41,7 +41,7 @@ const ProductSchema = new Schema(
             type: String,
             match: [
                 /^#(?:[0-9a-fA-F]{3}){1,2}$/,
-                "Invalid color format. Must be a hexadecimal.",
+                "Invalid color format. Must be a hex color.",
             ],
         },
         isFeature: {
