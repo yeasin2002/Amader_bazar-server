@@ -6,8 +6,8 @@ export const jwtSecretKey = process.env.JWT_SECRET_KEY || ``;
 export const smtpUsername = process.env.SMTP_USERNAME || ``;
 export const smtpPassword = process.env.SMTP_PASSWORD || ``;
 export const ClientUrl = process.env.CLIENT_URL || ``;
-export const defaultImagePath = process.env.DEFAULT_USER_IMAGES || ``;
+export const Port = process.env.PORT || 1012;
 
-export const pgConnection = process.env.POSTGRES_CONNECTION_STRING || ``;
-export const pgPassword = process.env.PG_PASSWORD || ``;
-export const pgPort = process.env.PG_PORT || 5432;
+export const defaultUseImage = process.env.DEFAULT_USER_IMAGES || ``;
+export const defaultProductImage = process.env.DEFAULT_USER_IMAGES || ``;
+export const defaultCategoryImage = process.env.DEFAULT_USER_IMAGES || ``;

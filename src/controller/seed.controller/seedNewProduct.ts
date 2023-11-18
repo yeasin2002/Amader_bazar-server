@@ -13,6 +13,6 @@ export const seedNewProduct = async (req: Request, res: Response) => {
         });
     } catch (error: any) {
         console.log(error.message);
-        errorResponse({ res });
+        errorResponse({ res, message: error.message });
     }
 };

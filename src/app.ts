@@ -16,15 +16,14 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
-import kleur from "kleur";
 import swaggerUi from "swagger-ui-express";
 
 //?  Local Imports
-import { PORT } from "./app.config";
+
 import { rootRoute } from "./controller";
 import { connectDB, limiter, swaggerOptions } from "./lib";
 import { defaultErrorHandler, notFound, setIp } from "./middlewares";
-import { reqLogger } from "./utils";
+import { Port, logSquare, reqLogger } from "./utils";
 
 import {
     authRoute,
@@ -70,13 +69,10 @@ app.use("/api/v1/extra", extraRoute);
 app.use(notFound);
 app.use(defaultErrorHandler);
 
-app.listen(PORT, async () => {
-    console.log(
+app.listen(Port, async () => {
+    logSquare.success(
         "⚡",
-        kleur
-            .bgGreen()
-            .white()
-            .bold(`Server running on http://localhost:${PORT}`)
+        `Server is running on port http://localhost:${Port}`
     );
     await connectDB();
 });

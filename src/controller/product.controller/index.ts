@@ -7,4 +7,3 @@ export * from "./getProductByIdOrCategory.controller";
 export * from "./getSingleProductById.controller";
 export * from "./makeFeatureProduct.controller";
 export * from "./updateProduct.controller";
-

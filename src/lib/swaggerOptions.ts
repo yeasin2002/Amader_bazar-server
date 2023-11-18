@@ -1,4 +1,4 @@
-import { PORT } from "../app.config";
+import { Port } from "../utils";
 
 export const swaggerOptions = {
     swaggerDefinition: {
@@ -10,7 +10,7 @@ export const swaggerOptions = {
             contact: {
                 name: "Md Kawsar Islam Yeasin",
             },
-            servers: [`http://localhost:${PORT}`],
+            servers: [`http://localhost:${Port}`],
         },
     },
     apis: ["../../dist/src/router/*.js"],

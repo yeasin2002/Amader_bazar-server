@@ -1,18 +1,20 @@
 import { model, Schema } from "mongoose";
+import { defaultProductImage } from "../utils";
 
 const ProductSchema = new Schema(
     {
-        category: {
-            type: String,
-            required: true,
-        },
         name: {
             type: String,
             require: true,
         },
+        category: {
+            type: String,
+            required: true,
+        },
+
         img: {
             type: String,
-            required: [true, "Image is required"],
+            default: defaultProductImage,
         },
 
         discount: {
@@ -24,13 +26,14 @@ const ProductSchema = new Schema(
         price: {
             type: Number,
             required: [true, "price is required"],
+            min: [0, "price can not be less than 0"],
         },
         desc: {
             type: String,
             required: [true, "Description is required"],
             trim: true,
-            minlength: [10, "ReviewsNotes can not be less than 10 characters"],
-            maxlength: [50, "ReviewsNotes can not be more than 50 characters"],
+            minlength: [10, "desc can not be less than 10 characters"],
+            maxlength: [100, "desc can not be more than 100 characters"],
         },
         size: {
             type: String,

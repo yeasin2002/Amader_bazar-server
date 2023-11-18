@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { model, Schema } from "mongoose";
-import { defaultImagePath } from "../utils";
+import { defaultUseImage } from "../utils";
 
 const PendingUserSchema = new Schema(
     {
@@ -32,7 +32,7 @@ const PendingUserSchema = new Schema(
         },
         avatar: {
             type: String,
-            default: defaultImagePath,
+            default: defaultUseImage,
         },
         address: {
             type: String,
