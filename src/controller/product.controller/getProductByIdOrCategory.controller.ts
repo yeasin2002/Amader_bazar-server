@@ -5,7 +5,14 @@ import { createPrettyError, errorResponse, successResponse } from "../../utils";
 export const getProductByIdOrCategory = async (req: Request, res: Response) => {
     try {
         const { title, category } = req.query;
-        const data = await Product.findById({
+        // if (!(title && category)) {
+        //     return createPrettyError(
+        //         400,
+        //         `please provide title or category to search`
+        //     );
+        // }
+
+        const data = await Product.find({
             $or: [{ title: title }, { category: category }],
         });
         if (!data) {

@@ -5,7 +5,7 @@ import { createPrettyError, errorResponse, successResponse } from "../../utils";
 export const getSingleProductById = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const data = await Product.findById(id);
+        const data = await Product.findById(id).select("-__v");
         if (!data) {
             return createPrettyError(
                 404,

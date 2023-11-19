@@ -7,11 +7,11 @@ export const createProduct = async (req: Request, res: Response) => {
         const { category, name, discount, price, desc, size, color } = req.body;
         const checkCategory = await Category.exists({ name: category });
         if (!checkCategory) {
-            return createPrettyError(
+            return await createPrettyError(
                 `could't  find any  category called ${category} please create one `
             );
         }
-
+        const filePath = (await req?.file?.path) || "";
         //! Need to add image upload
         const product = await Product.create({
             category,
@@ -21,10 +21,10 @@ export const createProduct = async (req: Request, res: Response) => {
             desc,
             size,
             color,
-            img: req.file.path,
+            img: filePath,
         });
 
-        successResponse({
+        return await successResponse({
             res,
             data: product,
             message: "successfully created product",

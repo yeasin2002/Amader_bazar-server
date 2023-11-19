@@ -9,13 +9,13 @@ class HttpError extends Error {
         this.name = `HttpError`;
     }
 }
-
+//! Bug - Not Throwing Error
 export const createPrettyError = (
     firstParams?: string | number,
     secondParams?: string | number
 ) => {
     if (typeof firstParams === "string" && typeof secondParams === "number") {
-        return new HttpError(secondParams, firstParams);
+        throw new HttpError(secondParams, firstParams);
     }
     if (typeof firstParams === "number" && typeof secondParams === "string") {
         return new HttpError(firstParams, secondParams);
