@@ -7,7 +7,7 @@ export const getCategoryByTitle = async (req: Request, res: Response) => {
         const newCategory = await Category.find({
             name: req.params.title,
         });
-        if (!newCategory) createPrettyError("Category Not Found", 404);
+        if (!newCategory) createPrettyError(404, "Category Not Found");
 
         successResponse({
             res,

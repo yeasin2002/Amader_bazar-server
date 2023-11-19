@@ -7,7 +7,7 @@ export const getAllFeatureProduct = async (req: Request, res: Response) => {
         console.log("req : Feature ");
         const data = await Product.find({ isFeatured: true });
         if (!data)
-            await createPrettyError("Unable to get featured product", 404);
+            await createPrettyError(404, "Unable to get featured product");
         await successResponse({
             res,
             data,

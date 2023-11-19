@@ -6,7 +6,7 @@ export const deleteUser = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const data = await User.findOneAndDelete({ id });
-        if (!data) createPrettyError("Unable to delete this user", 404);
+        if (!data) createPrettyError(404, "Unable to delete this user");
 
         successResponse({
             res,

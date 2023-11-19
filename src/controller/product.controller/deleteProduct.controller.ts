@@ -8,7 +8,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
         const data = await Product.findByIdAndDelete(req.params.id);
     
         if (!data) {
-            return createPrettyError("Unable to delete product");
+            return createPrettyError(404, "Unable to delete product");
         }
 
         successResponse({ res, data, message: "successfully deleted product" });

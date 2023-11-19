@@ -6,7 +6,7 @@ export const getAllProduct = async (req: Request, res: Response) => {
     try {
         
         const products = await Product.find({}); //! need to set limit and pagination
-        if (!products) createPrettyError("No Product Found", 404);
+        if (!products) createPrettyError(404, "No Product Found");
 
         successResponse({
             res,

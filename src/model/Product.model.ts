@@ -29,7 +29,7 @@ const ProductSchema = new Schema(
         },
         desc: {
             type: String,
-            required: [true, "Description is required"],
+            required: [true, "desc is required"],
             trim: true,
             minlength: [10, "desc can not be less than 10 characters"],
             maxlength: [100, "desc can not be more than 100 characters"],

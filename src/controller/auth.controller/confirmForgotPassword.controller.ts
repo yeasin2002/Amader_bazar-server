@@ -7,7 +7,7 @@ export const confirmForgotPassword = async (req: Request, res: Response) => {
     try {
         const { email } = req.body;
         const findUser = await User.findOne({ email });
-        if (!findUser) createPrettyError("User not found", 404);
+        if (!findUser) createPrettyError(404, "User not found");
 
         successResponse({
             res,

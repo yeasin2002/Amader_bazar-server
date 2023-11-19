@@ -7,7 +7,7 @@ import { errorResponse, successResponse } from "../../utils/responseHandler";
 export const seedNewUser = async (req: Request, res: Response) => {
     try {
         const newUsers = await User.insertMany(demoUser);
-        if (!newUsers) createPrettyError("Failed to create Demo Data");
+        if (!newUsers) createPrettyError(404, "Failed to create Demo Data");
         return successResponse({
             res,
             message: "Created Demo Data",

@@ -10,11 +10,11 @@ export const isTokenVerify = (
     try {
         const token = req.headers.authorization?.trim().split(" ").at(-1);
         if (!token) {
-            return createPrettyError("Token not found", 401);
+            return createPrettyError(401, "Token not found");
         }
         const decoded = jwt.verify(token, jwtSecretKey!);
         if (!decoded) {
-            return createPrettyError("invalid token", 401);
+            return createPrettyError(401, "invalid token");
         }
 
         req.body.userInfo = decoded;

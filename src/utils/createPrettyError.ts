@@ -11,16 +11,8 @@ class HttpError extends Error {
 }
 //! Bug - Not Throwing Error
 export const createPrettyError = (
-    firstParams?: string | number,
-    secondParams?: string | number
+    statusCode = 500,
+    message = "Internal Server Error"
 ) => {
-    if (typeof firstParams === "string" && typeof secondParams === "number") {
-        throw new HttpError(secondParams, firstParams);
-    }
-    if (typeof firstParams === "number" && typeof secondParams === "string") {
-        return new HttpError(firstParams, secondParams);
-    } else {
-        console.log("Error : createPrettyError");
-        return new HttpError(500, "Internal Server Error");
-    }
+  throw new HttpError(statusCode, message);
 };

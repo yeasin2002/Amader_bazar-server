@@ -74,6 +74,6 @@ export async function sendMailWithNodemailer(args: NodemailerArg) {
         console.log("Message sent: %s", info.messageId);
     } catch (error) {
         console.error("Error occurred while sending email", error);
-        createPrettyError("Error occurred while sending email");
+        createPrettyError(500, "Error occurred while sending email");
     }
 }

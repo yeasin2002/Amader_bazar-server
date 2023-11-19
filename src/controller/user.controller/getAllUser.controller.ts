@@ -6,7 +6,7 @@ export const getAllUser = async (req: Request, res: Response) => {
     try {
         const { limit = 100, page = 0 } = req.body;
         const data = await User.find({}).limit(limit).skip(page);
-        if (!data) createPrettyError("could't find any user");
+        if (!data) createPrettyError(404, "could't find any user");
         successResponse({ res, data, message: "Unable to get any user" });
     } catch (error: any) {
         console.log(error.message);

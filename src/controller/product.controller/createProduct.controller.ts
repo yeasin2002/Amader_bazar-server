@@ -8,6 +8,7 @@ export const createProduct = async (req: Request, res: Response) => {
         const checkCategory = await Category.exists({ name: category });
         if (!checkCategory) {
             return await createPrettyError(
+                404,
                 `could't  find any  category called ${category} please create one `
             );
         }

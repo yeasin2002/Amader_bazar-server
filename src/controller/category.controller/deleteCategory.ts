@@ -6,7 +6,7 @@ export const deleteCategory = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const deletedCategory = await Category.findByIdAndDelete(id);
-        if (!deletedCategory) createPrettyError("Category Not Found", 404);
+        if (!deletedCategory) createPrettyError(404, "Category Not Found");
 
         successResponse({
             res,

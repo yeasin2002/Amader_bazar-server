@@ -10,7 +10,7 @@ export const makeFeatureProduct = async (req: Request, res: Response) => {
             { $set: { isFeatured: true } },
             { new: true }
         );
-        if (!data) createPrettyError("Unable to get featured product", 404);
+        if (!data) createPrettyError(404, "Unable to get featured product");
         successResponse({
             res,
             data,

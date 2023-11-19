@@ -7,7 +7,7 @@ export const createCategory = async (req: Request, res: Response) => {
     try {
         const { name, icon, subtitle } = req.body;
         const newCategory = await Category.create({ name, icon, subtitle });
-        if (!newCategory) createPrettyError("Category Not Found", 404);
+        if (!newCategory) createPrettyError(404, "Category Not Found");
 
         successResponse({
             res,

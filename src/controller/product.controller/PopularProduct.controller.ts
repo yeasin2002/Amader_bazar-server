@@ -7,7 +7,7 @@ export const PopularProduct = async (req: Request, res: Response) => {
     try {
         const data = await Product.find({}).sort({ totalSold: -1 }).limit(20);
         if (!data) {
-            return createPrettyError("Unable to get popular products", 404);
+            return createPrettyError(404, "Unable to get popular products", );
         }
         successResponse({
             res,
