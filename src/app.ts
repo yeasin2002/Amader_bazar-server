@@ -68,7 +68,7 @@ app.use("/api/v1/extra", extraRoute);
 //? 404 not found And default error Handling
 app.use(notFound);
 app.use(defaultErrorHandler);
-``;
+
 app.listen(Port, async () => {
     logSquare.success(
         "⚡",

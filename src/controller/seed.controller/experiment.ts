@@ -7,7 +7,7 @@ export const experiment = async (req: Request, res: Response) => {
         const id = randomUUID();
         const count = 0;
         if (count === 0) createPrettyError(401, "This is a test error");
-        
+
         return successResponse({ res, data: id });
     } catch (error: any) {
         console.log(error?.message);

@@ -1,15 +1,13 @@
 import { ErrorRequestHandler, Request, Response } from "express";
-import { errorResponse, successResponse } from "../utils";
+import { errorResponse } from "../utils";
 
-export const defaultErrorHandler = async (
+export const defaultErrorHandler = (
     err: ErrorRequestHandler,
     req: Request,
     res: Response
 ) => {
-    try {
-        successResponse({ res, message: "Something went wrong" });
-    } catch (error: any) {
-        console.log(error.message);
-        errorResponse({ res });
+    console.log(err);
+    if (err instanceof Error) {
+        return errorResponse({ res, message: err?.message });
     }
 };

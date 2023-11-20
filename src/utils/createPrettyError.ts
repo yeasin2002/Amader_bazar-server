@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 class HttpError extends Error {
     statusCode: number;
     message: string;
@@ -14,5 +15,6 @@ export const createPrettyError = (
     statusCode = 500,
     message = "Internal Server Error"
 ) => {
-  throw new HttpError(statusCode, message);
+    // new HttpError(statusCode, message);
+    throw new Error(message);
 };

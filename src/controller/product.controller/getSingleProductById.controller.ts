@@ -6,18 +6,17 @@ export const getSingleProductById = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const data = await Product.findById(id).select("-__v");
+        console.log("Before next function");
         if (!data) {
-            return createPrettyError(
-                404,
-                `could't  find any  product with id :${id}`
-            );
+            console.log("Next function called");
+            return createPrettyError(404, "Product not found");
         }
+        console.log("After next function");
+
+        console.log("data", data);
         successResponse({ res, data, message: "successfully got  product" });
-    } catch (error: unknown) {
-        if (error instanceof Error) {
-            console.log(error.message);
-            errorResponse({ res, message: error.message });
-        }
-        errorResponse({ res });
+    } catch (error) {
+        console.log("error", error?.message);
+        errorResponse({ res, message: error.message });
     }
 };

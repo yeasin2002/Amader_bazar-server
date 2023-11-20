@@ -12,4 +12,4 @@ seedRoute.route("/user").post(seedNewUser).delete(removeAllUser);
 seedRoute.route("/category").post(seedCategory);
 seedRoute.route("/product").post(seedNewProduct);
 
-seedRoute.get("/test", experiment); 
+seedRoute.get("/test", experiment);

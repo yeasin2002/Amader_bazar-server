@@ -4,9 +4,8 @@ import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
 export const deleteProduct = async (req: Request, res: Response) => {
     try {
-   
         const data = await Product.findByIdAndDelete(req.params.id);
-    
+
         if (!data) {
             return createPrettyError(404, "Unable to delete product");
         }

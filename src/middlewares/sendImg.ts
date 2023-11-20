@@ -5,7 +5,6 @@ import { imgSubFolder } from "../types";
 import { errorResponse } from "../utils";
 
 export const sendImg = (folderPath: imgSubFolder) => {
-
     return (req: Request, res: Response) => {
         try {
             const { src } = req.params;
