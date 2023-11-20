@@ -6,6 +6,7 @@ export const createProduct = async (req: Request, res: Response) => {
     try {
         const { category, name, discount, price, desc, size, color } = req.body;
         const checkCategory = await Category.exists({ name: category });
+        console.log("checkCategory", checkCategory);
 
         if (!checkCategory) {
             return createPrettyError(
@@ -13,7 +14,7 @@ export const createProduct = async (req: Request, res: Response) => {
                 `could't  find any  category called ${category} please create one `
             );
         }
-        console.log(req.files);
+        console.log(req.files); //! Image upload failed
         const filePath = req?.file || "";
         //! Need to add image upload
 
@@ -28,16 +29,12 @@ export const createProduct = async (req: Request, res: Response) => {
             img: filePath,
         });
 
-        return await successResponse({
+        return successResponse({
             res,
             data: product,
             message: "successfully created product",
         });
-    } catch (error: unknown) {
-        if (error instanceof Error) {
-            console.log(error.message);
-            errorResponse({ res, message: error.message });
-        }
+    } catch (error: any) {
         errorResponse({ res });
     }
 };
