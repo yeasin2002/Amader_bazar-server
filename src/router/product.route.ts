@@ -22,7 +22,7 @@ productRoute.get("/search", getProductByIdOrCategory); //* Need to add RegEx to 
 productRoute
     .route("/all")
     .get(getAllProduct)
-    .post(upload.single("img"), createProduct); // ! Bug Detected - category can't be add twice
+    .post(upload.single("img"), createProduct); 
 
 productRoute
     .route("/all/:id")

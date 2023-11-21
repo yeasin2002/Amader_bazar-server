@@ -4,38 +4,35 @@ import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
 export const createProduct = async (req: Request, res: Response) => {
     try {
-        const { category, name, discount, price, desc, size, color } = req.body;
-        // const checkCategory = await Category.exists({ category });
-        const checkCategory = true;
-        console.log("checkCategory", checkCategory);
+        const { name, category, discount, price, desc, size, color } = req.body;
+        const checkCategory = await Category.findOne({ name: category });
 
         if (!checkCategory) {
             return createPrettyError(
                 404,
-                `could't  find any  category called ${category} please create one `
+                `could't  find any  category called "${category.toUpperCase()} " please create one `
             );
         }
-        console.log(req.file.filename);
 
-        const filePath = req?.file || "";
-
-        // const product = await Product.create({
-        //     category,
-        //     name,
-        //     discount,
-        //     price,
-        //     desc,
-        //     size,
-        //     color,
-        //     img: filePath,
-        // });
+        const filePath = req?.file?.filename || "default.jpg";
+        const data = await Product.create({
+            name,
+            category,
+            discount,
+            price,
+            desc,
+            size,
+            color,
+            img: filePath,
+        });
 
         return successResponse({
             res,
-            data: "product",
+            data,
             message: "successfully created product",
         });
     } catch (error: any) {
-        errorResponse({ res });
+        errorResponse({ res, message: error?.message });
     }
 };
+
