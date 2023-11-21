@@ -1,36 +1,47 @@
 import { Request, Response } from "express";
 import { Product } from "../../model";
-import { createPrettyError, errorResponse, successResponse } from "../../utils";
+import { errorResponse, successResponse } from "../../utils";
 
 export const getProductByIdOrCategory = async (req: Request, res: Response) => {
     try {
-        const { title, category } = req.query;
-        // if (!(title && category)) {
-        //     return createPrettyError(
-        //         400,
-        //         `please provide title or category to search`
-        //     );
-        // }
+        const { name, category } = req.query;
+        const query: any = {};
 
-        const data = await Product.find({
-            $or: [{ title: title }, { category: category }],
-        });
-        if (!data) {
-            return createPrettyError(
-                404,
-                `could't  find any  product with this name or category`
-            );
+        if (name) {
+            query.name = name as string;
         }
-        successResponse({
+        if (category) {
+            query.category = category as string;
+        }
+
+        if (name && category) {
+            query.name = name as string;
+            query.category = category as string;
+        }
+
+        const data = await Product.find(query);
+        if (!data) {
+            return errorResponse({
+                res,
+                statusCode: 404,
+                message: `Unable to get Product`,
+            });
+        }
+        if (data?.length === 0) {
+            return errorResponse({
+                res,
+                statusCode: 404,
+                message: `could't  find any  product with this name or category`,
+            });
+        }
+
+        return successResponse({
             res,
             data,
             message: "successfully got  product",
         });
-    } catch (error: unknown) {
-        if (error instanceof Error) {
-            console.log(error.message);
-            errorResponse({ res, message: error.message });
-        }
+    } catch (error: any) {
+        console.log(error?.message);
         errorResponse({ res });
     }
 };

@@ -4,4 +4,5 @@ export type imgSubFolder =
     | "categories"
     | "orders"
     | "extras"
-    | "pendingUser";
+    | "pendingUser"
+    | "experiment";

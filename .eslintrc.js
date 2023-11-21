@@ -19,6 +19,7 @@ module.exports = {
     plugins: ["@typescript-eslint", "node", "security", "prettier"],
     rules: {
         "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-unused-vars": 0,
         "node/no-unsupported-features/es-syntax": "off",
         "security/detect-object-injection": "off",
         "prettier/prettier": 0,

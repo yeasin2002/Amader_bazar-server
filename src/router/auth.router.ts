@@ -12,7 +12,7 @@ import {
 } from "../controller/auth.controller";
 import { CreateDiskStorage } from "../middlewares";
 export const authRoute = express.Router();
-export const upload = multer({ storage: CreateDiskStorage("pendingUser") });
+const upload = multer({ storage: CreateDiskStorage("pendingUser") });
 
 // log in
 authRoute.post("/register", upload.single("avatar"), registration);

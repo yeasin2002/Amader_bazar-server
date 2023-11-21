@@ -17,12 +17,8 @@ import {
 export const productRoute = express.Router();
 const upload = multer({ storage: CreateDiskStorage("products") });
 
-productRoute.get("/test", (req, res) => {
-    res.send("Hello World");
-});
-
 //? Products
-productRoute.get("/find", getProductByIdOrCategory); //! Bug Detected - Image are not coming
+productRoute.get("/search", getProductByIdOrCategory); //* Need to add RegEx to Search
 productRoute
     .route("/all")
     .get(getAllProduct)
