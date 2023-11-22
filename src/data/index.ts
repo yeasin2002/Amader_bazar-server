@@ -1,2 +1,2 @@
-export * from "./demo/demoProduct";
-export * from "./demo/user";
+export * from "./Product";
+export * from "./categories";

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { demoProduct } from "../../data/demo/demoProduct";
+import { DemoProduct } from "../../data";
 import { Product } from "../../model";
 import { errorResponse, successResponse } from "../../utils/responseHandler";
 
 export const seedNewProduct = async (req: Request, res: Response) => {
     try {
-        const newUsers = await Product.insertMany(demoProduct);
+        const newUsers = await Product.insertMany(DemoProduct);
         successResponse({
             res,
             message: "Created Demo Data",
