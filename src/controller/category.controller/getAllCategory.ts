@@ -8,7 +8,9 @@ export const getAllCategory = async (req: Request, res: Response) => {
         const { limit } = req.body;
         const newCategory = await Category.find({})
             .limit(limit)
+
             .sort({ createdAt: -1 });
+
         if (!newCategory) createPrettyError(404, "Category Not Found");
 
         successResponse({

@@ -10,11 +10,22 @@ export const logIn = async (req: Request, res: Response) => {
         const theUser = await User.findOne({
             $or: [{ email }, { phone: phone }],
         });
-        if (!theUser) createPrettyError(404, "User not found");
+        if (!theUser) {
+            return errorResponse({
+                res,
+                statusCode: 404,
+                message: "User not found",
+            });
+        }
 
         const checkPass = await bcryptjs.compare(password, theUser.password);
         if (!checkPass) createPrettyError(404, "Wrong password");
-        const token = userJWT();
+        const token = userJWT({
+            id: theUser._id,
+            name: theUser.name,
+            email: theUser.email,
+            number: theUser.phone,
+        });
 
         successResponse({ res, data: token, message: "User logged in" });
     } catch (error: unknown) {

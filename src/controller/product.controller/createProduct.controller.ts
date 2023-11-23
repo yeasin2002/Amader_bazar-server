@@ -35,4 +35,3 @@ export const createProduct = async (req: Request, res: Response) => {
         errorResponse({ res, message: error?.message });
     }
 };
-

@@ -49,15 +49,7 @@ const UserSchema = new Schema(
             type: Boolean,
             default: false,
         },
-        // ip: {
-        //     type: [
-        //         {
-        //             count: { type: Number, default: 0 },
-        //             title: { type: String, default: "" },
-        //         },
-        //     ],
-        //     require: true,
-        // },
+
         Products: {
             type: [
                 {

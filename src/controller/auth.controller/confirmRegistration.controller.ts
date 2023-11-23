@@ -10,7 +10,10 @@ import {
 export const confirmRegistration = async (req: Request, res: Response) => {
     try {
         const { token } = req.body;
-        const pendingUserNeedToVerify = await PendingUser.findOne({ token });
+        const userInfo = req.body.userInfo;
+        const pendingUserNeedToVerify = await PendingUser.findOne({
+            name: userInfo.name,
+        });
         if (!pendingUserNeedToVerify) createPrettyError(400, `Invalid OTP`);
 
         const { name, email, phone, password, address, avatar } =

@@ -13,6 +13,7 @@ const successResponse = ({
 }) => {
     return res.status(statusCode || 200).json({
         success: true,
+        statusCode: statusCode || 200,
         message: message || `Success`,
         data: data || null,
     });
@@ -30,6 +31,7 @@ const errorResponse = ({
     return res.status(statusCode || 500).json({
         success: false,
         message: message || `Internal Server Error`,
+        statusCode: statusCode || 500,
     });
 };
 
