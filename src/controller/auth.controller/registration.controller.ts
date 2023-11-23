@@ -23,7 +23,7 @@ export const registration = async (req: Request, res: Response) => {
             <p>Here Is your OTP</p>
             <h1 style="background-color: rgb(225, 224, 224); padding: 10px; color: rgb(29, 29, 29);" >${OTP}</h1>`,
         });
-        console.log(req?.file?.filename);
+        console.log(req?.file);
         //! save image to uploads folder
         const ConfirmedUser = await PendingUser.create({
             name,
@@ -44,10 +44,7 @@ export const registration = async (req: Request, res: Response) => {
         await successResponse({
             res,
             message: `Registration successful, please check your email for verification link`,
-            data: {
-                OTP: OTP,
-                token,
-            },
+            data: token,
         });
     } catch (error: any) {
         console.log(error.message);

@@ -16,7 +16,7 @@ const ProductCategorySchema = new Schema({
     subtitle: {
         type: String,
         trim: true,
-        maxlength: [50, "name can not be more than 50 characters"],
+        maxlength: [100, "name can not be more than 100 characters"],
     },
     products: {
         type: Schema.Types.ObjectId,

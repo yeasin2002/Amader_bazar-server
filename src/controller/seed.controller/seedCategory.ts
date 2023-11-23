@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { demoCategory } from "../../data/demo/demoCategory";
+import { DemoCategories } from "../../data/categories";
 import { Category } from "../../model";
 import { errorResponse, successResponse } from "../../utils/responseHandler";
 
 export const seedCategory = async (req: Request, res: Response) => {
     try {
-        const newUsers = await Category.insertMany(demoCategory);
+        const newUsers = await Category.insertMany(DemoCategories);
         successResponse({
             res,
             message: "Created Demo Category",
