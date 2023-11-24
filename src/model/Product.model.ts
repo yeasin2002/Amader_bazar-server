@@ -29,15 +29,26 @@ const ProductSchema = new Schema(
         },
         desc: {
             type: String,
-            required: [true, "desc is required"],
             trim: true,
-            minlength: [10, "desc can not be less than 10 characters"],
+            // minlength: [10, "desc can not be less than 10 characters"],
             maxlength: [100, "desc can not be more than 100 characters"],
+            default: "",
         },
         size: {
             type: String,
-            required: [true, "size is required"],
-            enum: ["S", "M", "L", "XL", "XXL", "2XL", "3XL", "4XL", "5XL"],
+            default: "NA",
+            enum: [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "NA",
+            ],
         },
         color: {
             type: String,
@@ -45,6 +56,7 @@ const ProductSchema = new Schema(
                 /^#(?:[0-9a-fA-F]{3}){1,2}$/,
                 "Invalid color format. Must be a hex color.",
             ],
+            default: "",
         },
         isFeature: {
             type: Boolean,

@@ -5,7 +5,9 @@ import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
 export const createCategory = async (req: Request, res: Response) => {
     try {
-        const { name, icon, subtitle } = req.body;
+        const { name, subtitle } = req.body;
+        const icon = req?.file?.filename || "";
+
         const newCategory = await Category.create({ name, icon, subtitle });
         if (!newCategory) createPrettyError(404, "Category Not Found");
 

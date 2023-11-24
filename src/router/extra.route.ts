@@ -2,6 +2,8 @@ import express from "express";
 import { sendImg } from "../middlewares";
 export const extraRoute = express.Router();
 
+// extraRoute.post("/test", (req, res) =
+
 //  Image Sending Route
 extraRoute.get("/user-img/:src", sendImg("users"));
 extraRoute.get("/product-img/:src", sendImg("products"));

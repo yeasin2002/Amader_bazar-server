@@ -1,28 +1,25 @@
 import { Request, Response } from "express";
 import { Category, Product } from "../../model";
-import { createPrettyError, errorResponse, successResponse } from "../../utils";
+import { errorResponse, successResponse } from "../../utils";
 
 export const createProduct = async (req: Request, res: Response) => {
     try {
-        const { name, category, discount, price, desc, size, color } = req.body;
-        const checkCategory = await Category.findOne({ name: category });
+        // const { name, category, discount, price, desc, size, color } = req.body;
+        const checkCategory = await Category.findOne({
+            name: req.body.category,
+        });
 
         if (!checkCategory) {
-            return createPrettyError(
-                404,
-                `could't  find any  category called "${category.toUpperCase()} " please create one `
-            );
+            return errorResponse({
+                res,
+                message: `could't  find any  category called "${req.body.category.toUpperCase()} " please create one `,
+                statusCode: 404,
+            });
         }
 
-        const filePath = req?.file?.filename || "default.jpg";
+        const filePath = req?.file?.filename || ``;
         const data = await Product.create({
-            name,
-            category,
-            discount,
-            price,
-            desc,
-            size,
-            color,
+            ...req.body,
             img: filePath,
         });
 

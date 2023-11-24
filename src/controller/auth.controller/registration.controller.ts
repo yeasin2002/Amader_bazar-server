@@ -13,6 +13,7 @@ export const registration = async (req: Request, res: Response) => {
         const { email, phone, password, name, address } = req.body;
         const OTP = generateOTP(6);
         console.log(OTP);
+        console.table(req.body);
 
         await sendMailWithNodemailer({
             receivers: email,

@@ -16,3 +16,13 @@ export const seedCategory = async (req: Request, res: Response) => {
         errorResponse({ res, message: error?.message });
     }
 };
+
+export const DeleteAllCategories = async (req: Request, res: Response) => {
+    try {
+        await Category.deleteMany({});
+        successResponse({ res, message: "Deleted All Categories" });
+    } catch (error: any) {
+        console.log(error.message);
+        errorResponse({ res });
+    }
+};
