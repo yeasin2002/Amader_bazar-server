@@ -8,9 +8,9 @@ import {
     deleteProduct,
     getAllFeatureProduct,
     getAllProduct,
-    getProductByIdOrCategory,
     getSingleProductById,
     makeFeatureProduct,
+    searchProduct,
     updateProduct,
 } from "../controller/product.controller";
 
@@ -18,7 +18,7 @@ export const productRoute = express.Router();
 const upload = multer({ storage: CreateDiskStorage("products") });
 
 //? Products
-productRoute.get("/search", getProductByIdOrCategory); //* Need to add RegEx to Search
+productRoute.get("/search", searchProduct); //* Need to add RegEx to Search
 productRoute
     .route("/all")
     .get(getAllProduct)
