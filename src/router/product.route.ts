@@ -1,9 +1,10 @@
 import express from "express";
 import multer from "multer";
-import { CreateDiskStorage } from "../middlewares";
+import { CreateDiskStorage, isTokenVerify } from "../middlewares";
 
 import {
     PopularProduct,
+    ProvideRating,
     createProduct,
     deleteProduct,
     getAllFeatureProduct,
@@ -36,6 +37,9 @@ productRoute.route("/feature/:id").put(makeFeatureProduct);
 
 //?  Most popular
 productRoute.route("/popular").get(PopularProduct);
+
+// ? Rating
+productRoute.route("/rating").get(isTokenVerify, ProvideRating);
 /*
 -  All Product 
 

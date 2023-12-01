@@ -71,14 +71,19 @@ const ProductSchema = new Schema(
             default: 0,
         },
 
-        ratedProduct: {
-            type: Schema.Types.ObjectId,
-            ref: "Product",
-        },
-        ratedUser: {
-            type: Schema.Types.ObjectId,
-            ref: "User",
-        },
+        rating: [
+            {
+                userId: {
+                    type: Schema.Types.ObjectId,
+                    ref: "User",
+                },
+                rating: {
+                    type: Number,
+                    min: 1,
+                    max: 5,
+                },
+            },
+        ],
     },
     {
         timestamps: true,

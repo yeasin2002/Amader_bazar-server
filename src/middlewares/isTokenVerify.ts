@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { UserInfo } from "../lib/UserJWT";
 import { createPrettyError, errorResponse, jwtSecretKey } from "../utils";
 
 export const isTokenVerify = (
@@ -17,7 +18,7 @@ export const isTokenVerify = (
             return createPrettyError(401, "invalid token");
         }
 
-        req.body.userInfo = decoded;
+        req.body.userInfo = decoded as UserInfo;
         next();
     } catch (error: any) {
         console.log(error.message);
