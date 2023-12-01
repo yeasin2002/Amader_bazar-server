@@ -4,8 +4,8 @@ import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
 export const getAllFeatureProduct = async (req: Request, res: Response) => {
     try {
-        console.log("req : Feature ");
-        const data = await Product.find({ isFeatured: true });
+
+        const data = await Product.find({ isFeature: true });
         if (!data)
             await createPrettyError(404, "Unable to get featured product");
         await successResponse({

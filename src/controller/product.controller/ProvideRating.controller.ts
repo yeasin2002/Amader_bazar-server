@@ -1,30 +1,40 @@
 import { Request, Response } from "express";
+import { ProductReview } from "../../model";
 import { errorResponse, successResponse } from "../../utils";
-import { Product } from "../../model";
 
 export const ProvideRating = async (req: Request, res: Response) => {
-    //  rate a product
     try {
-        const { productId, rating } = req.body;
+        const { productId, rating, desc } = req.body;
         const { id } = req.body.userInfo;
-        const product = await Product.findById(productId);
-        if (!product) {
-            return errorResponse({
-                res,
-                statusCode: 404,
-                message: "Product not found",
-            });
-        }
-        const user = product.rating.find((r) => r.userId === id);
-        if (user) {
+        const alreadyRated = await ProductReview.findOne({
+            Product: productId,
+            reviewers: id,
+        });
+        if (alreadyRated)
             return errorResponse({
                 res,
                 statusCode: 400,
                 message: "You already rated this product",
             });
-        }
-        product.rating.push({ userId: id, rating });
-        successResponse({ res });
+
+        const rateProduct = await ProductReview.create({
+            Product: productId,
+            reviewers: id,
+            rating,
+            desc,
+        });
+        if (!rateProduct)
+            return errorResponse({
+                res,
+                statusCode: 400,
+                message: "Rating failed",
+            });
+
+        return successResponse({
+            res,
+            data: rateProduct,
+            message: "Rating Success",
+        });
     } catch (error: any) {
         console.log(error.message);
         errorResponse({ res });

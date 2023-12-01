@@ -7,8 +7,10 @@ import {
     ProvideRating,
     createProduct,
     deleteProduct,
+    discountedProduct,
     getAllFeatureProduct,
     getAllProduct,
+    getProductRatingsController,
     getSingleProductById,
     makeFeatureProduct,
     searchProduct,
@@ -19,7 +21,7 @@ export const productRoute = express.Router();
 const upload = multer({ storage: CreateDiskStorage("products") });
 
 //? Products
-productRoute.get("/search", searchProduct); //* Need to add RegEx to Search
+productRoute.get("/search", searchProduct); //! Bug: Not working as expected
 productRoute
     .route("/all")
     .get(getAllProduct)
@@ -31,15 +33,19 @@ productRoute
     .patch(updateProduct)
     .delete(deleteProduct);
 
-//? Featured
+// ? Rating
+productRoute
+    .route("/rating")
+    .post(isTokenVerify, ProvideRating)
+    .get(getProductRatingsController);
+
+//? Featured and  Most popular
 productRoute.route("/feature").get(getAllFeatureProduct);
 productRoute.route("/feature/:id").put(makeFeatureProduct);
-
-//?  Most popular
 productRoute.route("/popular").get(PopularProduct);
+productRoute.route("/discounted").get(discountedProduct);
 
-// ? Rating
-productRoute.route("/rating").get(isTokenVerify, ProvideRating);
+
 /*
 -  All Product 
 
