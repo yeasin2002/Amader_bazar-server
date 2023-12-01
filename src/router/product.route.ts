@@ -30,9 +30,17 @@ productRoute
     .patch(updateProduct)
     .delete(deleteProduct);
 
+
 //? Featured
 productRoute.route("/feature").get(getAllFeatureProduct);
 productRoute.route("/feature/:id").put(makeFeatureProduct);
 
 //?  Most popular
 productRoute.route("/popular").get(PopularProduct);
+/*
+-  All Product 
+
+- Featured Product
+- Most Popular/Sold Product 
+- discounted Product
+*/

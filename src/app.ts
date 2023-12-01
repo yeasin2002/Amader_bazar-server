@@ -40,7 +40,7 @@ import swaggerJsDoc from "swagger-jsdoc";
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 //?  npm packages in use
-const app = express();
+export const app = express();
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -68,7 +68,7 @@ app.use("/api/v1/extra", extraRoute);
 //? 404 not found And default error Handling
 app.use(notFound);
 app.use(defaultErrorHandler);
-    
+
 app.listen(Port, async () => {
     logSquare.success(
         "⚡",

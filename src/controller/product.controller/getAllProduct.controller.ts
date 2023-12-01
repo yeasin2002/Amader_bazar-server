@@ -4,7 +4,8 @@ import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
 export const getAllProduct = async (req: Request, res: Response) => {
     try {
-        const products = await Product.find({}).limit(20); //! need to set limit and pagination
+        const { limit = 20 } = req.body;
+        const products = await Product.find({}).limit(limit); 
         if (!products) createPrettyError(404, "No Product Found");
 
         successResponse({
