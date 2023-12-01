@@ -30,7 +30,6 @@ productRoute
     .patch(updateProduct)
     .delete(deleteProduct);
 
-
 //? Featured
 productRoute.route("/feature").get(getAllFeatureProduct);
 productRoute.route("/feature/:id").put(makeFeatureProduct);

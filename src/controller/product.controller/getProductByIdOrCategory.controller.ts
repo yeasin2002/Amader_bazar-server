@@ -60,4 +60,3 @@ export const searchProduct = async (req: Request, res: Response) => {
         errorResponse({ res });
     }
 };
-

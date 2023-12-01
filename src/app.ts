@@ -46,7 +46,12 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
-app.use(cors({ credentials: true }));
+app.use(
+    cors({
+        origin: ["http://localhost:5173", "https://amaderbazar.netlify.app"],
+        credentials: true,
+    })
+);
 
 // ? custom global middlewares
 app.use(reqLogger);
