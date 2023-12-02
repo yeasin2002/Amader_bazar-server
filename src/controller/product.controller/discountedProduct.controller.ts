@@ -27,4 +27,4 @@ export const discountedProduct = async (req: Request, res: Response) => {
 };
 
 /*
-*/
+ */

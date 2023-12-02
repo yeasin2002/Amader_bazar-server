@@ -11,6 +11,7 @@ import {
     getAllFeatureProduct,
     getAllProduct,
     getProductRatingsController,
+    getRelatedProduct,
     getSingleProductById,
     makeFeatureProduct,
     searchProduct,
@@ -41,8 +42,9 @@ productRoute.get("/rating/:id", getProductRatingsController);
 
 //? Features Products
 productRoute.route("/feature/:id").put(makeFeatureProduct);
-productRoute.route("/popular").get(PopularProduct);
-productRoute.route("/discounted").get(discountedProduct);
+productRoute.get("/popular", PopularProduct);
+productRoute.get("/discounted", discountedProduct);
+productRoute.post("/related-product", getRelatedProduct);
 
 /*
 -  All Product 
