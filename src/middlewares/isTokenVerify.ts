@@ -10,7 +10,7 @@ export const isTokenVerify = (
 ) => {
     try {
         const token = req.headers.authorization?.trim().split(" ").at(-1);
-        console.log("🚀 ~ file: isTokenVerify.ts:13 ~ token:", token);
+
         if (!token) {
             return createPrettyError(401, "Token not found");
         }

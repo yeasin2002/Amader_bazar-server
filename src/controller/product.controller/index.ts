@@ -11,4 +11,3 @@ export * from "./getRelatedProduct.controller";
 export * from "./getSingleProductById.controller";
 export * from "./makeFeatureProduct.controller";
 export * from "./updateProduct.controller";
-

@@ -22,7 +22,7 @@ export const productRoute = express.Router();
 const upload = multer({ storage: CreateDiskStorage("products") });
 
 //? Products
-productRoute.get("/search", searchProduct); //! Bug: Not working as expected
+productRoute.post("/search", searchProduct); //! Bug: Not working as expected
 productRoute.route("/feature").get(getAllFeatureProduct);
 
 productRoute

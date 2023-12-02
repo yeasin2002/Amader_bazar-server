@@ -2,61 +2,49 @@ import { Request, Response } from "express";
 import { Product } from "../../model";
 import { errorResponse, successResponse } from "../../utils";
 
+interface QueryParams {
+    search?: string;
+    sort?: string;
+    category?: string[];
+    minPrice?: number;
+    maxPrice?: number;
+}
+
 export const searchProduct = async (req: Request, res: Response) => {
     try {
         const {
-            page = 0,
-            limit = 10,
             search = "",
             sort,
             category = [],
             minPrice = 0,
             maxPrice = 100000,
-        } = req.query;
+        }: QueryParams = req.body;
 
-        // Start with a base query
-        let query = Product.find();
+        // Create filter object
+        const filter: any = {
+            price: { $gte: minPrice, $lte: maxPrice },
+            ...(search && { name: new RegExp(search, "i") }),
+            ...(category.length > 0 && { category: { $in: category } }),
+        };
 
-        // If a search term is provided, filter by name or category
-        if (search) {
-            query = query.where({
-                $or: [
-                    { name: { $regex: search, $options: "i" } },
-                    { category: { $regex: search, $options: "i" } },
-                ],
+        // Create sort object
+        const sortObj: any = {};
+        if (sort) {
+            const sortParams = sort.split(",");
+            sortParams.forEach((param: string) => {
+                const [key, order] = param.split(":");
+                sortObj[key] = order === "desc" ? -1 : 1;
             });
         }
 
-        // If categories are provided, filter by categories
-        if (category.length) {
-            query = query.where({ category: { $in: category } });
-        }
+        const products = await Product.find(filter).sort(sortObj);
 
-        // Filter by price range
-        query = query
-            .where("price")
-            .gte(Number(minPrice))
-            .lte(Number(maxPrice));
-
-        // If a sort order is provided, sort the products
-        if (sort && typeof sort === "string") {
-            const [field, order] = sort.split(":");
-            query = query.sort({ [field]: order === "desc" ? -1 : 1 });
-        }
-
-        // Add pagination
-        query = query
-            .skip(Number(page.toString()) * Number(limit.toString()))
-            .limit(Number(limit.toString()));
-
-        // Execute the query
-        const products = await query.exec();
-        successResponse({
+        return successResponse({
             res,
-            message: `Found  ${products.length} product`,
             data: products,
+            message: `Found ${products.length}  Products`,
         });
     } catch (error) {
-        errorResponse({ res });
+        return errorResponse({ res });
     }
 };
