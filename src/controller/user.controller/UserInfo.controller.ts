@@ -6,7 +6,7 @@ import { errorResponse, successResponse } from "../../utils";
 export const UsrInfo = async (req: Request, res: Response) => {
     try {
         const geo = geoip.lookup(req.ip);
-        
+
         const user = await User.findById(req.body.userInfo.id);
 
         if (!user) {

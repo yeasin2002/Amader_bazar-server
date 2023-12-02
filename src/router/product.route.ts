@@ -22,6 +22,8 @@ const upload = multer({ storage: CreateDiskStorage("products") });
 
 //? Products
 productRoute.get("/search", searchProduct); //! Bug: Not working as expected
+productRoute.route("/feature").get(getAllFeatureProduct);
+
 productRoute
     .route("/all")
     .get(getAllProduct)
@@ -34,17 +36,13 @@ productRoute
     .delete(deleteProduct);
 
 // ? Rating
-productRoute
-    .route("/rating")
-    .post(isTokenVerify, ProvideRating)
-    .get(getProductRatingsController);
+productRoute.route("/rating").post(isTokenVerify, ProvideRating);
+productRoute.get("/rating/:id", getProductRatingsController);
 
-//? Featured and  Most popular
-productRoute.route("/feature").get(getAllFeatureProduct);
+//? Features Products
 productRoute.route("/feature/:id").put(makeFeatureProduct);
 productRoute.route("/popular").get(PopularProduct);
 productRoute.route("/discounted").get(discountedProduct);
-
 
 /*
 -  All Product 

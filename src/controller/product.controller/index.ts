@@ -10,4 +10,3 @@ export * from "./getProductRatings.controller";
 export * from "./getSingleProductById.controller";
 export * from "./makeFeatureProduct.controller";
 export * from "./updateProduct.controller";
-
