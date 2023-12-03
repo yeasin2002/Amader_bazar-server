@@ -1,29 +1,53 @@
-import fs from "fs/promises";
 import { Request, Response } from "express";
+import fs from "fs/promises";
+import jsonwebtoken from "jsonwebtoken";
+import { UserInfo } from "../../lib";
 import { PendingUser, User } from "../../model";
 import {
     createPrettyError,
     errorResponse,
     generateJWT,
+    jwtSecretKey,
     successResponse,
 } from "../../utils";
 
 export const confirmRegistration = async (req: Request, res: Response) => {
     try {
-        const { token } = req.body;
-        const userInfo = req.body.userInfo;
+        const { token, OTP } = req.body;
+        const decoded = jsonwebtoken.verify(token, jwtSecretKey!) as UserInfo;
+
+        if (!decoded) {
+            return errorResponse({
+                res,
+                message: "invalid user",
+            });
+        }
+
         const pendingUserNeedToVerify = await PendingUser.findOne({
-            name: userInfo.name,
+            email: decoded.email,
         });
-        if (!pendingUserNeedToVerify) createPrettyError(400, `Invalid OTP`);
+        if (!pendingUserNeedToVerify) {
+            return errorResponse({
+                res,
+                message: "Invalid User",
+            });
+        }
+        const checkOTPmatch = pendingUserNeedToVerify.token == OTP;
+        if (!checkOTPmatch) {
+            return errorResponse({
+                res,
+                message: "Invalid OTP",
+            });
+        }
 
         const { name, email, phone, password, address, avatar } =
             pendingUserNeedToVerify;
 
-        const oldPath = process.cwd() + `/uploads/pendingUser/${avatar}`;
-        const newPath = process.cwd() + `/uploads/users/${avatar}`;
-        await fs.rename(oldPath, newPath);
-        await fs.unlink(oldPath);
+        if (avatar) {
+            const oldPath = process.cwd() + `/uploads/pendingUser/${avatar}`;
+            const newPath = process.cwd() + `/uploads/users/${avatar}`;
+            await fs.rename(oldPath, newPath);
+        }
 
         const data = await User.create({
             name,
@@ -42,6 +66,8 @@ export const confirmRegistration = async (req: Request, res: Response) => {
                 phone: data.phone,
             },
         });
+
+        await PendingUser.findOneAndDelete({ email: decoded.email });
         return successResponse({
             res,
             message: "New Use Created successfully",

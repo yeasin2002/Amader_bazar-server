@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { userJWT } from "../../lib";
+import kleur from "kleur";
+import { userJWT as createUserJWT } from "../../lib";
 import { PendingUser, User } from "../../model";
 import {
     errorResponse,
@@ -11,16 +12,8 @@ import {
 export const registration = async (req: Request, res: Response) => {
     try {
         const { email, phone, password, name, address } = req.body;
-
-        console.log(
-            "🚀 ~ file: registration.controller.ts:14 ~ registration ~ email:",
-            email
-        );
         const checkIfUserExist = await User.exists({ email, phone });
-        console.log(
-            "🚀 ~ file: registration.controller.ts:20 ~ registration ~ checkIfUserExist:",
-            checkIfUserExist
-        );
+
         if (checkIfUserExist) {
             return errorResponse({
                 res,
@@ -29,8 +22,6 @@ export const registration = async (req: Request, res: Response) => {
             });
         }
         const OTP = generateOTP(6);
-        console.log(OTP);
-        console.table(req.body);
 
         await sendMailWithNodemailer({
             receivers: email,
@@ -41,7 +32,7 @@ export const registration = async (req: Request, res: Response) => {
             <p>Here Is your OTP</p>
             <h1 style="background-color: rgb(225, 224, 224); padding: 10px; color: rgb(29, 29, 29);" >${OTP}</h1>`,
         });
-        console.log(req?.file);
+
         //! save image to uploads folder
         const ConfirmedUser = await PendingUser.create({
             name,
@@ -53,7 +44,7 @@ export const registration = async (req: Request, res: Response) => {
             token: OTP,
         });
 
-        const token = userJWT({
+        const token = createUserJWT({
             id: ConfirmedUser._id,
             name: ConfirmedUser.name,
             email: ConfirmedUser.email,

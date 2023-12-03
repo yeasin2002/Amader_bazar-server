@@ -71,7 +71,7 @@ export async function sendMailWithNodemailer(args: NodemailerArg) {
 
     try {
         const info = await transporter.sendMail(mailOptions);
-        console.log("Message sent: %s", info.messageId);
+        console.log("Email  sent via nodemailer to : %s", info.messageId);
     } catch (error) {
         console.error("Error occurred while sending email", error);
         createPrettyError(500, "Error occurred while sending email");

@@ -13,7 +13,7 @@ export const userJWT = ({ id, name, email, number }: UserInfo) => {
     });
 };
 
-export const getUserJWT = (headerToken: string) => {
+export const getUserJWT = (headerToken: string): UserInfo => {
     const token = headerToken?.trim().split(" ").at(-1);
     if (!token) {
         return createPrettyError(401, "invalid token");
