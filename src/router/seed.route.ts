@@ -19,4 +19,4 @@ seedRoute.route("/category").post(seedCategory).delete(DeleteAllCategories);
 seedRoute.route("/product").post(seedNewProduct);
 
 seedRoute.get("/test", experiment);
-seedRoute.post("/test", upload.single("img"), experimentPost);
+seedRoute.post("/test", experimentPost);

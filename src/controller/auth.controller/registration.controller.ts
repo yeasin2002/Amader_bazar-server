@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userJWT } from "../../lib";
-import { PendingUser } from "../../model";
+import { PendingUser, User } from "../../model";
 import {
     errorResponse,
     generateOTP,
@@ -11,6 +11,23 @@ import {
 export const registration = async (req: Request, res: Response) => {
     try {
         const { email, phone, password, name, address } = req.body;
+
+        console.log(
+            "🚀 ~ file: registration.controller.ts:14 ~ registration ~ email:",
+            email
+        );
+        const checkIfUserExist = await User.exists({ email, phone });
+        console.log(
+            "🚀 ~ file: registration.controller.ts:20 ~ registration ~ checkIfUserExist:",
+            checkIfUserExist
+        );
+        if (checkIfUserExist) {
+            return errorResponse({
+                res,
+                statusCode: 400,
+                message: `User already exist with this email or phone number`,
+            });
+        }
         const OTP = generateOTP(6);
         console.log(OTP);
         console.table(req.body);

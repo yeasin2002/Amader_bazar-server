@@ -1,3 +1,4 @@
+import fs from "fs/promises";
 import { Request, Response } from "express";
 import { PendingUser, User } from "../../model";
 import {
@@ -18,6 +19,12 @@ export const confirmRegistration = async (req: Request, res: Response) => {
 
         const { name, email, phone, password, address, avatar } =
             pendingUserNeedToVerify;
+
+        const oldPath = process.cwd() + `/uploads/pendingUser/${avatar}`;
+        const newPath = process.cwd() + `/uploads/users/${avatar}`;
+        await fs.rename(oldPath, newPath);
+        await fs.unlink(oldPath);
+
         const data = await User.create({
             name,
             email,
