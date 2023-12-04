@@ -48,8 +48,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(
     cors({
-        origin: ["http://localhost:5173", "https://amaderbazar.netlify.app"],
-        credentials: true,
+        origin: "*",
     })
 );
 

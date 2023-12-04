@@ -2,6 +2,7 @@
 node_modules
 node_modules/
 node_modules/*
+node_modules/.pnpm
 
 dist
 dist/
@@ -17,5 +18,3 @@ yarn.lock
 
 tsconfig.json
 nodemon.json
-
-
