@@ -1,4 +1,4 @@
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import { User } from "../../model";
 import {
@@ -15,7 +15,7 @@ export const resetPassword = async (req: Request, res: Response) => {
         const user = await User.findOne({ $or: [{ email }, { phone }] });
         if (!user) createPrettyError(404, "No user found");
 
-        const verifyPassword = await bcryptjs.compare(user.password, password);
+        const verifyPassword = await bcrypt.compare(user.password, password);
         if (!verifyPassword) createPrettyError(401, "Unothenticated");
 
         const OTP = generateOTP();

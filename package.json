@@ -1,7 +1,6 @@
 {
     "name": "amader_bazar",
     "version": "0.2.0",
-    "description": "",
     "main": "app.js",
     "keywords": [
         "MERN",
@@ -12,19 +11,26 @@
         "MongoDB",
         "amader bazar"
     ],
-    "author": "Md Kawsar Islam Yeasin",
+    "author": {
+        "name": "md kawsar islam yeasin",
+        "url": "https://github.com/yeasin-2002",
+        "email": "mdkawsarislam2002@gmail.com"
+    },
     "license": "ISC",
     "scripts": {
         "dev": "rimraf dist && nodemon",
         "build": "rimraf dist && tsc ",
-        "lint": "prettier --write \"src/**/*.ts\" &&  eslint ./src --ext .ts && tsc --noEmit",
+        "fix:all": "prettier --write \"src/**/*.ts\" &&  eslint ./src --ext .ts && tsc --noEmit",
+        "lint": "eslint ./src --ext .ts ",
         "start": "cross-env NODE_ENV=production node dist/app.js",
+        "type-check": "tsc --noEmit",
         "clear": "concurrently  \" pnpx rimraf dist\"    \" pnpx rimraf build\"    \" pnpx rimraf node_modules \"  ",
         "prepare": "husky install"
     },
     "dependencies": {
+        "@types/bcrypt": "^5.0.2",
         "@types/geoip-lite": "^1.4.4",
-        "bcryptjs": "^2.4.3",
+        "bcrypt": "^5.1.1",
         "body-parser": "^1.20.2",
         "compression": "^1.7.4",
         "consola": "^3.2.3",
@@ -50,7 +56,8 @@
         "uuid": "^9.0.1"
     },
     "devDependencies": {
-        "@types/bcryptjs": "^2.4.6",
+        "@commitlint/cli": "^18.4.3",
+        "@commitlint/config-conventional": "^18.4.3",
         "@types/body-parser": "^1.19.5",
         "@types/compression": "^1.7.2",
         "@types/cookie-parser": "^1.4.3",
@@ -80,13 +87,8 @@
     },
     "lint-staged": {
         "*.ts": [
-            "npm run lint",
+            "eslint --fix",
             "git add --all"
         ]
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
     }
 }

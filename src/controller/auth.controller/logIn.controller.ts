@@ -1,4 +1,4 @@
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import { userJWT } from "../../lib";
 import { User } from "../../model";
@@ -18,7 +18,7 @@ export const logIn = async (req: Request, res: Response) => {
             });
         }
 
-        const checkPass = await bcryptjs.compare(password, theUser.password);
+        const checkPass = await bcrypt.compare(password, theUser.password);
         if (!checkPass) createPrettyError(404, "Wrong password");
         const token = userJWT({
             id: theUser._id,

@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import { model, Schema } from "mongoose";
 import { defaultUseImage } from "../utils";
 

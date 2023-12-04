@@ -1,10 +1,10 @@
-/* eslint-disable no-undef */
 module.exports = {
     env: {
         node: true,
         browser: false,
         es2021: true,
     },
+
     extends: [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -24,4 +24,6 @@ module.exports = {
         "security/detect-object-injection": "off",
         "prettier/prettier": 0,
     },
+
+    ignorePatterns: ["dist", "node_modules", "commitlint.config.cjs"],
 };
