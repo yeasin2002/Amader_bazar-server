@@ -46,11 +46,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
-app.use(
-    cors({
-        origin: "*",
-    })
-);
+app.use(cors({ origin: "*" }));
 
 // ? custom global middlewares
 app.use(reqLogger);
