@@ -22,6 +22,7 @@ authRoute.patch("/reset-password", resetPassword);
 authRoute.patch("/confirm-reset-password", confirmResetPassword);
 authRoute.get("/new-jwt-token", newJWT_Token);
 
+
 //! Uncompleted
 authRoute.post("/forgot-password", forgotPassword);
 authRoute.post("/confirm-forgot-password", confirmForgotPassword);
