@@ -19,6 +19,10 @@ export const logIn = async (req: Request, res: Response) => {
         }
 
         const checkPass = await bcrypt.compare(password, theUser.password);
+        console.log(
+            "🚀 ~ file: logIn.controller.ts:22 ~ logIn ~ checkPass:",
+            checkPass
+        );
         if (!checkPass) createPrettyError(404, "Wrong password");
         const token = userJWT({
             id: theUser._id,
