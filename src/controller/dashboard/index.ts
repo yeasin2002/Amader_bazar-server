@@ -1,10 +1,6 @@
 export * from "./banOrUnbannedUser.controller";
-export * from "./deleteCategory.controller";
-export * from "./deleteSingleProduct.controller";
-export * from "./deleteSingleUser.controller";
-export * from "./getAllProduct.controller";
-export * from "./getAllUser.controller";
-export * from "./getSingleProduct.controller";
+export * from "./createProduct.controller";
+export * from "./updateProduct.controller";
 export * from "./updateSingleCategory.controller";
-export * from "./updateSingleProduct.controller";
 export * from "./updatedAdminRole.controller";
+

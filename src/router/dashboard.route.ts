@@ -1,25 +1,35 @@
 import express from "express";
+import multer from "multer";
+import { deleteCategory } from "../controller/category.controller";
 import {
     banOrUnbannedUser,
-    deleteSingleCategory,
-    deleteSingleProduct,
-    deleteSingleUser,
-    getAllProduct,
-    getAllUser,
-    getSingleProduct,
+    createProduct,
+    updateProduct,
     updateSingleCategory,
-    updateSingleProduct,
     updatedAdminRole,
 } from "../controller/dashboard";
+import {
+    deleteProduct,
+    getAllProduct,
+    getSingleProductById,
+} from "../controller/product.controller";
+import { deleteUser, getAllUser } from "../controller/user.controller";
+import { CreateDiskStorage } from "../middlewares";
+
 export const dashboardRouter = express.Router();
+const upload = multer({ storage: CreateDiskStorage("products") });
 
 //? manage Product
-dashboardRouter.route("/product").get(getAllProduct);
+dashboardRouter
+    .route("/product")
+    .get(getAllProduct)
+    .post(upload.single("img"), createProduct);
+
 dashboardRouter
     .route("/product/:id")
-    .get(getSingleProduct)
-    .delete(deleteSingleProduct)
-    .patch(updateSingleProduct);
+    .get(getSingleProductById)
+    .delete(deleteProduct)
+    .patch(updateProduct);
 
 //? manage User
 dashboardRouter.route("/user").get(getAllUser);
@@ -27,27 +37,11 @@ dashboardRouter.put("/ban-or-unbanned", banOrUnbannedUser);
 dashboardRouter
     .route("/user/:id")
     .get(getAllUser)
-    .delete(deleteSingleUser)
+    .delete(deleteUser)
     .patch(updatedAdminRole);
 
 //? manage category
-dashboardRouter.route("/category").delete(deleteSingleCategory);
 dashboardRouter
     .route("/category/:id")
-    .delete(deleteSingleCategory)
+    .delete(deleteCategory)
     .patch(updateSingleCategory);
-
-/*
--   GET: all Product
--   GET: single Product
--   PUT: update Product
--   DELETE: delete Product
-
--   DELETE: delete Product Category
--   PUT: update Product Category 
-
--   DELETE: delete User
--   PUT: BAN or UNBANNED User
--   PUT: update role - admin to user or user to admin
-
-*/

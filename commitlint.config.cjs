@@ -17,24 +17,39 @@ module.exports = {
                 "chore", // Other changes that don't modify src or test files
                 "revert", // Reverts a previous commit
                 //! Emojis
-                ":fire:", // Remove code or files
-                ":art:", // Improve structure / format of the code
-                ":bug:", // Fix a bug
-                ":sparkles:", // Introduce new features
-                ":memo:", // Write docs
-                ":rocket:", // Deploy stuff
-                ":lipstick:", // Add or update the UI and style files
-                ":tada:", // Begin a project
-                ":white_check_mark:", // Add or update tests
-                ":lock:", // Fix security issues
-                ":apple:", // Fix something on macOS
-                ":penguin:", // Fix something on Linux
-                ":checkered_flag:", // Fix something on Windows
-                ":robot:", // Fix or improve Android stuff
-                ":green_apple:", // Fix or improve iOS stuff
-                ":bookmark:", // Release / Version tags
-                ":construction:", // Work in progress
+                ":tada", // Initial commit
+                ":fire", // Remove code or files
+                ":art", // Improve structure / format of the code
+                ":zap", // Improve performance
+                ":adhesive_bandage", // Fix critical issues
+                ":bug", // Fix a bug
+                ":sparkles", // Introduce new features
+                ":memo", // Write docs
+                ":bento", // Add or update assets
+                ":lock", // Fix security issues
+                ":construction", // Work in progress
+                ":truck", // Move or rename files
+                ":bulb", // Add or update comments in the code
+                ":mute", // Remove logs or debugging statements
+                ":wheelchair", // Improve accessibility
+                ":rocket", // Deploy stuff
+                ":white_check_mark", // Add or update tests
+                ":bookmark", // Release / Version tags
+                ":recycle", // Refactor code
+                ":wrench", // Configuration changes
+                ":package", // Update dependencies
+                ":twisted_rightwards_arrows", // Merge branches
+                ":loud_sound", // Add logging
+                ":alien", // Update code due to external API changes
+                ":globe_with_meridians", // Internationalization and localization
+                ":construction_worker", // Add or update CI/CD pipeline
+                ":building_construction", // Make architectural changes
+                ":chart_with_upwards_trend", // Add analytics or tracking code
+                ":goal_net", // Catch errors or exceptions
+                ":loudspeaker", // Add or update announcements
             ],
         ],
     },
 };
+    
+

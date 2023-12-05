@@ -5,7 +5,6 @@ import { CreateDiskStorage, isTokenVerify } from "../middlewares";
 import {
     PopularProduct,
     ProvideRating,
-    createProduct,
     deleteProduct,
     discountedProduct,
     getAllFeatureProduct,
@@ -15,7 +14,6 @@ import {
     getSingleProductById,
     makeFeatureProduct,
     searchProduct,
-    updateProduct,
 } from "../controller/product.controller";
 
 export const productRoute = express.Router();
@@ -25,16 +23,9 @@ const upload = multer({ storage: CreateDiskStorage("products") });
 productRoute.post("/search", searchProduct); //! Bug: Not working as expected
 productRoute.get("/feature", getAllFeatureProduct);
 
-productRoute
-    .route("/all")
-    .get(getAllProduct)
-    .post(upload.single("img"), createProduct);
+productRoute.route("/all").get(getAllProduct);
 
-productRoute
-    .route("/all/:id")
-    .get(getSingleProductById)
-    .patch(updateProduct)
-    .delete(deleteProduct);
+productRoute.route("/all/:id").get(getSingleProductById).delete(deleteProduct);
 
 // ? Rating
 productRoute.route("/rating").post(isTokenVerify, ProvideRating);
