@@ -8,6 +8,47 @@
 
 #### The project is an online store that sells a variety of products and allows customers to browse, purchase, and track their orders. This repository contains only the code for the dashboard, which provides an interface for store administrators to manage products, view sales data, and track orders.
 
+## Conurbations Guideline
+
+### commit convention
+
+
+| Commit Type | Description                                                                                                 |
+| ----------- | ----------------------------------------------------------------------------------------------------------- |
+| build       | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         |
+| chore       | Changes to the build process or auxiliary tools and libraries such as documentation generation              |
+| ci          | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) |
+| docs        | Documentation only changes                                                                                  |
+| feat        | A new feature                                                                                               |
+| fix         | A bug fix                                                                                                   |
+| perf        | A code change that improves performance                                                                     |
+| refactor    | A code change that neither fixes a bug nor adds a feature                                                   |
+| revert      | Reverts a previous commit                                                                                   |
+| style       | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)      |
+| test        | Adding missing tests or correcting existing tests                                                           |
+
+## OR use Emoji for commit messages
+
+| Emoji | Tag | Description |
+|-------|-----|-------------|
+| 🔥    | `:fire:` | Remove code or files |
+| 🎨    | `:art:` | Improve structure / format of the code |
+| 🐛    | `:bug:` | Fix a bug |
+| ✨    | `:sparkles:` | Introduce new features |
+| 📝    | `:memo:` | Write docs |
+| 🚀    | `:rocket:` | Deploy stuff |
+| 💄    | `:lipstick:` | Add or update the UI and style files |
+| 🎉    | `:tada:` | Begin a project |
+| ✅    | `:white_check_mark:` | Add or update tests |
+| 🔒    | `:lock:` | Fix security issues |
+| 🍎    | `:apple:` | Fix something on macOS |
+| 🐧    | `:penguin:` | Fix something on Linux |
+| 🏁    | `:checkered_flag:` | Fix something on Windows |
+| 🤖    | `:robot:` | Fix or improve Android stuff |
+| 🍏    | `:green_apple:` | Fix or improve iOS stuff |
+| 🔖    | `:bookmark:` | Release / Version tags |
+| 🚧    | `:construction:` | Work in progress |
+
 ## Routes
 
 ### Auth Routes
@@ -57,13 +98,5 @@
 | GET        | single Product | Get a Product | /dashboard/product/:id | |
 | PUT        | update Product | Update a Product | /dashboard/product/:id | |
 | DELETE     | delete Product | Delete a Product | /dashboard/product/:id | |
-
-
-
-
-<!-- <img src="./public/showcase/design.svg"> -->
-<!-- #### [Figma UI](https://www.figma.com/file/Douo9VLnXKBXb6B2cweSQs/Amader-Bazar?type=design&node-id=605%3A344&mode=design&t=Mne6rFKVXNd21MHM-1) -->
-
-
 
 
