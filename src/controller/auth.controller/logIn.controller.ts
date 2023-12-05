@@ -28,10 +28,22 @@ export const logIn = async (req: Request, res: Response) => {
             id: theUser._id,
             name: theUser.name,
             email: theUser.email,
-            number: theUser.phone,
         });
 
-        successResponse({ res, data: token, message: "User logged in" });
+        successResponse({
+            res,
+            data: {
+                token,
+                user: {
+                    id: theUser._id,
+                    name: theUser.name,
+                    email: theUser.email,
+                    isAdmin: theUser.isAdmin,
+                    avatar: theUser.avatar,
+                },
+            },
+            message: "User logged in",
+        });
     } catch (error: unknown) {
         if (error instanceof Error) {
             console.log(error.name + "::" + error.message);

@@ -73,7 +73,13 @@ export const confirmRegistration = async (req: Request, res: Response) => {
             message: "New Use Created successfully",
             data: {
                 token: userToken,
-                userInfo: data,
+                user: {
+                    id: data._id,
+                    name: data.name,
+                    email: data.email,
+                    isAdmin: data.isAdmin,
+                    avatar: data.avatar,
+                },
             },
         });
     } catch (error: unknown) {

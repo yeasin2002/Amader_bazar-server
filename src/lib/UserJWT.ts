@@ -4,7 +4,7 @@ export interface UserInfo {
     id: import("mongoose").Types.ObjectId;
     name: string;
     email: string;
-    number: string;
+    number?: string;
 }
 
 export const userJWT = ({ id, name, email, number }: UserInfo) => {
