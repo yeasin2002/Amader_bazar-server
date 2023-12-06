@@ -20,15 +20,12 @@
     "scripts": {
         "dev": "rimraf dist && nodemon",
         "build": "rimraf dist && tsc ",
-        "fix:all": "prettier --write \"src/**/*.ts\" &&  eslint ./src --ext .ts && tsc --noEmit",
+        "start": "cross-env NODE_ENV=production node dist/app.js",
         "lint": "eslint ./src --ext .ts ",
-        "start": "cross-env NODE_ENV=production node dist/src/app.js",
         "type-check": "tsc --noEmit",
-        "clear": "concurrently  \" pnpx rimraf dist\"    \" pnpx rimraf build\"    \" pnpx rimraf node_modules \"  ",
         "prepare": "husky install",
-        "ts.check": "tsc --project tsconfig.json",
-        "add-build": "git add dist",
-        "production": "eslint --fix && npm run  build && git add --all"
+        "fix:all": "prettier --write \"src/**/*.ts\" &&  eslint ./src --ext .ts && tsc --noEmit",
+        "clear": "concurrently  \" pnpx rimraf dist\"    \" pnpx rimraf build\"    \" pnpx rimraf node_modules \"  "
     },
     "dependencies": {
         "@types/bcrypt": "^5.0.2",

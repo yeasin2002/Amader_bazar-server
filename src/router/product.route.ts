@@ -3,14 +3,11 @@ import multer from "multer";
 import { CreateDiskStorage, isTokenVerify } from "../middlewares";
 
 import {
-    PopularProduct,
     ProvideRating,
     deleteProduct,
-    discountedProduct,
     getAllFeatureProduct,
     getAllProduct,
     getProductRatingsController,
-    getRelatedProduct,
     getSingleProductById,
     makeFeatureProduct,
     searchProduct,
@@ -20,7 +17,7 @@ export const productRoute = express.Router();
 const upload = multer({ storage: CreateDiskStorage("products") });
 
 //? Products
-productRoute.post("/search", searchProduct); //! Bug: Not working as expected
+productRoute.post("/search", searchProduct);
 productRoute.get("/feature", getAllFeatureProduct);
 
 productRoute.route("/all").get(getAllProduct);
@@ -33,14 +30,3 @@ productRoute.get("/rating/:id", getProductRatingsController);
 
 //? Features Products
 productRoute.route("/feature/:id").put(makeFeatureProduct);
-// productRoute.get("/popular", PopularProduct);
-// productRoute.get("/discounted", discountedProduct);
-// productRoute.post("/related-product", getRelatedProduct);
-
-/*
--  All Product 
-
-- Featured Product
-- Most Popular/Sold Product 
-- discounted Product
-*/

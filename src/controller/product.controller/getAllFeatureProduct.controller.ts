@@ -11,7 +11,9 @@ export const getAllFeatureProduct = async (req: Request, res: Response) => {
         const DiscountedProduct =
             (await Product.find({
                 discount: { $gt: 0 },
-            }).limit(4)) || [];
+            })
+                .sort({ discount: -1 })
+                .limit(4)) || [];
 
         return successResponse({
             res,
