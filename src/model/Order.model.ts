@@ -2,25 +2,23 @@ import { model, Schema } from "mongoose";
 
 const OrderProductSchema = new Schema(
     {
-        Products: {
-            type: [
-                {
+        Products: [
+            {
+                Product: {
                     type: Schema.Types.ObjectId,
                     ref: "Product",
+                    required: true,
                 },
-            ],
-        },
+                Quantity: {
+                    type: Number,
+                    required: true,
+                },
+            },
+        ],
         User: {
             type: Schema.Types.ObjectId,
             ref: "User",
             required: true,
-        },
-        desc: {
-            type: String,
-            required: [true, "Notes is required"],
-            trim: true,
-            minlength: [5, "Order  Notes can not be less than 5 characters"],
-            maxlength: [50, "Order Notes can not be more than 50 characters"],
         },
 
         OrderStatus: {
@@ -28,21 +26,8 @@ const OrderProductSchema = new Schema(
             enum: ["Pending", "Processing", "Completed", "Cancelled"],
             default: "Pending",
         },
-        OrderDateAndTime: {
-            type: Date,
-            required: true,
-        },
-        DeliveryDateAndTime: {
-            type: Date,
-            required: true,
-        },
 
-        OrderType: {
-            type: String,
-            enum: ["Delivery", "Pickup"],
-            default: "Delivery",
-        },
-        OrderAmount: {
+        TotalAmount: {
             type: Number,
             required: true,
         },
@@ -50,32 +35,15 @@ const OrderProductSchema = new Schema(
             type: String,
             required: true,
         },
-        OrderPhone: {
-            type: String,
-            required: true,
-        },
-        OrderEmail: {
-            type: String,
-            required: true,
-        },
+
         OrderPaymentMethod: {
             type: String,
             enum: ["cash", "card"],
-            default: "card",
+            default: "cash",
         },
-
-        isPaid: {
-            type: Boolean,
-            default: false,
-        },
-
-        isRefunded: {
-            type: Boolean,
-            default: false,
-        },
-        isReviewed: {
-            type: Boolean,
-            default: false,
+        OrderDateAndTime: {
+            type: Date,
+            default: Date.now,
         },
     },
     {
@@ -83,4 +51,4 @@ const OrderProductSchema = new Schema(
     }
 );
 
-export const OrderProduct = model("OrderProduct", OrderProductSchema);
+export const Order = model("Order", OrderProductSchema);
