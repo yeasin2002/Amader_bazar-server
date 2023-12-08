@@ -1,0 +1,115 @@
+{
+    "success": true,
+    "statusCode": 200,
+    "message": "Got all order",
+    "data": [
+        {
+            "_id": "6572333e0550063f99410a69",
+            "Products": [
+                {
+                    "Product": {
+                        "_id": "6560dbe3f056bb09f6147e18",
+                        "name": "Magic Gift Box",
+                        "category": "Gifts & Occasions",
+                        "img": "magicGitBox.jpg",
+                        "discount": 0,
+                        "price": 1000,
+                        "desc": "",
+                        "size": "NA",
+                        "color": "",
+                        "isFeature": true,
+                        "quantity": 99,
+                        "totalSold": 50,
+                        "__v": 1,
+                        "createdAt": "2023-11-24T17:22:43.467Z",
+                        "updatedAt": "2023-12-07T21:03:58.938Z",
+                        "rating": []
+                    },
+                    "Quantity": 1,
+                    "_id": "6572333e0550063f99410a6a"
+                }
+            ],
+            "User": "656f27e1b80bafa2580f0f6d",
+            "OrderStatus": "Pending",
+            "TotalAmount": 1000,
+            "OrderAddress": "Dhaka Cantonment",
+            "OrderPaymentMethod": "cash",
+            "OrderDateAndTime": "2023-12-07T21:03:58.411Z",
+            "createdAt": "2023-12-07T21:03:58.417Z",
+            "updatedAt": "2023-12-07T21:03:58.417Z",
+            "__v": 0
+        },
+        {
+            "_id": "657236150550063f99410a75",
+            "Products": [
+                {
+                    "Product": {
+                        "_id": "6560dbe3f056bb09f6147e0c",
+                        "name": "Bangladesh Football jersey",
+                        "category": "Sports & Outdoors",
+                        "img": "3ab667fd2030a201b57e9f292164ec40.jpg",
+                        "discount": 0,
+                        "price": 800,
+                        "desc": "",
+                        "size": "NA",
+                        "color": "",
+                        "isFeature": true,
+                        "quantity": 97,
+                        "totalSold": 80,
+                        "__v": 1,
+                        "createdAt": "2023-11-24T17:22:43.465Z",
+                        "updatedAt": "2023-12-07T21:16:05.976Z",
+                        "rating": []
+                    },
+                    "Quantity": 3,
+                    "_id": "657236150550063f99410a76"
+                }
+            ],
+            "User": "656f27e1b80bafa2580f0f6d",
+            "OrderStatus": "Pending",
+            "TotalAmount": 2400,
+            "OrderAddress": "Dhaka Cantonment",
+            "OrderPaymentMethod": "cash",
+            "OrderDateAndTime": "2023-12-07T21:16:05.805Z",
+            "createdAt": "2023-12-07T21:16:05.807Z",
+            "updatedAt": "2023-12-07T21:16:05.807Z",
+            "__v": 0
+        },
+        {
+            "_id": "657237080550063f99410a81",
+            "Products": [
+                {
+                    "Product": {
+                        "_id": "6560dbe3f056bb09f6147e12",
+                        "name": "Kitchen Premium kit",
+                        "category": "Kitchen & Dining",
+                        "img": "Kitchen-Premium_Cream-Mix_1836x1836.webp",
+                        "discount": 7,
+                        "price": 1000,
+                        "desc": "",
+                        "size": "NA",
+                        "color": "",
+                        "isFeature": true,
+                        "quantity": 64,
+                        "totalSold": 4,
+                        "__v": 1,
+                        "createdAt": "2023-11-24T17:22:43.466Z",
+                        "updatedAt": "2023-12-07T21:20:08.609Z",
+                        "rating": []
+                    },
+                    "Quantity": 1,
+                    "_id": "657237080550063f99410a82"
+                }
+            ],
+            "User": "656f27e1b80bafa2580f0f6d",
+            "OrderStatus": "Pending",
+            "TotalAmount": 1000,
+            "OrderAddress": "Dhaka Cantonment",
+            "OrderPaymentMethod": "cash",
+            "OrderDateAndTime": "2023-12-07T21:20:08.438Z",
+            "createdAt": "2023-12-07T21:20:08.439Z",
+            "updatedAt": "2023-12-07T21:20:08.439Z",
+            "__v": 0
+        }
+    ]
+}
