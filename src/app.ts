@@ -9,7 +9,6 @@
                 ?- Migration into MongoDB From PostgreSQL ( Sequelize to Mongoose )
  */
 
-                
 //? npm packages imports
 import bodyParser from "body-parser";
 import compression from "compression";
@@ -47,7 +46,11 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
-app.use(cors({ origin: "*" }));
+app.use(
+    cors({
+        origin: ["https://amaderbazar.netlify.app", "http://localhost:3000"],
+    })
+);
 
 // ? custom global middlewares
 app.use(reqLogger);
