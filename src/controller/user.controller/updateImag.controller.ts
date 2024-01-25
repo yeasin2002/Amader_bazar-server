@@ -1,19 +1,17 @@
 import { Request, Response } from "express";
 import { unlink } from "fs/promises";
 import kleur from "kleur";
+import { cwd } from "process";
 import { UserInfo } from "../../lib";
 import { User } from "../../model";
 import { errorResponse, successResponse } from "../../utils";
 
 export const updateUserAvatar = async (req: Request, res: Response) => {
     try {
-        console.log(kleur.bgGreen("Body"), "🚀", req.body.userInfo);
-        
         const { id } = req.body.userInfo as UserInfo;
-        console.log(kleur.bgYellow("ID"), "🚀", id);
-
         const theUser = await User.findById(id);
-        console.log(kleur.bgGreen("theUser"), "🚀", theUser);
+
+        console.log(kleur.bgBlue("IMAGE"), req?.file?.filename);
 
         if (!theUser) {
             return errorResponse({
@@ -22,7 +20,13 @@ export const updateUserAvatar = async (req: Request, res: Response) => {
                 statusCode: 404,
             });
         }
-        theUser?.avatar && (await unlink(theUser?.avatar));
+        try {
+            theUser?.avatar &&
+                (await unlink(cwd() + "/uploads/users/" + theUser?.avatar));
+        } catch (err) {
+            console.log(kleur.red("Avatar Did not deleted"));
+            console.log(err?.message);
+        }
 
         const updatedUser = await User.findByIdAndUpdate(
             id,
