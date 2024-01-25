@@ -20,14 +20,3 @@ export const CreateDiskStorage = (relativeFolderPath: imgSubFolder) => {
         },
     });
 };
-
-// export const upload = multer({ storage: CreateDiskStorage() });
-// export const SendSingleImg = (imgUrlFromReq: string, imgPath: string) => {
-//     const local = path.join(
-//         process.cwd(),
-//         `uploads/users/${imgPath}`,
-//         imgUrlFromReq
-//     );
-//     if (!fs.existsSync(local)) return createPrettyError(404, "Image not found");
-//     return local;
-// };

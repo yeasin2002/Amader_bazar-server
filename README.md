@@ -13,90 +13,40 @@
 ### commit convention
 
 
-| Commit Type | Description                                                                                                 |
-| ----------- | ----------------------------------------------------------------------------------------------------------- |
-| build       | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         |
-| chore       | Changes to the build process or auxiliary tools and libraries such as documentation generation              |
-| ci          | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) |
-| docs        | Documentation only changes                                                                                  |
-| feat        | A new feature                                                                                               |
-| fix         | A bug fix                                                                                                   |
-| perf        | A code change that improves performance                                                                     |
-| refactor    | A code change that neither fixes a bug nor adds a feature                                                   |
-| revert      | Reverts a previous commit                                                                                   |
-| style       | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)      |
-| test        | Adding missing tests or correcting existing tests                                                           |
-
-## OR use Emoji for commit messages
-
-| Emoji | Tag | Description |
-|-------|-----|-------------|
-| 🔥    | `:fire:` | Remove code or files |
-| 🎨    | `:art:` | Improve structure / format of the code |
-| 🐛    | `:bug:` | Fix a bug |
-| ✨    | `:sparkles:` | Introduce new features |
-| 📝    | `:memo:` | Write docs |
-| 🚀    | `:rocket:` | Deploy stuff |
-| 💄    | `:lipstick:` | Add or update the UI and style files |
-| 🎉    | `:tada:` | Begin a project |
-| ✅    | `:white_check_mark:` | Add or update tests |
-| 🔒    | `:lock:` | Fix security issues |
-| 🍎    | `:apple:` | Fix something on macOS |
-| 🐧    | `:penguin:` | Fix something on Linux |
-| 🏁    | `:checkered_flag:` | Fix something on Windows |
-| 🤖    | `:robot:` | Fix or improve Android stuff |
-| 🍏    | `:green_apple:` | Fix or improve iOS stuff |
-| 🔖    | `:bookmark:` | Release / Version tags |
-| 🚧    | `:construction:` | Work in progress |
-
-## Routes
-
-### Auth Routes
-
-| Route Type | Route Name | Route Description | Route Path | Body |
-|------------|------------|-------------------|------------|------|
-| POST       | login      | For user login    | /login     |      |
-| POST       | register   | Register a user   | /register  |      |
-| POST       | JWT token  | Generate token    | /token     |      |
-| POST       | forgot password | Reset password | /forgot-password | |
-| POST       | reset password | Set new password | /reset-password | |
-
-### Product Routes
-
-| Route Type | Route Name | Route Description | Route Path | Body |
-|------------|------------|-------------------|------------|------|
-| GET        | all product | Get all products | /products | |
-| GET        | single product | Get a product | /product/:id | |
-| POST       | create product | Create a product | /product | |
-| PUT        | update product | Update a product | /product/:id | |
-| DELETE     | delete product | Delete a product | /product/:id | |
-
-### User Routes
-
-| Route Type | Route Name | Route Description | Route Path | Body |
-|------------|------------|-------------------|------------|------|
-| GET        | all user | Get all users | /users | |
-| GET        | single user | Get a user | /user/:id | |
-| PUT        | update user | Update a user | /user/:id | |
-| DELETE     | delete user | Delete a user | /user/:id | |
-
-### Order Routes
-
-| Route Type | Route Name | Route Description | Route Path | Body |
-|------------|------------|-------------------|------------|------|
-| GET        | all order | Get all orders | /orders | |
-| GET        | single order | Get an order | /order/:id | |
-| POST       | create order | Create an order | /order | |
-| PUT        | update order | Update an order | /order/:id | |
-| DELETE     | delete order | Delete an order | /order/:id | |
-
-### Dashboard Routes
-
-| Route Type | Route Name | Route Description | Route Path | Body |
-|------------|------------|-------------------|------------|------|
-| GET        | all Product | Get all Products | /dashboard/products | |
-| GET        | single Product | Get a Product | /dashboard/product/:id | |
-| PUT        | update Product | Update a Product | /dashboard/product/:id | |
-| DELETE     | delete Product | Delete a Product | /dashboard/product/:id | |
 
 
+| Keyword                        | Description                                     | Icon                       |
+|--------------------------------|-------------------------------------------------|----------------------------|
+| feat                           | A new feature for the user                     | :zap:                      |
+| fix                            | A bug fix                                       | :bug:                      |
+| docs                           | Documentation changes                           | :memo:                     |
+| style                          | Code style changes                              | :art:                      |
+| refactor                       | Code refactoring                                | :wrench:                   |
+| perf                           | Performance improvement                         | :chart_with_upwards_trend:|
+| test                           | Adding or modifying tests                       | :white_check_mark:         |
+| build                          | Changes related to build process                | :package:                  |
+| ci                             | Continuous Integration configuration changes    | :twisted_rightwards_arrows:|
+| chore                          | Routine tasks, maintenance, or housekeeping     | :broom:                    |
+| revert                         | Reverting previous changes                     | :rewind:                   |
+| :tada:                         | Initial commit                                  | :tada:                     |
+| :fire:                         | Removing code or files                         | :fire:                     |
+| :art:                          | Improving the format/structure of the code     | :art:                      |
+| :zap:                          | Introducing performance improvements           | :zap:                      |
+| :adhesive_bandage:             | Temporary fix for a bug                         | :adhesive_bandage:         |
+| :bug:                          | Fixing a bug                                    | :bug:                      |
+| :sparkles:                     | Introducing new features or improvements       | :sparkles:                 |
+| :memo:                         | Writing documentation                          | :memo:                     |
+| :bento:                        | Adding or updating assets                       | :bento:                    |
+| :lock:                         | Fixing security issues                          | :lock:                     |
+| :construction:                 | Work in progress, incomplete feature           | :construction:             |
+| :truck:                        | Moving or renaming files or directories        | :truck:                    |
+| :bulb:                         | Adding or updating comments                    | :bulb:                     |
+| :mute:                         | Removing logging or debugging statements       | :mute:                     |
+| :wheelchair:                   | Improving accessibility                         | :wheelchair:               |
+| :rocket:                       | Deploying stuff                                 | :rocket:                   |
+| :white_check_mark:             | Adding tests                                    | :white_check_mark:         |
+| :bookmark:                     | Version tagging or release                      | :bookmark:                 |
+| :recycle:                      | Code refactoring (alternative to :wrench:)     | :recycle:                  |
+| :wrench:                       | Code refactoring (alternative to :recycle:)     | :wrench:                   |
+| :package:                      | Updating compiled files or packages             | :package:                  |
+| :twisted_rightwards_arrows:    | Merging branches or resolving conflicts        | :tw
