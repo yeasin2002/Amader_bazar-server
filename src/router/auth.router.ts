@@ -21,13 +21,13 @@ authRoute.post("/register", upload.single("avatar"), registration);
 authRoute.post("/confirm-registration", confirmRegistration);
 authRoute.post("/login", logIn);
 
-authRoute.put("/change-password", changePassword);
-authRoute.patch("/delete-account", deleteAccount);
-
-
 authRoute.patch("/reset-password", resetPassword);
 authRoute.patch("/confirm-reset-password", confirmResetPassword);
 authRoute.get("/new-jwt-token", newJWT_Token);
+
+// settings
+authRoute.put("/change-password", isTokenVerify, changePassword);
+authRoute.patch("/delete-account", deleteAccount);
 
 //! Uncompleted
 authRoute.post("/forgot-password", forgotPassword);
