@@ -27,7 +27,7 @@ authRoute.get("/new-jwt-token", newJWT_Token);
 
 // settings
 authRoute.put("/change-password", isTokenVerify, changePassword);
-authRoute.patch("/delete-account", deleteAccount);
+authRoute.delete("/delete-account", isTokenVerify, deleteAccount);
 
 //! Uncompleted
 authRoute.post("/forgot-password", forgotPassword);

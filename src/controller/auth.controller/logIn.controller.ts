@@ -40,6 +40,8 @@ export const logIn = async (req: Request, res: Response) => {
                     email: theUser.email,
                     isAdmin: theUser.isAdmin,
                     avatar: theUser.avatar,
+                    address: theUser.address,
+                    phone: theUser.phone,
                 },
             },
             message: "User logged in",

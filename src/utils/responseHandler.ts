@@ -1,4 +1,5 @@
 import { Response } from "express";
+import kleur from "kleur";
 
 const successResponse = ({
     res,
@@ -23,11 +24,14 @@ const errorResponse = ({
     res,
     message,
     statusCode,
+    errMsg,
 }: {
     res: Response;
     message?: string;
     statusCode?: number;
+    errMsg?: string;
 }) => {
+    errMsg && console.log(kleur.bgRed("Error"), errMsg);
     return res.status(statusCode || 500).json({
         success: false,
         message: message || `Internal Server Error`,

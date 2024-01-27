@@ -4,7 +4,11 @@ import kleur from "kleur";
 import { cwd } from "process";
 import { UserInfo } from "../../lib";
 import { User } from "../../model";
-import { errorResponse, successResponse } from "../../utils";
+import {
+    deleteImageFromServer,
+    errorResponse,
+    successResponse,
+} from "../../utils";
 
 export const updateUserAvatar = async (req: Request, res: Response) => {
     try {
@@ -20,13 +24,7 @@ export const updateUserAvatar = async (req: Request, res: Response) => {
                 statusCode: 404,
             });
         }
-        try {
-            theUser?.avatar &&
-                (await unlink(cwd() + "/uploads/users/" + theUser?.avatar));
-        } catch (err) {
-            console.log(kleur.red("Avatar Did not deleted"));
-            console.log(err?.message);
-        }
+        await deleteImageFromServer("users", theUser?.avatar);
 
         const updatedUser = await User.findByIdAndUpdate(
             id,

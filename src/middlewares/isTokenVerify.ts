@@ -10,10 +10,6 @@ export const isTokenVerify = (
     next: NextFunction
 ) => {
     try {
-        console.log(
-            kleur.bgBlue("🚀 Authorization"),
-            req.headers?.authorization || kleur.red("No Authorization Provided")
-        );
         const token = req.headers.authorization?.trim().split(" ").at(-1);
 
         if (!token) {
@@ -21,15 +17,12 @@ export const isTokenVerify = (
         }
         const decoded = jsonwebtoken.verify(token, jwtSecretKey!);
         if (!decoded) {
+            console.log(kleur.bgRed("🚀 Token Unauthorized"));
             return createPrettyError(401, "invalid token");
         }
-        console.log(
-            kleur.bgBlue("🚀  isTokenVerify.ts:18 ~ decoded:"),
-            decoded
-        );
 
+        console.log(kleur.bgBlue("🚀 Token Authorized"));
         req.body.userInfo = decoded as UserInfo;
-
         return next();
     } catch (error: any) {
         console.log("🚀 ~ file: isTokenVerify.ts:26 ~ error:", error.message);

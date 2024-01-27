@@ -79,6 +79,8 @@ export const confirmRegistration = async (req: Request, res: Response) => {
                     email: data.email,
                     isAdmin: data.isAdmin,
                     avatar: data?.avatar || "",
+                    address: data?.address,
+                    phone: data?.phone,
                 },
             },
         });
