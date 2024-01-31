@@ -16,7 +16,6 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
-import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
 
 //?  Local Imports
@@ -47,7 +46,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
-app.use(morgan("dev"));
 app.use(
     cors({
         origin: ["https://amaderbazar.netlify.app", "http://localhost:3000"],
@@ -56,6 +54,7 @@ app.use(
 
 // ? custom global middlewares
 app.use(setIp);
+app.use(reqLogger);
 app.use(limiter);
 
 //? Routers
