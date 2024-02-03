@@ -8,16 +8,30 @@ import {
     updateSingleCategory,
     updatedAdminRole,
 } from "../controller/dashboard";
+
+import {
+    clearAllOrder,
+    deleteSingleOrder,
+    getAllOrder,
+    getSingleOrderInfo,
+} from "../controller/order.controller";
+
 import {
     deleteProduct,
     getAllProduct,
     getSingleProductById,
 } from "../controller/product.controller";
+
 import { deleteUser, getAllUser } from "../controller/user.controller";
 import { CreateDiskStorage } from "../middlewares";
+import { successResponse } from "../utils";
 
 export const dashboardRouter = express.Router();
 const upload = multer({ storage: CreateDiskStorage("products") });
+
+dashboardRouter.get("/", (req, res) => {
+    return successResponse({ res, message: `Hello from Dashboard` });
+});
 
 //? manage Product
 dashboardRouter
@@ -45,3 +59,10 @@ dashboardRouter
     .route("/category/:id")
     .delete(deleteCategory)
     .patch(updateSingleCategory);
+
+// ?  manage order
+dashboardRouter.route("/order").get(getAllOrder).delete(clearAllOrder);
+dashboardRouter
+    .route("/order/:id")
+    .get(getSingleOrderInfo)
+    .delete(deleteSingleOrder);

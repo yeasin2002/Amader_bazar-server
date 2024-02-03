@@ -22,7 +22,12 @@ import swaggerUi from "swagger-ui-express";
 
 import { rootRoute } from "./controller";
 import { connectDB, limiter, swaggerOptions } from "./lib";
-import { defaultErrorHandler, notFound, setIp } from "./middlewares";
+import {
+    defaultErrorHandler,
+    isTokenVerify,
+    notFound,
+    setIp,
+} from "./middlewares";
 import { Port, logSquare, reqLogger } from "./utils";
 
 import {

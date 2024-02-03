@@ -18,7 +18,6 @@ const OrderProductSchema = new Schema(
         User: {
             type: Schema.Types.ObjectId,
             ref: "User",
-            required: true,
         },
 
         OrderStatus: {

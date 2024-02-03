@@ -1,21 +1,22 @@
 import { Request, Response } from "express";
-import kleur from "kleur";
+
+import { UserInfo } from "../../lib";
 import { User } from "../../model";
 import { createPrettyError, errorResponse, successResponse } from "../../utils";
 
 export const updateUser = async (req: Request, res: Response) => {
     try {
-        console.log(kleur.bgBlue("Body"), req.body);
-        console.table({
-            name: req.body.name,
-            email: req.body.email,
-            address: req.body.address,
-            phone: req.body.phone,
-        });
+        const { id } = req.body.userInfo as UserInfo;
 
-        const { id } = req.params;
+        const user = await User.findById(id);
+        console.log("🚀 ~ updateUser ~ user:", user);
+
+        if (!user) {
+            return createPrettyError(401, "User not found");
+        }
+
         const updatedUser = await User.findOneAndUpdate(
-            { id },
+            { id: user.id },
             {
                 $set: {
                     name: req.body.name,
@@ -26,6 +27,7 @@ export const updateUser = async (req: Request, res: Response) => {
             },
             { new: true }
         );
+
         if (!updatedUser) {
             return createPrettyError(
                 401,

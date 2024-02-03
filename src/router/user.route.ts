@@ -26,4 +26,4 @@ userRouter
     .route("/:id")
     .get(getSingleUser)
     .delete(deleteUser)
-    .patch(updateUser);
+    .patch(isTokenVerify, updateUser);
