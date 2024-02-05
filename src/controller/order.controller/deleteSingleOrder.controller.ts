@@ -8,7 +8,7 @@ export const deleteSingleOrder = async (req: Request, res: Response) => {
         const singleOrder = await Order.findByIdAndDelete(id);
         return successResponse({
             res,
-            message: "Got all order",
+            message: "Deleted a  order",
             data: singleOrder,
         });
     } catch (error: any) {

@@ -14,6 +14,7 @@ import {
     deleteSingleOrder,
     getAllOrder,
     getSingleOrderInfo,
+    updateOrderStatus,
 } from "../controller/order.controller";
 
 import {
@@ -65,4 +66,5 @@ dashboardRouter.route("/order").get(getAllOrder).delete(clearAllOrder);
 dashboardRouter
     .route("/order/:id")
     .get(getSingleOrderInfo)
-    .delete(deleteSingleOrder);
+    .delete(deleteSingleOrder)
+    .put(updateOrderStatus);

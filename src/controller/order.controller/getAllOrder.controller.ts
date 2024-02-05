@@ -10,13 +10,13 @@ export const getAllOrder = async (req: Request, res: Response) => {
             .populate("User")
             .populate("Products.Product");
 
-        const orders = await Order.find()
+        const orders = await Order.find({ OrderStatus: { $ne: "Pending" } })
             .populate("User")
             .populate("Products.Product");
 
         successResponse({
             res,
-            message: "Got all order",
+            message: `Got ${pendingOrders?.length} pending  order and ${orders?.length} all orders`,
             data: {
                 pending: pendingOrders,
                 all: orders,
