@@ -14,14 +14,12 @@ import {
 } from "../controller/product.controller";
 
 export const productRoute = express.Router();
-const upload = multer({ storage: CreateDiskStorage("products") });
+
 
 //? Products
+productRoute.route("/all").get(getAllProduct);
 productRoute.post("/search", searchProduct);
 productRoute.get("/feature", getAllFeatureProduct);
-
-productRoute.route("/all").get(getAllProduct);
-
 productRoute.route("/all/:id").get(getSingleProductById).delete(deleteProduct);
 
 // ? Rating

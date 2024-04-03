@@ -20,8 +20,6 @@ const reviewSchema = new Schema(
             type: String,
             required: [true, "Notes is required"],
             trim: true,
-            minlength: [10, "ReviewsNotes can not be less than 10 characters"],
-            maxlength: [50, "ReviewsNotes can not be more than 50 characters"],
         },
     },
     {
