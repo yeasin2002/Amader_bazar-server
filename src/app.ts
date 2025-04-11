@@ -53,7 +53,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(
     cors({
-        origin: ["https://amaderbazar.netlify.app","https://amader-bazar.vercel.app",  "http://localhost:3000" ],
+        origin: [
+            "https://amaderbazar.netlify.app",
+            "https://amader-bazar.vercel.app",
+            "http://localhost:3000",
+        ],
     })
 );
 
