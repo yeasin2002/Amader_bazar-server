@@ -18,9 +18,10 @@
     },
     "license": "ISC",
     "scripts": {
+        "prestart": "nvm use || nvm install",
         "dev": "rimraf dist && nodemon",
-        "build": "rimraf dist && tsc ",
-        "start": "cross-env NODE_ENV=production node dist/app.js",
+        "build": "rimraf ./dist && tsc ",
+        "start": "cross-env NODE_ENV=production node ./dist/app.js",
         "lint": "eslint ./src --ext .ts ",
         "type-check": "tsc --noEmit",
         "prepare": "husky install",
